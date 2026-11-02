@@ -19,7 +19,7 @@
 - [x] Captions accepted (v2; re-check over scene art at integration)
 - [x] Sound cues accepted + inserted into AUDIO-CUES (re-time if scene beats move)
 - [x] `check --json`: 0 errors (warnings: lint 5, runtime 19, craft 6) — per-scene snapshots reviewed
-- [ ] Render `renders/stoicism-in-90-seconds.mp4` verified
+- [x] Render verified: renders/stoicism-in-90-seconds.mp4 (1080x1920, 30 fps, 93.3 s, h264+aac 192k, -14.2 LUFS, LRA 3.1, TP -1.7 dBFS); un-mastered renders/raw.mp4
 
 ## Review log
 - Captions v1 (CEO): good look on parchment; 2 timing fixes sent.
@@ -31,3 +31,4 @@ Major issues only (blank/broken scenes, missing/misplaced characters, clipped te
 - Rig (CEO): expression sheet on-model, 4 characters + props + sit/scared/lift; accepted; animators released to Step B.
 - s5/s6 (CEO): one pass, no major issues; accepted.
 - s1–s4, s7, s8 (CEO): one pass each, no major issues; accepted. check 0 errors. Render started.
+- Render + master (CEO): delivery quality, 2-pass loudnorm (TP target -2.0 so post-AAC peak ≤ -1.5). 18 frames checked.
