@@ -8,7 +8,7 @@
 | Animator 2 | ae71b17c5665cd186 | s3_control, s4_traffic | Step A | |
 | Animator 3 | a19e1e2c00f11dad9 | s5_story, s6_obstacle | Step A | |
 | Animator 4 | a1c4d210f89a13d22 | s7_seneca, s8_close | Step A | |
-| Captions | a65c3bdbc75c2570b | `compositions/captions.html` | running | early frame: missing space between "MOST" and "POWERFUL" |
+| Captions | a65c3bdbc75c2570b | `compositions/captions.html` | v1 reviewed, fixes sent | v1: 108 groups, spacing fixed. Fixes: bridge gaps <0.4 s (blank at 30.2), always one gold word (52.0) |
 | Sound | a9767ac2ceadf8586 | `assets/music/*`, `script/audio_cues.json` | running | |
 
 ## Milestones
@@ -22,4 +22,4 @@
 - [ ] Render `renders/stoicism-in-90-seconds.mp4` verified
 
 ## Review log
-- (empty)
+- Captions v1 (CEO): good look on parchment; 2 timing fixes sent.
