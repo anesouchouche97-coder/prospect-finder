@@ -222,7 +222,7 @@
 
               <!-- front coin mound (in front of swimming Seneca) -->
               <g id="s7-mound-front" class="ink">
-                <path d="M 30 1112 Q 130 930 330 905 Q 540 878 750 905 Q 950 930 1050 1112 Z" fill="#E0A84A" stroke="#1E1A16" stroke-width="8" stroke-linejoin="round"/>
+                <path d="M 30 1210 L 30 1112 Q 130 930 330 905 Q 540 878 750 905 Q 950 930 1050 1112 L 1050 1210 Z" fill="#E0A84A" stroke="#1E1A16" stroke-width="8" stroke-linejoin="round"/>
                 <g fill="#F0C46E" stroke="#1E1A16" stroke-width="5">
                   <ellipse cx="200" cy="1010" rx="30" ry="13"/><ellipse cx="350" cy="950" rx="30" ry="13"/><ellipse cx="470" cy="1030" rx="30" ry="13"/>
                   <ellipse cx="620" cy="960" rx="30" ry="13"/><ellipse cx="760" cy="1040" rx="30" ry="13"/><ellipse cx="880" cy="990" rx="30" ry="13"/>
@@ -266,7 +266,7 @@
               </g>
 
               <!-- costume-change dust puff -->
-              <g transform="translate(1620 820)">
+              <g transform="translate(1710 820)">
                 <g id="s7-puff" class="ink" opacity="0">
                   <g fill="#F5EEDC" stroke="#1E1A16" stroke-width="7">
                     <circle cx="-120" cy="60" r="90"/><circle cx="110" cy="70" r="95"/><circle cx="0" cy="-60" r="110"/>
@@ -318,10 +318,11 @@
         ["And",0,0.43],["Seneca,",0.43,0.88],["one",0.88,1.07],["of",1.19,1.23],["the",1.23,1.44],["richest",1.44,1.93],["men",1.93,2.14],["in",2.14,2.28],["Rome,",2.28,2.63],["would",2.72,3.04],["practice",3.04,3.6],["being",3.6,3.82],["poor,",3.93,4.36],["plain",4.54,4.71],["food,",4.71,5.01],["rough",5.4,5.53],["clothes.",5.83,6.47],["Then",6.81,6.85],["he'd",6.85,7.16],["ask,",7.16,7.47],["is",7.59,7.73],["this",7.73,8.05],["what",8.05,8.37],["I",8.37,8.44],["was",8.52,8.69],["so",8.7,8.85],["afraid",8.85,9.33],["of?",9.33,9.77],["Fear",9.77,10.07],["shrinks",10.07,10.5],["when",10.5,10.71],["you",10.83,10.98],["rehearse",10.98,11.52],["it.",11.52,11.89]
       ].map(function (w) { return { text: w[0], start: w[1], end: w[2] }; });
       const $ = function (s) { return document.querySelector(s); };
-      const O = {"#s7-platter": "50% 50%", "#s7-bread": "50% 100%", "#s7-bonk": "50% 50%", "#s7-puff": "50% 50%", "#s7-togafly": "50% 50%", "#s7-qmark": "50% 50%", "#s7-heart": "50% 50%", "#s7-banner": "50% 50%", "#s7-fear-mv": "50% 100%", "#s7-fear-jaw": "50% 0%", "#s7-fearling-mv": "50% 100%", "#s7-fearling": "50% 100%", "#s7-fearling-eyes": "50% 50%", "#s7-coin-0": "50% 50%", "#s7-coin-1": "50% 50%", "#s7-coin-2": "50% 50%", "#s7-coin-3": "50% 50%", "#s7-coin-4": "50% 50%", "#s7-coin-5": "50% 50%", "#s7-coin-6": "50% 50%", "#s7-coin-7": "50% 50%", "#s7-coin-8": "50% 50%", "#s7-coin-9": "50% 50%", "#s7-coin-10": "50% 50%", "#s7-coin-11": "50% 50%"};
+      const O = {"#s7-platter": "50% 50%", "#s7-bread": "50% 100%", "#s7-bonk": "50% 50%", "#s7-togafly": "50% 50%", "#s7-qmark": "50% 50%", "#s7-heart": "50% 50%", "#s7-banner": "50% 50%", "#s7-fear-mv": "50% 100%", "#s7-fear-jaw": "50% 0%", "#s7-fearling-mv": "50% 100%", "#s7-fearling": "50% 100%", "#s7-fearling-eyes": "50% 50%", "#s7-coin-0": "50% 50%", "#s7-coin-1": "50% 50%", "#s7-coin-2": "50% 50%", "#s7-coin-3": "50% 50%", "#s7-coin-4": "50% 50%", "#s7-coin-5": "50% 50%", "#s7-coin-6": "50% 50%", "#s7-coin-7": "50% 50%", "#s7-coin-8": "50% 50%", "#s7-coin-9": "50% 50%", "#s7-coin-10": "50% 50%", "#s7-coin-11": "50% 50%"};
       const _ft = tl.fromTo.bind(tl);
       tl.fromTo = function (sel, f, t, pos) {
         if (typeof sel === "string" && O[sel]) { t = Object.assign({}, t); delete t.svgOrigin; t.transformOrigin = O[sel]; }
+        if (typeof sel === "string") { t = Object.assign({}, t, { smoothOrigin: false }); }
         return _ft(sel, f, t, pos);
       };
       // keyed segments: K(sel, [[t,{props},ease],...], extra) -> chained fromTo
@@ -422,8 +423,8 @@
       tl.set("#s7-bite", { opacity: 1 }, 7.3);
 
       // ---------- beat 4: rough clothes (5.4 - 6.5) ----------
-      tl.fromTo("#s7-puff", { opacity: 1, scale: 0.1 }, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(1.8)", svgOrigin: "0 0" }, 5.36);
-      tl.fromTo("#s7-puff", { opacity: 1, scale: 1 }, { opacity: 0, scale: 1.35, duration: 0.4, ease: "power2.in", svgOrigin: "0 0", immediateRender: false }, 5.83);
+      tl.fromTo("#s7-puff", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.15, ease: "power2.out" }, 5.36);
+      tl.fromTo("#s7-puff", { opacity: 1, y: 0 }, { opacity: 0, y: -80, duration: 0.4, ease: "power2.in", immediateRender: false }, 5.83);
       tl.set("#s7-puff", { opacity: 0 }, 0);
       tl.set("#s7-ph-toga", { opacity: 0 }, 5.6);
       tl.set("#s7-ph-tunic", { opacity: 1 }, 5.6);

@@ -12,7 +12,7 @@
       <div id="s4-whip">
         <svg id="s4-stage" viewBox="0 0 1080 1920" width="1080" height="1920">
           <defs>
-            <filter id="s4-ink" class="ink-boil" filterUnits="userSpaceOnUse" x="-200" y="-200" width="1480" height="2320" color-interpolation-filters="sRGB">
+            <filter id="s4-ink" class="ink-boil" x="-15%" y="-15%" width="130%" height="130%" color-interpolation-filters="sRGB">
               <feTurbulence class="ink-turb" id="s4-turb" type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="1" result="n"/>
               <feDisplacementMap in="SourceGraphic" in2="n" scale="5" xChannelSelector="R" yChannelSelector="G"/>
             </filter>
@@ -197,8 +197,14 @@
   <script>
     (function () {
       const D = 12.79;
-      const tl = gsap.timeline({ paused: true, defaults: { immediateRender: false } });
-      const F = (sel, a, b, t) => tl.fromTo(sel, a, b, t);
+      const tl = gsap.timeline({ paused: true });
+      const seen = {};
+      const F = (sel, a, b, t) => {
+        const k = [].concat(sel).join("|");
+        if (seen[k]) b = Object.assign({ immediateRender: false }, b);
+        seen[k] = 1;
+        return tl.fromTo(sel, a, b, t);
+      };
       const C = "50% 50%";
       function pop(sel, t, d) {
         F(sel, { opacity: 0, scale: 0.2, transformOrigin: C }, { opacity: 1, scale: 1, transformOrigin: C, duration: d || 0.3, ease: "back.out(2.6)" }, t);
@@ -215,12 +221,12 @@
       F("#s4-whip", { x: 620, opacity: 0.35, filter: "blur(22px)" }, { x: 0, opacity: 1, filter: "blur(0px)", duration: 0.3, ease: "power3.out" }, 0);
 
       // camera
-      F("#s4-cam", { scale: 1.0, svgOrigin: "600 760" }, { scale: 1.08, svgOrigin: "600 760", duration: 2.8, ease: "sine.inOut" }, 0);
-      F("#s4-cam", { scale: 1.08, svgOrigin: "600 760" }, { scale: 1.0, svgOrigin: "600 760", duration: 0.5, ease: "power2.inOut" }, 3.0);
-      F("#s4-cam", { scale: 1.0, svgOrigin: "620 640" }, { scale: 1.12, svgOrigin: "620 640", duration: 0.4, ease: "power3.out" }, 4.38);
-      F("#s4-cam", { scale: 1.12, svgOrigin: "620 640" }, { scale: 1.04, svgOrigin: "620 640", duration: 0.7, ease: "power2.inOut" }, 6.0);
-      F("#s4-cam", { scale: 1.04, svgOrigin: "620 640" }, { scale: 1.0, svgOrigin: "620 640", duration: 0.7, ease: "power2.inOut" }, 9.84);
-      F("#s4-cam", { scale: 1.0, svgOrigin: "620 640" }, { scale: 1.05, svgOrigin: "620 640", duration: 1.4, ease: "sine.inOut" }, 11.1);
+      F("#s4-cam", { scale: 1.0, svgOrigin: "620 680" }, { scale: 1.08, svgOrigin: "620 680", duration: 2.8, ease: "sine.inOut" }, 0);
+      F("#s4-cam", { scale: 1.08, svgOrigin: "620 680" }, { scale: 1.0, svgOrigin: "620 680", duration: 0.5, ease: "power2.inOut" }, 3.0);
+      F("#s4-cam", { scale: 1.0, svgOrigin: "620 680" }, { scale: 1.12, svgOrigin: "620 680", duration: 0.4, ease: "power3.out" }, 4.38);
+      F("#s4-cam", { scale: 1.12, svgOrigin: "620 680" }, { scale: 1.04, svgOrigin: "620 680", duration: 0.7, ease: "power2.inOut" }, 6.0);
+      F("#s4-cam", { scale: 1.04, svgOrigin: "620 680" }, { scale: 1.0, svgOrigin: "620 680", duration: 0.7, ease: "power2.inOut" }, 9.84);
+      F("#s4-cam", { scale: 1.0, svgOrigin: "620 680" }, { scale: 1.05, svgOrigin: "620 680", duration: 1.4, ease: "sine.inOut" }, 11.1);
 
       // 0.14 Example
       pop("#s4-example", 0.12, 0.3); out("#s4-example", 2.9);
@@ -326,7 +332,6 @@
 
       F("#s4-whip", { x: 0, opacity: 1, filter: "blur(0px)" }, { x: -620, opacity: 0.35, filter: "blur(22px)", duration: 0.3, ease: "power3.in" }, D - 0.3);
 
-      tl.progress(1).progress(0);
       window.__timelines = window.__timelines || {};
       window.__timelines["s4_traffic"] = tl;
     })();

@@ -37,14 +37,14 @@ book = (path(blob([(560, 800), (585, 700), (720, 712), (720, 806)], 320, 2), PAP
 candle = path(rrect(810, 730, 34, 72, 6, 340), PAPER) + g("s6-flame", path("M827 690 Q845 712 836 726 Q827 734 818 726 Q810 712 827 690Z", GOLD, 5))
 inkpot = path(rrect(500, 770, 40, 32, 8, 341), INK)
 marcus = f'''<!-- CHAR:marcus -->
-<g id="s6-marcus" transform="translate(420 1078) scale(1)">{ph_marcus(P, seated=True)}</g>
+<g id="s6-marcus" transform="translate(420 1000) scale(1.2)"></g>
 <!-- /CHAR:marcus -->'''
 quill = g("s6-quill", path(blob([(0, 0), (40, -95), (58, -150), (36, -100), (8, -2)], 342, 1), PAPER, 5) + f'<circle cx="2" cy="2" r="16" fill="{SKIN}" stroke="{INK}" stroke-width="6"/>')
 quill_arm = path(wline([(482, 760), (600, 760)], 343, 1), sw=40, stroke=INK) + path(wline([(482, 760), (600, 760)], 343, 1), sw=26, stroke=PAPER)
 
 worldA = f'''<g class="ink">{wallA}{stones}{arch}{column}{floorA}</g>
 <g id="s6-marcus-mv">{marcus}</g>
-<g class="ink">{desk}{book}{candle}{inkpot}{quill_arm}<g transform="translate(610 762)">{quill}</g></g>'''
+<g class="ink">{desk}{book}{candle}{inkpot}</g>'''
 
 # ================= world B: the path (local x 0..1080, placed at +1080) =================
 sky = path("M-300 -300 H1500 V1082 H-300Z", "#E9DCBC", 0)
@@ -58,20 +58,20 @@ boulder = g("s6-boulder", path(blob([(400, 1080), (392, 860), (420, 760), (520, 
             path(wline([(470, 800), (500, 860), (480, 930)], 411, 2), sw=5) + path(wline([(560, 980), (590, 1020)], 412, 2), sw=5))
 dust = "".join(g(f"s6-dust{i}", path(cloud(0, 0, 34, 22, 6, 0.6, 420 + i), PAPER, 5), f' transform="translate({x} 1060)"') for i, x in enumerate([600, 700, 860, 990]))
 alex = f'''<g id="s6-alex-mv"><g id="s6-alex-lean"><!-- CHAR:alex -->
-<g id="s6-alex" transform="translate(300 1078) scale(1)">{ph_alex(P)}</g>
+<g id="s6-alex" transform="translate(-150 1078) scale(1)"></g>
 <!-- /CHAR:alex --></g></g>'''
 stars = g("s6-bonk-in", "".join(path(burst(x, y, 7, 18, 5, 430 + i), GOLD, 4) for i, (x, y) in enumerate([(330, 530), (380, 500), (420, 550)])))
 sweat = g("s6-sweat-in", path("M230 560 Q250 590 240 605 Q225 615 217 600 Q215 585 230 560Z", SKY, 5))
 
 # props (world-B coords), held at Alex's screen-left hand while he stands on the step (x 800, feet 860)
-letter = g("s6-letter-in", path(blob([(470, 540), (690, 532), (700, 820), (478, 830)], 440, 3), PAPER) +
+letter = g("s6-letter-in", path(rrect(470, 535, 230, 292, 10, 440), PAPER) +
            "".join(path(wline([(500, y), (660, y + 2)], 441 + i, 2), sw=4, extra=' stroke-opacity=".5"') for i, y in enumerate([580, 610, 640, 760, 790])) +
            T(510, 600, 0, "Dear Alex,", 34, INK, 700, italic=True, anchor="start", extra=' opacity="0"') +
            g("s6-stamp", path(rrect(486, 662, 200, 70, 10, 442), "none", 7, TERRA) + T(586, 711, 0, "REJECTED", 36, TERRA, 900, "Inter"), ' transform="rotate(-10 586 697)"'))
-dumbbell = g("s6-dumb-in", path(rrect(540, 672, 150, 18, 8, 450), "#6E6A63", 6) +
-             path(rrect(510, 630, 42, 100, 10, 451), INK, 6) + path(rrect(678, 630, 42, 100, 10, 452), INK, 6))
-reps = "".join(g(f"s6-rep{i}", T(620, 560, 0, str(i + 1), 72, GOLD, 900, extra=f' stroke="{INK}" stroke-width="6" paint-order="stroke"')) for i in range(2))
-exam = g("s6-exam-in", path(blob([(470, 540), (690, 532), (700, 820), (478, 830)], 460, 3), PAPER) +
+dumbbell = g("s6-dumb-in", path(rrect(690, 371, 220, 18, 8, 450), "#6E6A63", 6) +
+             path(rrect(655, 330, 46, 100, 10, 451), INK, 6) + path(rrect(899, 330, 46, 100, 10, 452), INK, 6))
+reps = "".join(g(f"s6-rep{i}", T(600, 330, 0, str(i + 1), 72, GOLD, 900, extra=f' stroke="{INK}" stroke-width="6" paint-order="stroke"')) for i in range(2))
+exam = g("s6-exam-in", path(rrect(470, 535, 230, 292, 10, 460), PAPER) +
          T(500, 590, 0, "EXAM", 36, INK, 900, "Inter", anchor="start") +
          "".join(path(wline([(500, y), (580, y + 2)], 461 + i, 2), sw=4, extra=' stroke-opacity=".5"') for i, y in enumerate([640, 680, 720, 760])) +
          path(ellipse(632, 700, 62, 72, 12, 462, 3), "none", 7, TERRA) + T(632, 745, 0, "F", 130, TERRA, 900))
@@ -82,10 +82,24 @@ mapg = g("s6-map-in", path(blob([(450, 545), (520, 530), (600, 550), (700, 528),
          g("s6-x2", path("M498 700 l36 36 M534 700 l-36 36", sw=9, stroke=TERRA) + T(560, 780, 0, "Ch. 7", 36, INK, 900, anchor="start")))
 sparkle = g("s6-sparkle-in", path(burst(660, 600, 10, 34, 4, 480), GOLD, 5))
 
+# ================= screen-space lettering =================
+rule = g("s6-rule-in", path(blob([(230, 290), (850, 270), (862, 500), (240, 515)], 500, 5), PAPER) +
+         f'<text x="545" y="455" font-family="Playfair Display" font-weight="900" font-size="168" text-anchor="middle" fill="{INK}">RULE <tspan fill="{GOLD}" stroke="{INK}" stroke-width="7" paint-order="stroke">3</tspan></text>')
+words1 = [("What", 0), ("stands", 1), ("in", 2), ("the", 3), ("way", 4)]
+words2 = [("becomes", 5), ("the", 6), ("way.", 7)]
+q1 = " ".join(f'<tspan id="s6-qw{i}" fill-opacity="0">{w}</tspan>' for w, i in words1)
+q2 = " ".join(f'<tspan id="s6-qw{i}" fill-opacity="0">{w}</tspan>' for w, i in words2)
+quote = g("s6-quote-in", path(rrect(70, 226, 640, 260, 26, 510), PAPER) +
+          T(98, 316, 0, "&#8220;", 110, GOLD, 900, anchor="start") +
+          f'<text x="150" y="320" font-family="Playfair Display" font-style="italic" font-weight="700" font-size="50" fill="{INK}">{q1}</text>' +
+          f'<text x="150" y="392" font-family="Playfair Display" font-style="italic" font-weight="700" font-size="50" fill="{INK}">{q2}</text>' +
+          g("s6-cite", T(150, 450, 0, "Meditations 5.20", 34, TERRA, 700, italic=True, anchor="start")))
+
 worldB = f'''<g transform="translate(1080 0)">
 <g id="s6-farB" class="ink">{sky}{sun}{hills}</g>
 <g class="ink">{cliff}{groundB}{pathline}</g>
 <g class="ink">{boulder}{dust}</g>
+<g class="ink">{clip("s6-quote", 1.7, 2.85, quote)}</g>
 {alex}
 <g class="ink">
   {clip("s6-bonk", 2.49, 0.6, stars)}
@@ -98,19 +112,6 @@ worldB = f'''<g transform="translate(1080 0)">
   {clip("s6-sparkle", 10.1, 0.44, sparkle)}
 </g>
 </g>'''
-
-# ================= screen-space lettering =================
-rule = g("s6-rule-in", path(blob([(230, 290), (850, 270), (862, 500), (240, 515)], 500, 5), PAPER) +
-         f'<text x="545" y="455" font-family="Playfair Display" font-weight="900" font-size="168" text-anchor="middle" fill="{INK}">RULE <tspan fill="{GOLD}" stroke="{INK}" stroke-width="7" paint-order="stroke">3</tspan></text>')
-words1 = [("What", 0), ("stands", 1), ("in", 2), ("the", 3), ("way", 4)]
-words2 = [("becomes", 5), ("the", 6), ("way.", 7)]
-q1 = " ".join(f'<tspan id="s6-qw{i}" fill-opacity="0">{w}</tspan>' for w, i in words1)
-q2 = " ".join(f'<tspan id="s6-qw{i}" fill-opacity="0">{w}</tspan>' for w, i in words2)
-quote = g("s6-quote-in", path(blob([(80, 236), (720, 226), (732, 478), (88, 488)], 510, 5), PAPER) +
-          T(98, 316, 0, "&#8220;", 110, GOLD, 900, anchor="start") +
-          f'<text x="150" y="320" font-family="Playfair Display" font-style="italic" font-weight="700" font-size="56" fill="{INK}">{q1}</text>' +
-          f'<text x="150" y="392" font-family="Playfair Display" font-style="italic" font-weight="700" font-size="56" fill="{INK}">{q2}</text>' +
-          g("s6-cite", T(150, 450, 0, "Meditations 5.20", 34, TERRA, 700, italic=True, anchor="start")))
 
 wipe_d = "M0 -100 H1300 L1240 200 L1330 520 L1250 840 L1320 1180 L1240 1500 L1310 1820 L1260 2050 H0Z"
 
@@ -127,7 +128,7 @@ svg = f'''<svg id="s6-stage" viewBox="0 0 1080 1920" width="1080" height="1920" 
     {worldA}
     {worldB}
   </g></g></g>
-  <g class="ink">{clip("s6-rule", 0.12, 1.6, rule)}{clip("s6-quote", 1.7, 2.85, quote)}</g>
+  <g class="ink"><g transform="translate(0 -70)">{clip("s6-rule", 0.12, 1.6, rule)}</g></g>
   </g>
   {clip("s6-wipe-in", 0, 0.32, f'<path id="s6-wipe-in-p" d="{wipe_d}" fill="{INK}"/>')}
   {clip("s6-wipe-out", 10.23, 0.31, f'<g transform="scale(-1 1) translate(-1080 0)"><path id="s6-wipe-out-p" d="{wipe_d}" fill="{INK}"/></g>')}
@@ -167,8 +168,6 @@ script = r'''
     // ---- "Marcus wrote": quill scribbles, lines ink in ----
     F("#s6-flame", { scaleY: 1, svgOrigin: "827 726" }, { scaleY: 1.15, duration: 0.3, yoyo: true, repeat: 5, ease: "sine.inOut" }, 0);
     F("#s6-marcus-mv", { y: 0 }, { y: 6, duration: 0.25, ease: "power2.out" }, 0.73);
-    const qk = [[0, 0], [30, -4], [12, 6], [50, 2], [26, 10], [70, 4], [44, 14], [90, 10], [60, 18]];
-    qk.forEach((k, i) => { if (i) F("#s6-quill", { x: qk[i - 1][0], y: qk[i - 1][1] }, { x: k[0], y: k[1], duration: 0.065, ease: "none" }, 1.19 + (i - 1) * 0.065); });
     [0, 1, 2, 3, 4].forEach(i => F("#s6-scrib" + i, { attr: { "stroke-dashoffset": 1.1 } }, { attr: { "stroke-dashoffset": 0 }, duration: 0.12, ease: "none" }, 1.19 + i * 0.1));
 
     // ---- whip pan to the path ----
@@ -177,6 +176,7 @@ script = r'''
     F("#s6-whipblur-b", { attr: { stdDeviation: "22 0" } }, { attr: { stdDeviation: "0 0" }, duration: 0.19, ease: "power2.out" }, 1.79);
     F("#s6-farB", { x: 120 }, { x: 0, duration: 0.6, ease: "power3.out" }, 1.6);
 
+    F("#s6-alex-mv", { opacity: 0 }, { opacity: 1, duration: 0.05 }, 1.72);
     // ---- quote writes itself, word by word on the voice ----
     F("#s6-quote-in", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.2, ease: "power3.out" }, 1.66);
     [1.72, 2.03, 2.49, 2.64, 2.87, 3.10, 3.58, 3.86].forEach((t, i) => F("#s6-qw" + i, { attr: { "fill-opacity": 0 } }, { attr: { "fill-opacity": 1 }, duration: 0.12 }, t));
@@ -184,30 +184,25 @@ script = r'''
     F("#s6-quote-in", { opacity: 1 }, { opacity: 0, y: -30, duration: 0.25, ease: "power2.in" }, 4.26);
 
     // ---- Alex walks in and bonks the boulder ("stands in the way") ----
-    for (let i = 0; i < 4; i++) F("#s6-alex-mv", { x: -450 + i * 112, y: 0 }, { x: -450 + (i + 1) * 112 - 4, y: -10, duration: 0.09, ease: "power1.out" }, 1.75 + i * 0.18);
-    for (let i = 0; i < 4; i++) F("#s6-alex-mv", { x: -450 + (i + 1) * 112 - 4, y: -10 }, { x: -450 + (i + 1) * 112, y: 0, duration: 0.09, ease: "power1.in" }, 1.84 + i * 0.18);
-    F("#s6-alex-mv", { x: -2 }, { x: 0, duration: 0.03 }, 2.46);
     F("#s6-alex-lean", { scaleX: 1, scaleY: 1, svgOrigin: "300 1078" }, { scaleX: 0.9, scaleY: 1.06, duration: 0.06, yoyo: true, repeat: 1, ease: "power2.out" }, 2.49);
     F("#s6-alex-mv", { x: 0 }, { x: -30, duration: 0.18, ease: "power2.out" }, 2.5);
     F("#s6-bonk-in", { scale: 0.3, rotation: 0, svgOrigin: "380 530" }, { scale: 1, rotation: 40, duration: 0.5, ease: "power2.out" }, 2.49);
     shake(2.49, [[6, -3], [-5, 2], [3, 3]]);
     // push ("the way")
     F("#s6-alex-mv", { x: -30 }, { x: 0, duration: 0.15, ease: "power2.out" }, 2.72);
-    F("#s6-alex-lean", { rotation: 0 }, { rotation: 12, duration: 0.15, ease: "power2.out" }, 2.72);
     F("#s6-sweat-in", { scale: 0, svgOrigin: "230 600" }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 2.75);
     [[2], [-2], [2.5], [-1], [0]].forEach((r, i, a) => F("#s6-boulder", { rotation: i ? a[i - 1][0] : 0, svgOrigin: "620 1080" }, { rotation: r[0], duration: 0.07, ease: "none" }, 2.75 + i * 0.07));
     // "becomes": tips over into a step
     F("#s6-boulder", { rotation: 0 }, { rotation: 90, duration: 0.33, ease: "power2.in" }, 3.10);
     F("#s6-boulder", { rotation: 90 }, { rotation: 87, duration: 0.08, yoyo: true, repeat: 1, ease: "power2.out" }, 3.43);
-    F("#s6-alex-lean", { rotation: 12 }, { rotation: 0, duration: 0.25, ease: "back.out(2)" }, 3.15);
     [0, 1, 2, 3].forEach(i => F("#s6-dust" + i, { scale: 0, opacity: 1, svgOrigin: "0 0" }, { scale: 1.3, opacity: 0, duration: 0.5, ease: "power2.out" }, 3.43 + i * 0.03));
     shake(3.43, [[0, 8], [0, -6], [0, 4], [0, -2]]);
     // "the way": climb onto the step
     F("#s6-alex-lean", { scaleY: 1, scaleX: 1 }, { scaleY: 0.9, scaleX: 1.05, duration: 0.1, ease: "power2.out" }, 3.5);
     F("#s6-alex-lean", { scaleY: 0.9, scaleX: 1.05 }, { scaleY: 1.06, scaleX: 0.96, duration: 0.15, ease: "power2.out" }, 3.6);
     F("#s6-alex-mv", { x: 0 }, { x: 500, duration: 0.55, ease: "power1.inOut" }, 3.58);
-    F("#s6-alex-mv", { y: 0 }, { y: -320, duration: 0.3, ease: "power2.out" }, 3.58);
-    F("#s6-alex-mv", { y: -320 }, { y: -220, duration: 0.25, ease: "power2.in" }, 3.88);
+    F("#s6-alex-mv", { y: 0 }, { y: -250, duration: 0.3, ease: "power2.out" }, 3.58);
+    F("#s6-alex-mv", { y: -250 }, { y: -220, duration: 0.25, ease: "power2.in" }, 3.88);
     F("#s6-alex-lean", { scaleY: 1.06, scaleX: 0.96 }, { scaleY: 1, scaleX: 1, duration: 0.3, ease: "back.out(3)" }, 4.13);
 
     // ---- camera pushes in on Alex atop the step for the gags ----
@@ -219,15 +214,14 @@ script = r'''
     shake(4.77, [[4, -2], [-3, 2]]);
     F("#s6-alex-mv", { y: -220 }, { y: -208, duration: 0.3, ease: "power2.out" }, 4.7);
     F("#s6-letter-in", { scaleX: 1, scaleY: 1 }, { scaleX: 0.2, scaleY: 0.08, duration: 0.15, ease: "power3.in" }, 5.42);
-    F("#s6-dumb-in", { scale: 0.2, svgOrigin: "615 680" }, { scale: 1, duration: 0.2, ease: "back.out(3)" }, 5.55);
+    F("#s6-dumb-in", { scale: 0.2, svgOrigin: "800 380" }, { scale: 1, duration: 0.2, ease: "back.out(3)" }, 5.55);
     F("#s6-alex-mv", { y: -208 }, { y: -220, duration: 0.2, ease: "power2.out" }, 5.55);
     [[5.67, 0], [6.1, 1]].forEach(([t, i]) => {
-      F("#s6-dumb-in", { y: 0 }, { y: -150, duration: 0.2, ease: "power2.out" }, t);
-      F("#s6-dumb-in", { y: -150 }, { y: 0, duration: 0.2, ease: "power2.in" }, t + 0.22);
-      F("#s6-rep" + i, { opacity: 0, scale: 0.4, y: 0, svgOrigin: "620 540" }, { opacity: 1, scale: 1, y: -40, duration: 0.25, ease: "back.out(3)" }, t + 0.18);
-      F("#s6-rep" + i, { opacity: 1 }, { opacity: 0, duration: 0.15 }, t + 0.4);
+      F("#s6-dumb-in", { y: 0 }, { y: 70, duration: 0.18, ease: "power2.in" }, t);
+      F("#s6-dumb-in", { y: 70 }, { y: 0, duration: 0.2, ease: "power2.out" }, t + 0.2);
+      F("#s6-rep" + i, { opacity: 0, scale: 0.4, y: 0, svgOrigin: "600 310" }, { opacity: 1, scale: 1, y: -30, duration: 0.25, ease: "back.out(3)" }, t + 0.2);
+      F("#s6-rep" + i, { opacity: 1 }, { opacity: 0, duration: 0.15 }, t + 0.42);
     });
-    F("#s6-dumb-in", { y: 0 }, { y: -170, duration: 0.25, ease: "back.out(2)" }, 6.55);
 
     // ---- "failed an exam" -> treasure map ----
     F("#s6-exam-in", { x: -500, rotation: -30, svgOrigin: "585 685" }, { x: 0, rotation: 0, duration: 0.2, ease: "power3.out" }, 6.91);
@@ -242,6 +236,42 @@ script = r'''
     F("#s6-trail", { attr: { "stroke-dashoffset": 120 } }, { attr: { "stroke-dashoffset": 0 }, duration: 0.8, ease: "none" }, 9.38);
     F("#s6-sparkle-in", { scale: 0, rotation: 0, svgOrigin: "660 600" }, { scale: 1.2, rotation: 45, duration: 0.3, ease: "back.out(2)" }, 10.1);
     F("#s6-cam", { scale: 1.1 }, { scale: 1.14, duration: 1.4, ease: "sine.inOut" }, 8.8);
+
+
+    // ================= RIG acting (Step B) =================
+    if (window.Rig && !Rig.__stub) {
+      const marcus = Rig.mount(document.querySelector("#s6-marcus"), "marcus");
+      const alex = Rig.mount(document.querySelector("#s6-alex"), "alex");
+      const mh = Rig.get(marcus, ".hand-r");
+      if (mh && !mh.querySelector(".s6-quill")) mh.insertAdjacentHTML("beforeend", '<g class="s6-quill"><path d="M70 -160 L58 -40 Q40 -70 52 -150Z" fill="#FBF4E3" stroke="#1E1A16" stroke-width="5" stroke-linejoin="round"/></g>');
+      Rig.sit(tl, marcus, 0, { dur: 0.05 });
+      Rig.idle(tl, marcus, 0.3, 1.9, { seed: 3 });
+      Rig.emote(tl, marcus, [[0, "calm"], [0.73, "smug"]]);
+      Rig.look(tl, marcus, 0.3, 0, 0);
+      Rig.look(tl, marcus, 1.1, 0.8, 1);
+      Rig.gesture(tl, marcus, "write", 1.0, { hold: 0.6 });
+      Rig.tilt(tl, marcus, 1.1, 6);
+      // Alex: walk in, bonk, push, climb, gags
+      Rig.idle(tl, alex, 1.6, D, { seed: 8 });
+      Rig.emote(tl, alex, [[0, "neutral"], [2.49, "shocked"], [2.72, "angry"], [3.2, "shocked"], [3.62, "happy"], [4.62, "sad"], [5.6, "smug"], [7.0, "shocked"], [8.4, "happy"]]);
+      Rig.walk(tl, alex, 1.75, 2.46, 450);
+      Rig.look(tl, alex, 2.0, 1, 0);
+      Rig.gesture(tl, alex, "push", 2.72, { hold: 0.25 });
+      Rig.look(tl, alex, 3.15, 0.6, 0.6);
+      Rig.look(tl, alex, 3.9, 0, 0);
+      Rig.reach(tl, alex, "l", 4.35, [-130, -250], { hand: "fist" });
+      Rig.look(tl, alex, 4.5, -1, 0.3);
+      Rig.tilt(tl, alex, 4.7, -8);
+      Rig.rest(tl, alex, "l", 5.35, { dur: 0.15 });
+      Rig.tilt(tl, alex, 5.4, 0);
+      Rig.gesture(tl, alex, "lift", 5.5, { hold: 1.2 });
+      Rig.look(tl, alex, 5.6, 0, -1);
+      Rig.reach(tl, alex, "l", 6.95, [-130, -250], { hand: "fist" });
+      Rig.look(tl, alex, 7.0, -1, 0.3);
+      Rig.look(tl, alex, 8.9, -1, -0.2);
+      Rig.reach(tl, alex, "r", 9.4, [150, -330], { hand: "point" });
+      Rig.look(tl, alex, 9.4, 0, 0);
+    }
 
     // ---- out: ink wipe from the right + whip ----
     F("#s6-wipe-out-p", { x: -1400 }, { x: 0, duration: 0.27, ease: "power2.in" }, 10.23);
