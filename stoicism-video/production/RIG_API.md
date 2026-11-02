@@ -31,7 +31,7 @@ Faces sit at local y ≈ -500…-370 (eyes y = -450, mouth y = -400). At scale 1
 | `.arm-l` / `.arm-r` | (-60,-330) / (60,-330) shoulders | `rotation`, `y` (shrug) | in `.torso` |
 | `.forearm-l` / `.forearm-r` | (-66,-250) / (66,-250) elbows | `rotation` | in `.arm-*` |
 | `.hand-l` / `.hand-r` | (-70,-175) / (70,-175) wrists | `rotation`, scale | in `.forearm-*`; contains `.hand-open`, `.hand-fist`, `.hand-point` (one visible) |
-| `.head` | (0,-350) neck | `rotation` (tilt), `y` (breathe lag) | in `.body` (not in torso) |
+| `.head` | (0,-350) neck | `rotation` (tilt), `y` (breathe lag) | in `.torso`, drawn after torso art and before the arms (so hands can cover the face) |
 | `.face` | — | — | in `.head` |
 | `.eye-l` / `.eye-r` | (-30,-450) / (30,-450) | `scaleY` (squint/wide) | in `.face` |
 | `.pupil-l` / `.pupil-r` | eye centers | `x`,`y` (look), `scale` | in `.eye-*` |
@@ -45,7 +45,7 @@ Extras (all class-named, no ids):
 - Marcus: `.laurel` (in `.head`), `.beard` (in `.head`, pivot (0,-395), Rig jiggles it with `talk`).
 - Epictetus: `.beard` (in `.head`), `.crutch` (in `.body`, pivot = crutch foot (105,0); held under screen-right arm). His gestures default to the LEFT arm.
 - Seneca: `.toga` (visible) and `.rough-tunic` (opacity 0) inside `.torso`; swap with `Rig.costume`.
-- Alex: `.hoodie` (in `.torso`), `.phone` (in `.hand-r`, opacity 0 by default; show with `Rig.show`).
+- Alex: `.hoodie` (in `.torso`), `.phone` (in `.hand-r`, opacity 0 by default; show with `Rig.show`), `.headphones` (in `.head`, opacity 0; `Rig.show(tl,alex,".headphones",t)`).
 
 ## 3. Scene setup (copy this)
 
@@ -93,15 +93,17 @@ Extras (all class-named, no ids):
 | `Rig.idle(tl, c, t0, t1, {seed=1, blink=true, breathe=true})` | `breathe` + seeded blinks every 2–4 s. The cheap way to keep anyone alive. |
 | `Rig.breathe(tl, c, t0, t1, {period=2.6, amt=0.018})` | Torso scaleY 1↔1+amt (sine), head y 0↔-3 lagging 0.18 s. |
 | `Rig.talk(tl, c, words[], offset=0)` | `words` = `[{text,start,end}]` scene-local (straight from scenes.json). Mouth shapes per word from its letters (a → wide, o/u/w → o, e/i/y → open, m/b/p start → closed), ~0.09–0.13 s each, beard/head nod lightly on stressed words; returns to the current mood's resting mouth in gaps ≥ 0.15 s and after the last word. Times are `start+offset`. |
-| `Rig.emote(tl, c, keys)` | `keys = [[t,"neutral"\|"happy"\|"angry"\|"sad"\|"shocked"\|"smug"\|"calm"], …]`. Each change is a take: 0.08 s squash anticipation on `.body` (shocked: squash then stretch), brows lead (t+0.02), eyes/pupils (t+0.05), mouth (t+0.08), head tilt (t+0.06, 0.3 s), body settles with overshoot by t+0.45. First key snaps (no take). Hold reactions ≥ 0.6 s. |
+| `Rig.emote(tl, c, keys)` | `keys = [[t,"neutral"\|"happy"\|"angry"\|"sad"\|"shocked"\|"scared"\|"smug"\|"calm"], …]` (scared = wide eyes, tiny pupils, raised inner brows, frown, cowers 6%; holdable; add `Rig.tremble`). Each change is a take: 0.08 s squash anticipation on `.body` (shocked: squash then stretch), brows lead (t+0.02), eyes/pupils (t+0.05), mouth (t+0.08), head tilt (t+0.06, 0.3 s), body settles with overshoot by t+0.45. First key snaps (no take). Hold reactions ≥ 0.6 s. |
 | `Rig.mouth(tl, c, t, shape)` | Raw switch: `"rest"\|"open"\|"wide"\|"o"\|"smile"\|"frown"`. |
 | `Rig.look(tl, c, t, dx, dy=0, dur=0.15)` | Pupils to dx,dy in -1…1 (1 = 9 px), both eyes, right eye lags 0.02 s. Look at what matters. |
-| `Rig.gesture(tl, c, name, t, {side, hold=0.8})` | Arm action that starts at `t`, holds `hold` s, returns to rest. Total ≈ 0.3 in + hold + 0.35 out (wave/write add their cycles inside the hold). `side` `"r"` (default; Epictetus `"l"`) or `"l"`; `shrug` uses both. Names: `wave`, `point` (arm out to the side, finger), `shrug` (both palms up + head tilt), `facepalm` (hand to face, head drops), `think` (hand to chin, eyes up), `present` (open palm out at chest height), `fist` (raised shaking fist), `write` (hand in front of chest scribbling; pair with a scroll prop), `hold` (forearm up, hand at chest: holding a phone/cup), `sip` (hand to mouth and back), `push` (both arms forward-out, body leans 8°). |
+| `Rig.gesture(tl, c, name, t, {side, hold=0.8})` | Arm action that starts at `t`, holds `hold` s, returns to rest. Total ≈ 0.3 in + hold + 0.35 out (wave/write add their cycles inside the hold). `side` `"r"` (default; Epictetus `"l"`) or `"l"`; `shrug` uses both. Names: `wave`, `point` (arm out to the side, finger), `shrug` (both palms up + head tilt), `facepalm` (hand to face, head drops), `think` (hand to chin, eyes up), `present` (open palm out at chest height), `fist` (raised shaking fist), `write` (hand in front of chest scribbling; pair with a scroll prop), `lift` (both fists overhead: put a dumbbell prop at local y≈-490 in your own group), `hold` (forearm up, hand at chest: holding a phone/cup), `sip` (hand to mouth and back), `push` (both arms forward-out, body leans 8°). |
 | `Rig.reach(tl, c, side, t, [x,y], {dur=0.3, ease="power2.out", hand="open"})` | 2-bone IK: puts that wrist at character-local (x,y) (elbow bends outward). Use for custom poses; `Rig.rest(tl,c,side,t,{dur})` returns the arm. |
 | `Rig.hand(tl, c, side, t, pose)` | `"open"\|"fist"\|"point"`. |
 | `Rig.walk(tl, c, t0, t1, dx, {step=0.36})` | Moves `.char` x by dx (from its accumulated x) linearly over t0..t1; legs swing ±20°, arms counter-swing (lagging), body bobs 6 px on each contact and leans 3° into travel. Ends with feet planted and a small settle. |
 | `Rig.move(tl, c, t, dur, dx, ease="power2.inOut")` | Slide x by dx without steps (for sitting in a car, being carried…). |
 | `Rig.hop(tl, c, t, {height=60})` | 0.1 s squash, 0.32 s jump with stretch, land squash, settle: total 0.6 s. Shadow shrinks while airborne. |
+| `Rig.sit(tl, c, t, {dur=0.3})` / `Rig.stand(tl, c, t, {dur=0.3})` | Sit: body drops 110 px, so the hips land at **local y = -40** (`Rig.SEAT_Y`). Knees splay (legs ±52°, scaleY 0.62). Put the seat surface at local y ≈ -40 and draw the seat front, couch cushion or car door IN FRONT of the character, covering local y -70…+20 (the robe hem sits there). Stand reverses it with a squash. |
+| `Rig.tremble(tl, c, t0, t1, {amp=2.5})` | Torso x jitter at 24 fps (scared, cold). |
 | `Rig.squash(tl, c, t, {amt=0.08, dur=0.35})` | One squash-and-settle (impacts, surprise). |
 | `Rig.lean(tl, c, t, deg, dur=0.3)` | Body rotation about the feet (hold until the next lean). |
 | `Rig.tilt(tl, c, t, deg, dur=0.25)` | Head rotation about the neck. |
@@ -131,3 +133,7 @@ Each prop is `<g class="prop prop-<name> ink">` drawn around its own anchor (lis
 | `boulder` | ground center | 260×200 |
 | `laurel` (gold wreath, big) | center | 220×150 |
 | `cup` (drinking cup / coffee mug) | bottom center | 50×60 |
+| `balloon` | string end (bottom) | 100×295 |
+| `dumbbell` | center | 180×60 |
+
+Gesture option `{keep:true}` leaves the arm in the pose (no return); call `Rig.rest(tl,c,side,t)` later. Lab and reference frames: `.hyperframes/rig-lab/index.html`, `production/expression-sheet.png`. Source of the art: `.hyperframes/rig-lab/build/` (`node build.mjs` regenerates `assets/rig.js` and `characters/*.svg`).

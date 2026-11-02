@@ -156,7 +156,7 @@ def ph_alex(pfx, seated=False):
 def ph_marcus(pfx, seated=False):
     beard = path(blob([(-78, -430), (-60, -378), (-30, -350), (0, -342), (30, -350), (60, -378), (78, -430), (40, -398), (0, -392), (-40, -398)], 51, 3), "#5A4636")
     laurel = "".join(path(ellipse(x, y, 20, 10, 8, 52 + i, 1), OLIVE, 5, extra=f' transform="rotate({r} {x} {y})"')
-                     for i, (x, y, r) in enumerate([(-74, -498), (-50, -524), (-20, -538), (20, -538), (50, -524), (74, -498)]))
+                     for i, (x, y, r) in enumerate([(-74, -498, 60), (-50, -524, 35), (-20, -538, 10), (20, -538, -10), (50, -524, -35), (74, -498, -60)]))
     hair = path(blob([(-84, -466), (-70, -520), (0, -536), (70, -520), (84, -466), (40, -504), (-40, -504)], 53, 3), "#5A4636")
     stripe = path(blob([(-82, -340), (-50, -345), (70, -170), (40, -150)], 54, 2), TYRIAN, 5)
     return ph_person(pfx, "marcus", PAPER, PAPER, seated=seated, extra_head=hair + beard + laurel, extra_body=stripe, seed=7)

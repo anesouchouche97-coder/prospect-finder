@@ -1,12 +1,338 @@
 <template>
   <style>
-    #root { position: absolute; inset: 0; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #s8-clip { position: absolute; inset: 0; }
+    #s8-stage { position: absolute; left: 0; top: 0; overflow: visible; }
   </style>
   <div id="root" data-composition-id="s8_close" data-width="1080" data-height="1920">
-    <div id="s8_close-placeholder" class="clip" data-start="0" data-duration="1"></div>
+    <div id="s8-clip" class="clip" data-start="0" data-duration="11.68">
+      <svg id="s8-stage" viewBox="0 0 1080 1920" width="1080" height="1920">
+        <defs>
+          <filter id="s8-ink" class="ink-boil" x="-15%" y="-15%" width="130%" height="130%" color-interpolation-filters="sRGB">
+            <feTurbulence class="ink-turb" type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="1" result="n"/>
+            <feDisplacementMap in="SourceGraphic" in2="n" scale="5" xChannelSelector="R" yChannelSelector="G"/>
+          </filter>
+          <clipPath id="s8-win-clip"><rect x="110" y="330" width="300" height="380"/></clipPath>
+        </defs>
+
+        <g id="s8-cam">
+          <!-- ============ KITCHEN, MORNING ============ -->
+          <g id="s8-kitchen" class="ink">
+            <rect x="-100" y="0" width="1280" height="1100" fill="#EBD9B4" opacity="0.5"/>
+            <!-- window: sunrise, later rain -->
+            <rect x="110" y="330" width="300" height="380" fill="#F2C879" opacity="0.7"/>
+            <rect id="s8-sky-rain" x="110" y="330" width="300" height="380" fill="#7F96A3" opacity="0"/>
+            <g clip-path="url(#s8-win-clip)">
+              <circle id="s8-sun" cx="300" cy="640" r="60" fill="#E0A84A" stroke="#1E1A16" stroke-width="6"/>
+              <path d="M 110 690 Q 200 640 290 680 Q 360 650 420 690 L 420 720 L 110 720 Z" fill="#7A8450" stroke="#1E1A16" stroke-width="5"/>
+              <g id="s8-cloud" opacity="0">
+                <path d="M 140 450 Q 140 400 190 405 Q 210 360 260 380 Q 300 350 330 395 Q 390 395 380 450 Z" fill="#B9C3C8" stroke="#1E1A16" stroke-width="6"/>
+              </g>
+              <g id="s8-rain" opacity="0" stroke="#1E1A16" stroke-width="4" stroke-linecap="round">
+                <path d="M 140 -900 L 130 -860 M 200 -820 L 190 -780 M 260 -880 L 250 -840 M 330 -800 L 320 -760 M 380 -860 L 370 -820 M 160 -700 L 150 -660 M 230 -640 L 220 -600 M 300 -700 L 290 -660 M 370 -620 L 360 -580 M 140 -500 L 130 -460 M 210 -440 L 200 -400 M 280 -520 L 270 -480 M 350 -450 L 340 -410 M 170 -320 L 160 -280 M 240 -260 L 230 -220 M 320 -330 L 310 -290 M 390 -270 L 380 -230 M 140 -140 L 130 -100 M 210 -80 L 200 -40 M 290 -150 L 280 -110 M 360 -90 L 350 -50 M 170 40 L 160 80 M 250 100 L 240 140 M 330 30 L 320 70 M 390 110 L 380 150 M 140 220 L 130 260 M 220 280 L 210 320 M 300 210 L 290 250 M 370 290 L 360 330 M 170 400 L 160 440 M 250 470 L 240 510 M 330 400 L 320 440 M 390 480 L 380 520 M 150 580 L 140 620 M 230 640 L 220 680 M 310 590 L 300 630 M 380 660 L 370 700"/>
+              </g>
+            </g>
+            <rect x="110" y="330" width="300" height="380" fill="none" stroke="#1E1A16" stroke-width="9"/>
+            <path d="M 260 330 L 260 710 M 110 520 L 410 520" stroke="#1E1A16" stroke-width="7"/>
+            <path d="M 90 720 L 430 720" stroke="#1E1A16" stroke-width="12" stroke-linecap="round"/>
+            <!-- clock -->
+            <circle cx="880" cy="380" r="70" fill="#F5EEDC" stroke="#1E1A16" stroke-width="8"/>
+            <path d="M 880 380 L 880 330 M 880 380 L 880 420" stroke="#1E1A16" stroke-width="7" stroke-linecap="round"/>
+            <circle cx="880" cy="380" r="7" fill="#1E1A16"/>
+            <!-- counter + coffee machine -->
+            <rect x="680" y="860" width="360" height="30" fill="#E9DCC0" stroke="#1E1A16" stroke-width="7"/>
+            <rect x="700" y="890" width="320" height="210" fill="#C65A3A" opacity="0.85" stroke="#1E1A16" stroke-width="7"/>
+            <path d="M 860 890 L 860 1100 M 820 990 L 840 990 M 880 990 L 900 990" stroke="#1E1A16" stroke-width="6"/>
+            <path d="M 860 860 L 860 720 L 990 720 L 990 860 Z" fill="#5B514B" stroke="#1E1A16" stroke-width="7"/>
+            <rect x="880" y="740" width="90" height="40" rx="6" fill="#8DB1C4" stroke="#1E1A16" stroke-width="5"/>
+            <path d="M 760 860 Q 750 830 770 820 L 800 820 Q 815 830 805 860 Z" fill="#7A8450" stroke="#1E1A16" stroke-width="5"/>
+            <path d="M 780 820 Q 770 780 790 760 M 790 820 Q 800 790 820 780" fill="none" stroke="#7A8450" stroke-width="8" stroke-linecap="round"/>
+            <!-- floor -->
+            <rect x="-100" y="1100" width="1280" height="820" fill="#D4B98A" opacity="0.45"/>
+            <path d="M -100 1100 L 1180 1100" stroke="#1E1A16" stroke-width="8"/>
+          </g>
+
+          <!-- ============ FINALE BACKDROP (rays + columns + plinth) ============ -->
+          <g id="s8-temple" class="ink" opacity="0">
+            <g id="s8-rays" opacity="0.5">
+              <path d="M 540 560 L 140 -200 L 340 -200 Z M 540 560 L 740 -200 L 940 -200 Z M 540 560 L 1300 0 L 1300 260 Z M 540 560 L -220 0 L -220 260 Z M 540 560 L 1300 700 L 1300 960 Z M 540 560 L -220 700 L -220 960 Z" fill="#E0A84A"/>
+            </g>
+            <g id="s8-cols" fill="#F5EEDC" stroke="#1E1A16" stroke-width="7">
+              <rect x="40" y="420" width="90" height="680"/><rect x="24" y="390" width="122" height="36" rx="6"/>
+              <rect x="950" y="420" width="90" height="680"/><rect x="934" y="390" width="122" height="36" rx="6"/>
+            </g>
+            <rect x="400" y="870" width="280" height="230" fill="#F5EEDC" stroke="#1E1A16" stroke-width="7"/>
+            <rect x="380" y="850" width="320" height="28" fill="#F5EEDC" stroke="#1E1A16" stroke-width="7"/>
+          </g>
+
+          <!-- ============ FINALE STOICS (behind Alex) ============ -->
+          <g id="s8-big-epi-mv" opacity="0">
+            <!-- CHAR:epictetus -->
+            <g id="s8-big-epictetus" transform="translate(220 1050) scale(0.8)"></g>
+            <!-- /CHAR:epictetus -->
+          </g>
+          <g id="s8-big-sen-mv" opacity="0">
+            <!-- CHAR:seneca -->
+            <g id="s8-big-seneca" transform="translate(860 1050) scale(0.8)"></g>
+            <!-- /CHAR:seneca -->
+          </g>
+          <g id="s8-big-mar-mv" opacity="0">
+            <!-- CHAR:marcus -->
+            <g id="s8-big-marcus" transform="translate(540 850) scale(0.8)"></g>
+            <!-- /CHAR:marcus -->
+          </g>
+
+          <!-- coffee puddle -->
+          <g transform="translate(600 1098)">
+            <g id="s8-puddle" class="ink" opacity="0">
+              <path d="M -90 0 Q -100 -18 -60 -20 Q -30 -34 10 -22 Q 60 -30 90 -14 Q 110 0 80 6 Q 0 14 -70 8 Z" fill="#6B4226" stroke="#1E1A16" stroke-width="6"/>
+            </g>
+          </g>
+
+          <!-- ALEX -->
+          <g id="s8-alex-mv">
+            <!-- CHAR:alex -->
+            <g id="s8-alex" transform="translate(470 1100) scale(1)"></g>
+            <!-- /CHAR:alex -->
+            <!-- coffee mug in hand -->
+            <g transform="translate(560 860)">
+              <g id="s8-mug" class="ink">
+                <path d="M -26 0 L -30 -56 L 30 -56 L 26 0 Z" fill="#F5EEDC" stroke="#1E1A16" stroke-width="6" stroke-linejoin="round"/>
+                <path d="M 30 -44 Q 52 -40 48 -22 Q 44 -8 28 -12" fill="none" stroke="#1E1A16" stroke-width="6"/>
+                <path d="M -22 -40 L 22 -40" stroke="#C65A3A" stroke-width="8"/>
+                <g id="s8-steam" fill="none" stroke="#1E1A16" stroke-width="4" stroke-linecap="round" opacity="0.6"><path d="M -8 -66 Q -18 -84 -6 -100 M 10 -66 Q 0 -86 12 -104"/></g>
+              </g>
+            </g>
+            <!-- coffee splash arc -->
+            <g id="s8-splash" class="ink" opacity="0" fill="#6B4226" stroke="#1E1A16" stroke-width="4">
+              <path d="M 590 820 Q 620 780 650 800 Q 640 830 600 840 Z"/>
+              <circle cx="660" cy="760" r="12"/><circle cx="700" cy="800" r="9"/><circle cx="560" cy="770" r="10"/><circle cx="520" cy="880" r="9"/>
+            </g>
+            <!-- towel (YES: act) -->
+            <g transform="translate(600 1060)">
+              <g id="s8-towel" class="ink" opacity="0">
+                <path d="M -50 -20 L 50 -26 L 46 20 L -46 24 Z" fill="#8DB1C4" stroke="#1E1A16" stroke-width="6" stroke-linejoin="round"/>
+                <path d="M -30 -18 L -28 22 M 0 -22 L 2 22 M 30 -24 L 28 20" stroke="#F5EEDC" stroke-width="5"/>
+              </g>
+            </g>
+            <!-- balloon (NO: let it go) -->
+            <g id="s8-balloon-mv" opacity="0">
+              <g id="s8-balloon" class="ink">
+                <path d="M 330 940 Q 300 860 210 770" fill="none" stroke="#1E1A16" stroke-width="4"/>
+                <ellipse cx="200" cy="700" rx="56" ry="68" fill="#C65A3A" stroke="#1E1A16" stroke-width="7"/>
+                <path d="M 194 768 L 206 768 L 210 780 L 190 780 Z" fill="#C65A3A" stroke="#1E1A16" stroke-width="4"/>
+                <path d="M 176 668 Q 182 650 198 646" fill="none" stroke="#FFE2D0" stroke-width="8" stroke-linecap="round"/>
+              </g>
+            </g>
+          </g>
+
+          <!-- ============ SHOULDER ADVISORS (minis) ============ -->
+          <g id="s8-mini-epi-mv" opacity="0">
+            <ellipse cx="300" cy="800" rx="70" ry="20" fill="#F5EEDC" stroke="#1E1A16" stroke-width="5"/>
+            <!-- CHAR:epictetus -->
+            <g id="s8-mini-epictetus" transform="translate(300 795) scale(0.34)"></g>
+            <!-- /CHAR:epictetus -->
+          </g>
+          <g id="s8-mini-mar-mv" opacity="0">
+            <ellipse cx="650" cy="800" rx="70" ry="20" fill="#F5EEDC" stroke="#1E1A16" stroke-width="5"/>
+            <!-- CHAR:marcus -->
+            <g id="s8-mini-marcus" transform="translate(650 795) scale(0.34)"></g>
+            <!-- /CHAR:marcus -->
+          </g>
+          <g id="s8-mini-sen-mv" opacity="0">
+            <ellipse cx="470" cy="565" rx="70" ry="20" fill="#F5EEDC" stroke="#1E1A16" stroke-width="5"/>
+            <!-- CHAR:seneca -->
+            <g id="s8-mini-seneca" transform="translate(470 560) scale(0.34)"></g>
+            <!-- /CHAR:seneca -->
+          </g>
+          <!-- poof puffs -->
+          <g id="s8-poofs" fill="#F5EEDC" stroke="#1E1A16" stroke-width="5" class="ink">
+            <g transform="translate(300 730)"><g id="s8-poof-0" opacity="0"><circle cx="-30" cy="0" r="34"/><circle cx="26" cy="-10" r="38"/><circle cx="0" cy="26" r="32"/></g></g>
+            <g transform="translate(650 730)"><g id="s8-poof-1" opacity="0"><circle cx="-30" cy="0" r="34"/><circle cx="26" cy="-10" r="38"/><circle cx="0" cy="26" r="32"/></g></g>
+            <g transform="translate(470 490)"><g id="s8-poof-2" opacity="0"><circle cx="-30" cy="0" r="34"/><circle cx="26" cy="-10" r="38"/><circle cx="0" cy="26" r="32"/></g></g>
+          </g>
+
+          <!-- ============ LETTERING ============ -->
+          <g transform="translate(540 285) rotate(-2)">
+            <g id="s8-card" class="ink" opacity="0">
+              <path d="M -420 -62 Q 0 -80 420 -62 L 410 52 Q 0 36 -410 52 Z" fill="#F7EFDC" stroke="#1E1A16" stroke-width="7" stroke-linejoin="round"/>
+              <text x="0" y="22" text-anchor="middle" font-family="Playfair Display" font-style="italic" font-weight="900" font-size="66" fill="#1E1A16">Is this in <tspan fill="#C98A1E">my control</tspan>?</text>
+            </g>
+          </g>
+          <g transform="translate(220 470) rotate(-8)">
+            <g id="s8-yes" opacity="0">
+              <rect x="-95" y="-50" width="190" height="96" rx="12" fill="none" stroke="#C98A1E" stroke-width="9"/>
+              <text x="0" y="24" text-anchor="middle" font-family="Playfair Display" font-weight="900" font-size="70" fill="#C98A1E">YES</text>
+            </g>
+          </g>
+          <g transform="translate(860 470) rotate(7)">
+            <g id="s8-no" opacity="0">
+              <rect x="-80" y="-50" width="160" height="96" rx="12" fill="none" stroke="#C65A3A" stroke-width="9"/>
+              <text x="0" y="24" text-anchor="middle" font-family="Playfair Display" font-weight="900" font-size="70" fill="#C65A3A">NO</text>
+            </g>
+          </g>
+          <g transform="translate(540 270) rotate(-2)">
+            <text text-anchor="middle" font-family="Playfair Display" font-weight="900" font-size="58" fill="#1E1A16" letter-spacing="2">
+              <tspan id="s8-t-rules" opacity="0">3 RULES</tspan><tspan id="s8-t-years" opacity="0"> · 2,000 YEARS</tspan>
+            </text>
+          </g>
+          <g transform="translate(540 395) rotate(-3)">
+            <g id="s8-move" opacity="0">
+              <text x="0" y="0" text-anchor="middle" font-family="Playfair Display" font-weight="900" font-size="118" fill="#C65A3A" stroke="#1E1A16" stroke-width="5" paint-order="stroke" letter-spacing="3">YOUR MOVE.</text>
+            </g>
+          </g>
+        </g>
+
+        <!-- ink-wipe in (continues s7's wipe out) -->
+        <path id="s8-wipe-in" class="ink" d="M -40 -60 L 1300 -60 L 1300 1980 L -40 1980 L -10 1800 L -60 1640 L 10 1480 L -50 1300 L 20 1120 L -40 960 L 30 780 L -50 600 L 10 420 L -40 240 L 20 80 Z" fill="#1E1A16"/>
+      </svg>
+    </div>
   </div>
   <script>
-    const tl = gsap.timeline({ paused: true });
-    window.__timelines["s8_close"] = tl;
+    (function () {
+      const D = 11.68;
+      const tl = gsap.timeline({ paused: true });
+      const $ = function (s) { return document.querySelector(s); };
+      const W = [["Is",3.38,3.68],["this",3.68,3.8],["in",3.8,3.9],["my",4.01,4.08],["control?",4.08,4.82],
+                 ["Three",7.58,7.88],["rules,",7.88,8.25],["2,000",8.25,9.04],["years,",9.04,9.43],["your",9.43,9.65],["move.",9.65,10.08]]
+        .map(function (w) { return { text: w[0], start: w[1], end: w[2] }; });
+      function K(sel, keys, extra) {
+        for (let i = 1; i < keys.length; i++) {
+          const a = keys[i - 1], b = keys[i];
+          const to = Object.assign({}, b[1], extra || {}, { duration: Math.max(0.001, b[0] - a[0]), ease: b[2] || "power2.inOut", immediateRender: i === 1 });
+          tl.fromTo(sel, Object.assign({}, a[1]), to, a[0]);
+        }
+      }
+      function pop(sel, t, origin) {
+        tl.fromTo(sel, { opacity: 0, scale: 0.2 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2.4)", svgOrigin: origin }, t);
+      }
+      function poof(i, t) {
+        tl.fromTo("#s8-poof-" + i, { opacity: 1, scale: 0.2 }, { opacity: 0, scale: 1.4, duration: 0.4, ease: "power2.out", svgOrigin: "0 0" }, t);
+      }
+
+      // ---------- characters ----------
+      const stage = $("#s8-stage");
+      const ids = { alex: "alex", "mini-epictetus": "epictetus", "mini-marcus": "marcus", "mini-seneca": "seneca", "big-epictetus": "epictetus", "big-marcus": "marcus", "big-seneca": "seneca" };
+      const C = {};
+      Object.keys(ids).forEach(function (k) { C[k] = Rig.mount($("#s8-" + k), ids[k]); });
+      if (Rig.__stub) {
+        // Step A placeholder silhouettes (removed automatically once the real rig mounts)
+        const col = { alex: "#8DB1C4", epictetus: "#7A8450", marcus: "#F6EEDB", seneca: "#F6EEDB" };
+        Object.keys(ids).forEach(function (k) {
+          const n = ids[k];
+          $("#s8-" + k).innerHTML = '<g class="ph ink"><path d="M -70 -335 Q -100 -200 -88 -10 L 88 -10 Q 100 -200 70 -335 Z" fill="' + col[n] + '" stroke="#1E1A16" stroke-width="7"/>' +
+            (n === "marcus" ? '<path d="M -88 -20 L 88 -20" stroke="#6B2D5C" stroke-width="16"/>' : "") +
+            '<circle cx="0" cy="-435" r="86" fill="#E8BC94" stroke="#1E1A16" stroke-width="7"/>' +
+            (n === "marcus" ? '<path d="M -90 -470 Q 0 -560 90 -470" fill="none" stroke="#7A8450" stroke-width="18"/><path d="M -60 -400 Q 0 -320 60 -400" fill="#5A3E2B"/>' : "") +
+            (n === "epictetus" ? '<path d="M -55 -405 Q 0 -280 55 -405" fill="#CFC6B6" stroke="#1E1A16" stroke-width="5"/><path d="M 105 0 L 95 -320" stroke="#8A6A45" stroke-width="16"/>' : "") +
+            (n === "alex" ? '<path d="M -84 -460 Q -70 -545 0 -532 Q 70 -545 86 -460 Q 40 -500 -84 -460 Z" fill="#3A2A20"/>' : "") +
+            '<circle cx="-30" cy="-450" r="9" fill="#1E1A16"/><circle cx="30" cy="-450" r="9" fill="#1E1A16"/>' +
+            '<path d="M -24 -398 Q 0 -380 24 -398" fill="none" stroke="#1E1A16" stroke-width="6" stroke-linecap="round"/></g>';
+        });
+      }
+      Rig.boil(tl, stage, 0, D);
+      const alex = C.alex;
+      Rig.idle(tl, alex, 0, D, { seed: 5 });
+      Rig.emote(tl, alex, [[0, "calm"], [1.8, "shocked"], [3.4, "neutral"], [5.4, "calm"], [6.5, "sad"], [7.1, "calm"], [9.7, "happy"]]);
+      Rig.gesture(tl, alex, "hold", 0, { hold: 1.7 });
+      Rig.look(tl, alex, 1.85, 0.6, 0.9);
+      Rig.look(tl, alex, 2.35, -0.8, -0.2);
+      Rig.look(tl, alex, 2.6, 0.8, -0.2);
+      Rig.look(tl, alex, 2.85, 0, -0.9);
+      Rig.look(tl, alex, 5.5, 0.6, 0.9);
+      Rig.look(tl, alex, 6.2, -1, -0.4);
+      Rig.reach(tl, alex, "l", 6.45, [-140, -170], { dur: 0.2 });
+      Rig.hand(tl, alex, "l", 6.94, "open");
+      Rig.look(tl, alex, 7.0, -0.7, -1);
+      Rig.rest(tl, alex, "l", 7.3, { dur: 0.3 });
+      Rig.look(tl, alex, 7.8, -0.4, -0.9);
+      Rig.look(tl, alex, 9.65, 0, 0);
+      Rig.hop(tl, alex, 9.7, { height: 30 });
+      ["mini-epictetus", "mini-marcus", "mini-seneca"].forEach(function (k, i) { Rig.idle(tl, C[k], 2.3, 7.6, { seed: 11 + i }); Rig.emote(tl, C[k], [[2.3, "calm"], [4.9, i === 0 ? "happy" : "calm"]]); });
+      Rig.talk(tl, C["mini-marcus"], W.slice(0, 5));
+      Rig.gesture(tl, C["mini-epictetus"], "point", 5.15, { hold: 0.7 });
+      Rig.gesture(tl, C["mini-seneca"], "wave", 6.9, { hold: 0.5 });
+      ["big-epictetus", "big-marcus", "big-seneca"].forEach(function (k, i) { Rig.idle(tl, C[k], 7.6, D, { seed: 21 + i }); Rig.emote(tl, C[k], [[7.6, "happy"], [10.1, "smug"]]); });
+      Rig.talk(tl, C["big-marcus"], W.slice(5));
+      Rig.gesture(tl, C["big-marcus"], "present", 9.43, { hold: 0.9 });
+
+      // ---------- transition in ----------
+      tl.fromTo("#s8-wipe-in", { x: 0 }, { x: 1400, duration: 0.3, ease: "power2.in" }, 0);
+
+      // ---------- camera ----------
+      K("#s8-cam", [[0, { scale: 1.06 }], [0.7, { scale: 1.0 }, "power3.out"], [1.8, { scale: 1.0 }], [1.95, { scale: 1.08 }, "power3.out"], [3.3, { scale: 1.04 }, "sine.inOut"], [7.5, { scale: 1.04 }], [8.1, { scale: 1.0 }, "power2.inOut"], [10.2, { scale: 1.0 }], [11.68, { scale: 1.035 }, "sine.inOut"]], { svgOrigin: "540 700" });
+
+      // ---------- 0-2.2: morning, spill on "wrong" ----------
+      K("#s8-sun", [[0, { y: 80 }], [1.2, { y: -150 }, "power2.out"]]);
+      K("#s8-steam", [[0, { y: 0, opacity: 0.6 }], [1.6, { y: -14, opacity: 0.2 }, "sine.inOut"]]);
+      K("#s8-mug", [[1.55, { rotation: 0, x: 0, y: 0 }], [1.8, { rotation: 75, x: 20, y: -10 }, "power3.in"], [2.1, { rotation: 90, x: 30, y: 0 }, "power2.out"], [5.4, { rotation: 90, x: 30, y: 0 }], [5.6, { rotation: 0, x: 0, y: 0 }, "back.out(2)"]], { svgOrigin: "0 -20" });
+      tl.fromTo("#s8-splash", { opacity: 1, y: -20, scale: 0.4 }, { opacity: 1, y: 0, scale: 1, duration: 0.2, ease: "power2.out", svgOrigin: "600 820" }, 1.8);
+      tl.fromTo("#s8-splash", { opacity: 1, y: 0 }, { opacity: 0, y: 220, duration: 0.35, ease: "power2.in", immediateRender: false }, 2.0);
+      tl.set("#s8-splash", { opacity: 0 }, 0);
+      tl.fromTo("#s8-puddle", { opacity: 1, scale: 0.1 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)", svgOrigin: "0 0" }, 2.15);
+      tl.set("#s8-puddle", { opacity: 0 }, 0);
+      K("#s8-alex-mv", [[1.78, { y: 0 }], [1.86, { y: 10 }, "power2.out"], [2.05, { y: -6 }, "power2.out"], [2.2, { y: 0 }, "power2.inOut"]]);
+
+      // ---------- 2.24-3.3: three shoulder advisors appear ----------
+      poof(0, 2.28); pop("#s8-mini-epi-mv", 2.3, "300 800");
+      poof(1, 2.46); pop("#s8-mini-mar-mv", 2.48, "650 800");
+      poof(2, 2.64); pop("#s8-mini-sen-mv", 2.66, "470 565");
+      K("#s8-mini-epi-mv", [[2.7, { y: 0 }], [3.9, { y: -10 }, "sine.inOut"], [5.1, { y: 0 }, "sine.inOut"], [6.3, { y: -10 }, "sine.inOut"], [7.4, { y: 0 }, "sine.inOut"]]);
+      K("#s8-mini-mar-mv", [[2.8, { y: -6 }], [4.0, { y: 4 }, "sine.inOut"], [5.2, { y: -6 }, "sine.inOut"], [6.4, { y: 4 }, "sine.inOut"], [7.4, { y: 0 }, "sine.inOut"]]);
+      K("#s8-mini-sen-mv", [[2.9, { y: 0 }], [4.1, { y: -8 }, "sine.inOut"], [5.3, { y: 2 }, "sine.inOut"], [6.5, { y: -8 }, "sine.inOut"], [7.4, { y: 0 }, "sine.inOut"]]);
+
+      // ---------- 3.38: the question ----------
+      tl.fromTo("#s8-card", { opacity: 0, scaleX: 0.1, scaleY: 0.6 }, { opacity: 1, scaleX: 1, scaleY: 1, duration: 0.4, ease: "back.out(1.8)", svgOrigin: "0 0" }, 3.36);
+      tl.fromTo("#s8-card", { y: 0 }, { y: 0, scale: 1.06, duration: 0.18, ease: "power2.out", svgOrigin: "0 0", immediateRender: false }, 4.08);
+      tl.fromTo("#s8-card", { scale: 1.06 }, { scale: 1, duration: 0.25, ease: "power2.out", svgOrigin: "0 0", immediateRender: false }, 4.26);
+
+      // ---------- 4.82-6.14: YES -> act (clean up) ----------
+      tl.fromTo("#s8-yes", { opacity: 0, scale: 1.8 }, { opacity: 1, scale: 1, duration: 0.22, ease: "power4.in", svgOrigin: "0 0" }, 5.1);
+      tl.fromTo("#s8-towel", { opacity: 1, scale: 0.2 }, { opacity: 1, scale: 1, duration: 0.15, ease: "back.out(2)", svgOrigin: "0 0" }, 5.5);
+      tl.set("#s8-towel", { opacity: 0 }, 0);
+      K("#s8-towel", [[5.65, { x: 0 }], [5.77, { x: -60 }, "sine.inOut"], [5.89, { x: 50 }, "sine.inOut"], [6.01, { x: -40 }, "sine.inOut"], [6.12, { x: 20 }, "sine.inOut"]]);
+      K("#s8-alex-mv", [[5.45, { y: 0, scaleY: 1 }], [5.6, { y: 40, scaleY: 0.94 }, "power2.out"], [6.1, { y: 40, scaleY: 0.94 }], [6.3, { y: 0, scaleY: 1 }, "power2.out"]], { svgOrigin: "470 1100" });
+      tl.fromTo("#s8-puddle", { scale: 1, opacity: 1 }, { scale: 0, opacity: 0, duration: 0.45, ease: "power2.in", svgOrigin: "0 0", immediateRender: false }, 5.65);
+      tl.fromTo("#s8-towel", { opacity: 1 }, { opacity: 0, duration: 0.15, immediateRender: false }, 6.15);
+
+      // ---------- 6.14-7.58: NO (rain) -> let the balloon go ----------
+      tl.fromTo("#s8-sky-rain", { opacity: 0 }, { opacity: 0.85, duration: 0.35, ease: "power2.inOut" }, 6.14);
+      tl.fromTo("#s8-cloud", { opacity: 0, x: -80 }, { opacity: 1, x: 0, duration: 0.4, ease: "power2.out" }, 6.14);
+      tl.fromTo("#s8-rain", { opacity: 1, y: 0 }, { opacity: 1, y: 1300, duration: D - 6.2, ease: "none" }, 6.2);
+      tl.set("#s8-rain", { opacity: 0 }, 0);
+      tl.fromTo("#s8-no", { opacity: 0, scale: 1.8 }, { opacity: 1, scale: 1, duration: 0.22, ease: "power4.in", svgOrigin: "0 0" }, 6.42);
+      pop("#s8-balloon-mv", 6.5, "330 940");
+      K("#s8-balloon", [[6.6, { rotation: -4 }], [6.94, { rotation: 4 }, "sine.inOut"]], { svgOrigin: "330 940" });
+      K("#s8-balloon", [[6.94, { x: 0, y: 0, rotation: 4 }], [7.6, { x: 40, y: -420, rotation: -8 }, "sine.inOut"], [8.4, { x: 10, y: -1100, rotation: 6 }, "power1.in"]], { svgOrigin: "330 940" });
+
+      // ---------- 7.5-10.1: line-up + lettering ----------
+      ["#s8-card", "#s8-yes", "#s8-no"].forEach(function (s, i) {
+        tl.fromTo(s, { opacity: 1, y: 0 }, { opacity: 0, y: -30, duration: 0.22, ease: "power2.in", immediateRender: false }, 7.3 + i * 0.04);
+      });
+      tl.set("#s8-mini-epi-mv", { opacity: 0 }, 7.56); poof(0, 7.52);
+      tl.set("#s8-mini-mar-mv", { opacity: 0 }, 7.64); poof(1, 7.6);
+      tl.set("#s8-mini-sen-mv", { opacity: 0 }, 7.72); poof(2, 7.68);
+      tl.fromTo("#s8-kitchen", { opacity: 1 }, { opacity: 0.3, duration: 0.6, ease: "power2.inOut" }, 7.55);
+      tl.fromTo("#s8-temple", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 7.58);
+      tl.fromTo("#s8-cols", { y: 700 }, { y: 0, duration: 0.6, ease: "power3.out" }, 7.58);
+      tl.fromTo("#s8-rays", { rotation: -6 }, { rotation: 10, duration: D - 7.58, ease: "none", svgOrigin: "540 560" }, 7.58);
+      pop("#s8-big-epi-mv", 7.62, "220 1050");
+      pop("#s8-big-mar-mv", 7.78, "540 850");
+      pop("#s8-big-sen-mv", 7.94, "860 1050");
+      K("#s8-alex-mv", [[7.6, { x: 0, scale: 1 }], [8.1, { x: 70, scale: 0.96 }, "power2.inOut"]], { svgOrigin: "470 1100" });
+      tl.fromTo("#s8-t-rules", { opacity: 0 }, { opacity: 1, duration: 0.15, ease: "none" }, 7.58);
+      tl.fromTo("#s8-t-years", { opacity: 0 }, { opacity: 1, duration: 0.15, ease: "none" }, 8.25);
+      tl.fromTo("#s8-move", { opacity: 0, scale: 1.6, rotation: -6 }, { opacity: 1, scale: 1, rotation: 0, duration: 0.3, ease: "power4.in", svgOrigin: "0 -40" }, 9.4);
+      tl.fromTo("#s8-move", { scale: 1 }, { scale: 1.06, duration: 0.12, ease: "power2.out", svgOrigin: "0 -40", immediateRender: false }, 9.7);
+      tl.fromTo("#s8-move", { scale: 1.06 }, { scale: 1, duration: 0.3, ease: "power2.out", svgOrigin: "0 -40", immediateRender: false }, 9.82);
+      // Alex turns to camera on "move" (placeholder: a turn squash)
+      K("#s8-alex-mv", [[9.6, { scaleX: 1 }], [9.72, { scaleX: 0.9 }, "power2.in"], [9.9, { scaleX: 1.02 }, "power2.out"], [10.1, { scaleX: 1 }, "sine.out"]], { svgOrigin: "540 1100" });
+      // end-frame breathing (last ~1.6 s): gentle offset sways on the line-up
+      K("#s8-big-epi-mv", [[10.1, { y: 0 }], [10.9, { y: -6 }, "sine.inOut"], [11.68, { y: 0 }, "sine.inOut"]]);
+      K("#s8-big-mar-mv", [[10.1, { y: -2 }], [11.0, { y: -9 }, "sine.inOut"], [11.68, { y: -3 }, "sine.inOut"]]);
+      K("#s8-big-sen-mv", [[10.1, { y: 0 }], [10.8, { y: -7 }, "sine.inOut"], [11.68, { y: -1 }, "sine.inOut"]]);
+
+      window.__timelines["s8_close"] = tl;
+    })();
   </script>
 </template>

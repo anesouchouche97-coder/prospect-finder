@@ -1,12 +1,342 @@
 <template>
   <style>
-    #root { position: absolute; inset: 0; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #s4-scene { position: absolute; inset: 0; }
+    #s4-whip { position: absolute; inset: 0; }
+    #s4-stage { position: absolute; inset: 0; overflow: visible; }
+    .s4-letter { font-family: "Playfair Display", serif; font-weight: 900; }
+    .s4-ui { font-family: "Inter", sans-serif; font-weight: 700; }
   </style>
   <div id="root" data-composition-id="s4_traffic" data-width="1080" data-height="1920">
-    <div id="s4_traffic-placeholder" class="clip" data-start="0" data-duration="1"></div>
+    <div id="s4-scene" class="clip" data-start="0" data-duration="12.79" data-layout-allow-overflow>
+      <div id="s4-whip">
+        <svg id="s4-stage" viewBox="0 0 1080 1920" width="1080" height="1920">
+          <defs>
+            <filter id="s4-ink" class="ink-boil" filterUnits="userSpaceOnUse" x="-200" y="-200" width="1480" height="2320" color-interpolation-filters="sRGB">
+              <feTurbulence class="ink-turb" id="s4-turb" type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="1" result="n"/>
+              <feDisplacementMap in="SourceGraphic" in2="n" scale="5" xChannelSelector="R" yChannelSelector="G"/>
+            </filter>
+            <symbol id="s4-carsym" overflow="visible">
+              <path d="M-145 -28 L-145 -74 Q-138 -96 -100 -100 L-64 -140 Q-54 -150 -24 -150 L58 -150 Q84 -150 100 -124 L124 -100 Q150 -94 150 -70 L150 -28 Z" stroke="#1E1A16" stroke-width="9" stroke-linejoin="round"/>
+              <path d="M-50 -134 L-12 -134 L-12 -102 L-82 -102 Z M2 -134 L56 -134 Q74 -134 86 -102 L2 -102 Z" fill="#DCE6E4" stroke="#1E1A16" stroke-width="6" stroke-linejoin="round"/>
+              <rect x="-150" y="-86" width="16" height="26" rx="4" fill="#C65A3A" stroke="#1E1A16" stroke-width="5"/>
+              <circle cx="-82" cy="-26" r="27" fill="#2E2924" stroke="#1E1A16" stroke-width="6"/>
+              <circle cx="88" cy="-26" r="27" fill="#2E2924" stroke="#1E1A16" stroke-width="6"/>
+              <circle cx="-82" cy="-26" r="9" fill="#BDB2A0"/><circle cx="88" cy="-26" r="9" fill="#BDB2A0"/>
+            </symbol>
+            <clipPath id="s4-seatclip"><rect x="-200" y="-400" width="1480" height="1400"/></clipPath>
+          </defs>
+
+          <g id="s4-shake">
+          <g id="s4-cam" class="cam">
+            <g class="ink" filter="url(#s4-ink)">
+
+              <!-- ===== SKY (gloomy, clears on "different day") ===== -->
+              <g id="s4-sky">
+                <g id="s4-sun" opacity="0">
+                  <g id="s4-rays" stroke="#E0A84A" stroke-width="10" stroke-linecap="round">
+                    <path d="M0 -150 L0 -110 M106 -106 L78 -78 M150 0 L110 0 M-106 -106 L-78 -78 M-150 0 L-110 0 M0 150 L0 110 M106 106 L78 78 M-106 106 L-78 78"/>
+                  </g>
+                  <circle cx="0" cy="0" r="88" fill="#E0A84A" stroke="#1E1A16" stroke-width="7"/>
+                </g>
+                <g transform="translate(560 300)"><g id="s4-gloom-cloud">
+                  <path d="M-260 40 C-320 36 -310 -50 -240 -52 C-236 -110 -140 -120 -100 -78 C-60 -140 60 -130 70 -70 C120 -110 220 -90 214 -30 C290 -30 296 44 226 46 C200 70 -220 74 -260 40 Z" fill="#9C9792" stroke="#1E1A16" stroke-width="7" stroke-linejoin="round" opacity="0.85"/>
+                </g></g>
+              </g>
+
+              <!-- ===== SKYLINE ===== -->
+              <g stroke="#1E1A16" stroke-width="5" stroke-opacity="0.5" fill="#E6D7B4" stroke-linejoin="round">
+                <path d="M-20 600 L-20 470 L70 470 L70 420 L150 420 L150 500 L230 500 L230 440 L300 440 L300 520 L380 520 L380 450 L470 450 L470 400 L540 400 L540 490 L640 490 L640 430 L720 430 L720 510 L800 510 L800 460 L900 460 L900 520 L980 520 L980 440 L1100 440 L1100 600 Z"/>
+              </g>
+              <!-- ===== FAR LANE (jam to the horizon) ===== -->
+              <path d="M-20 600 L1100 600 L1100 650 L-20 650 Z" fill="#DCCDAA" stroke="#1E1A16" stroke-width="4" stroke-opacity="0.5"/>
+              <g id="s4-lane3" fill="#B9A27A">
+                <use href="#s4-carsym" transform="translate(30 642) scale(0.36)"/>
+                <use href="#s4-carsym" transform="translate(150 642) scale(0.36)" fill="#9FB6C2"/>
+                <use href="#s4-carsym" transform="translate(270 642) scale(0.36)" fill="#C98C6E"/>
+                <use href="#s4-carsym" transform="translate(390 642) scale(0.36)" fill="#9AA07A"/>
+                <use href="#s4-carsym" transform="translate(510 642) scale(0.36)"/>
+                <use href="#s4-carsym" transform="translate(630 642) scale(0.36)" fill="#D8C49A"/>
+                <use href="#s4-carsym" transform="translate(750 642) scale(0.36)" fill="#9FB6C2"/>
+                <use href="#s4-carsym" transform="translate(870 642) scale(0.36)" fill="#C98C6E"/>
+                <use href="#s4-carsym" transform="translate(990 642) scale(0.36)" fill="#9AA07A"/>
+              </g>
+              <!-- ===== MID LANE ===== -->
+              <path d="M-20 650 L1100 650 L1100 830 L-20 830 Z" fill="#E2D4B2" stroke="#1E1A16" stroke-width="4" stroke-opacity="0.45"/>
+              <path d="M20 742 L90 742 M200 742 L270 742 M380 742 L450 742 M560 742 L630 742 M740 742 L810 742 M920 742 L990 742" stroke="#F3E9D2" stroke-width="8" stroke-linecap="round"/>
+              <g id="s4-lane2" fill="#C98C6E">
+                <use href="#s4-carsym" transform="translate(70 822) scale(0.6)"/>
+                <use href="#s4-carsym" transform="translate(275 822) scale(0.6)" fill="#9AA07A"/>
+                <use href="#s4-carsym" transform="translate(480 822) scale(0.6)" fill="#D8C49A"/>
+                <use href="#s4-carsym" transform="translate(685 822) scale(0.6)" fill="#9FB6C2"/>
+                <use href="#s4-carsym" transform="translate(890 822) scale(0.6)" fill="#B9A27A"/>
+              </g>
+              <!-- ===== NEAR LANE ground ===== -->
+              <path d="M-20 830 L1100 830 L1100 1100 L-20 1100 Z" fill="#E8DCBD" stroke="none"/>
+              <path d="M-20 1094 Q 540 1088 1100 1096" fill="none" stroke="#1E1A16" stroke-width="7"/>
+              <path d="M40 1150 L160 1150 M420 1160 L560 1160 M840 1150 L960 1150" stroke="#1E1A16" stroke-width="3" stroke-opacity="0.25" stroke-linecap="round"/>
+              <!-- neighbours in our lane (cropped at the edges) -->
+              <use href="#s4-carsym" transform="translate(-30 1092) scale(1.2)" fill="#9AA07A"/>
+              <use href="#s4-carsym" transform="translate(1130 1092) scale(1.2)" fill="#B9A27A"/>
+
+              <!-- gloom wash over the background only -->
+              <rect id="s4-gloom" x="-100" y="150" width="1280" height="700" fill="#5E6670" opacity="0.2"/>
+
+              <!-- ===== NOT YOURS stamp (on the jam) ===== -->
+              <g transform="translate(540 500) rotate(-8)">
+                <g id="s4-stamp" opacity="0">
+                  <rect x="-300" y="-72" width="600" height="144" rx="14" fill="#F3E9D2" fill-opacity="0.55" stroke="#C65A3A" stroke-width="12"/>
+                  <rect x="-284" y="-56" width="568" height="112" rx="8" fill="none" stroke="#C65A3A" stroke-width="4"/>
+                  <text x="0" y="34" text-anchor="middle" class="s4-letter" font-size="100" fill="#C65A3A" letter-spacing="3">NOT YOURS</text>
+                </g>
+              </g>
+
+              <!-- ===== ALEX'S CAR + PASSENGERS ===== -->
+              <g id="s4-car-mv">
+                <g clip-path="url(#s4-seatclip)">
+                  <!-- Epictetus pops up in the back seat -->
+                  <g id="s4-epi-mv">
+                    <!-- CHAR:epictetus -->
+                    <g id="s4-epi" transform="translate(390 1080) scale(0.9)">
+                      <g class="s4-ph" stroke="#1E1A16" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M105 -320 L105 0 M80 -322 L130 -318" stroke-width="12" fill="none"/>
+                        <path d="M-62 -335 Q -84 -240 -76 -150 L 78 -150 Q 84 -240 62 -335 Q 0 -350 -62 -335 Z" fill="#CDBA8E" stroke-width="7"/>
+                        <path d="M-60 -330 L-78 -178 M60 -330 L96 -240" stroke-width="20" fill="none"/>
+                        <circle cx="0" cy="-435" r="80" fill="#D9A577" stroke-width="7"/>
+                        <path d="M-62 -420 Q -60 -340 0 -330 Q 60 -340 62 -420 Q 30 -392 0 -398 Q -30 -392 -62 -420 Z" fill="#6E6255" stroke-width="6"/>
+                        <circle cx="-30" cy="-450" r="9" fill="#1E1A16" stroke="none"/><circle cx="30" cy="-450" r="9" fill="#1E1A16" stroke="none"/>
+                        <path d="M-44 -476 L-16 -472 M16 -472 L44 -476" stroke-width="6" fill="none"/>
+                      </g>
+                    </g>
+                    <!-- /CHAR:epictetus -->
+                  </g>
+                  <!-- Alex at the wheel -->
+                  <g id="s4-alex-mv">
+                    <!-- CHAR:alex -->
+                    <g id="s4-alex" transform="translate(620 1080) scale(1)">
+                      <g class="s4-ph" stroke="#1E1A16" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M-64 -340 Q -86 -250 -76 -150 L 76 -150 Q 86 -250 64 -340 Q 0 -360 -64 -340 Z" fill="#7A8450" stroke-width="7"/>
+                        <path d="M-60 -330 L-74 -200 M60 -330 L96 -230" stroke="#7A8450" stroke-width="26" fill="none"/>
+                        <circle cx="-74" cy="-198" r="14" fill="#E9B98F" stroke-width="5"/><circle cx="98" cy="-228" r="14" fill="#E9B98F" stroke-width="5"/>
+                        <g id="s4-alex-head">
+                          <circle cx="0" cy="-435" r="80" fill="#E9B98F" stroke-width="7"/>
+                          <path d="M-76 -460 Q -70 -530 0 -528 Q 70 -530 78 -462 L 56 -486 L 40 -466 L 20 -492 L 0 -470 L -22 -494 L -40 -468 L -58 -488 Z" fill="#3B2A20" stroke-width="6"/>
+                          <ellipse cx="-30" cy="-450" rx="15" ry="19" fill="#FFFDF5" stroke-width="5"/><ellipse cx="30" cy="-450" rx="15" ry="19" fill="#FFFDF5" stroke-width="5"/>
+                          <circle cx="-27" cy="-448" r="7" fill="#1E1A16" stroke="none"/><circle cx="33" cy="-448" r="7" fill="#1E1A16" stroke="none"/>
+                          <g id="s4-ph-angry"><path d="M-46 -486 L-14 -470 M14 -470 L46 -486" stroke-width="7" fill="none"/><path d="M-26 -396 Q 0 -414 26 -396 Z" fill="#7A2E1E" stroke-width="6"/></g>
+                          <g id="s4-ph-happy" opacity="0"><path d="M-44 -478 Q -30 -488 -16 -480 M16 -480 Q 30 -488 44 -478" stroke-width="6" fill="none"/><path d="M-28 -408 Q 0 -380 28 -408" stroke-width="7" fill="none"/></g>
+                        </g>
+                      </g>
+                    </g>
+                    <!-- /CHAR:alex -->
+                  </g>
+                  <!-- headphones (prop, pops on "podcast") -->
+                  <g transform="translate(620 645)"><g id="s4-phones" opacity="0">
+                    <path d="M-84 -10 Q -90 -112 0 -116 Q 90 -112 84 -10" fill="none" stroke="#1E1A16" stroke-width="12" stroke-linecap="round"/>
+                    <rect x="-104" y="-30" width="34" height="62" rx="12" fill="#C65A3A" stroke="#1E1A16" stroke-width="6"/>
+                    <rect x="70" y="-30" width="34" height="62" rx="12" fill="#C65A3A" stroke="#1E1A16" stroke-width="6"/>
+                  </g></g>
+                </g>
+                <!-- the tiny convertible (over the passengers' legs) -->
+                <g id="s4-car" stroke="#1E1A16" stroke-linejoin="round" stroke-linecap="round">
+                  <path d="M735 872 L770 770 L792 772" fill="none" stroke-width="9"/>
+                  <path d="M742 860 L770 780 L782 782 L760 862 Z" fill="#DCE6E4" fill-opacity="0.7" stroke-width="4"/>
+                  <ellipse cx="690" cy="826" rx="13" ry="40" fill="none" stroke-width="9" transform="rotate(-18 690 826)"/>
+                  <path d="M235 1030 Q 222 950 250 905 Q 270 875 330 872 L790 872 Q 850 876 862 930 L868 1000 Q 868 1030 845 1035 L790 1035 A 62 62 0 0 0 666 1035 L412 1035 A 62 62 0 0 0 288 1035 Z" fill="#8DB1C4" stroke-width="9"/>
+                  <path d="M520 880 L520 1030 M470 940 L500 940" fill="none" stroke-width="5" stroke-opacity="0.6"/>
+                  <ellipse cx="856" cy="930" rx="12" ry="18" fill="#E0A84A" stroke-width="5"/>
+                  <rect x="226" y="905" width="18" height="34" rx="5" fill="#C65A3A" stroke-width="5"/>
+                  <g id="s4-wheel-a"><circle cx="350" cy="1040" r="52" fill="#2E2924" stroke-width="7"/><circle cx="350" cy="1040" r="18" fill="#BDB2A0" stroke-width="4"/></g>
+                  <g id="s4-wheel-b"><circle cx="728" cy="1040" r="52" fill="#2E2924" stroke-width="7"/><circle cx="728" cy="1040" r="18" fill="#BDB2A0" stroke-width="4"/></g>
+                </g>
+              </g>
+
+              <!-- ===== steam from Alex's ears ===== -->
+              <g fill="#F3E9D2" stroke="#1E1A16" stroke-width="5">
+                <g transform="translate(528 640)"><g id="s4-steam-l" opacity="0"><circle cx="0" cy="0" r="18"/><circle cx="-14" cy="-30" r="14"/><circle cx="4" cy="-56" r="10"/></g></g>
+                <g transform="translate(712 640)"><g id="s4-steam-r" opacity="0"><circle cx="0" cy="0" r="18"/><circle cx="14" cy="-30" r="14"/><circle cx="-4" cy="-56" r="10"/></g></g>
+              </g>
+
+              <!-- ===== HONK burst ===== -->
+              <g transform="translate(860 740) rotate(8)"><g id="s4-honk" opacity="0">
+                <path d="M0 -84 L22 -46 L66 -62 L52 -20 L96 -6 L54 14 L72 56 L26 42 L8 84 L-12 44 L-58 60 L-44 18 L-92 4 L-50 -18 L-66 -60 L-22 -44 Z" fill="#E0A84A" stroke="#1E1A16" stroke-width="6" stroke-linejoin="round"/>
+                <text x="0" y="14" text-anchor="middle" class="s4-letter" font-size="40" fill="#1E1A16">HONK</text>
+              </g></g>
+
+              <!-- ===== alarm clock 8:52 ===== -->
+              <g transform="translate(850 345)"><g id="s4-clock" opacity="0">
+                <circle cx="-56" cy="-72" r="26" fill="#C65A3A" stroke="#1E1A16" stroke-width="6"/>
+                <circle cx="56" cy="-72" r="26" fill="#C65A3A" stroke="#1E1A16" stroke-width="6"/>
+                <path d="M-50 76 L-66 98 M50 76 L66 98" stroke="#1E1A16" stroke-width="8" stroke-linecap="round"/>
+                <circle cx="0" cy="0" r="88" fill="#FFFAEC" stroke="#1E1A16" stroke-width="8"/>
+                <text x="0" y="20" text-anchor="middle" class="s4-ui" font-weight="900" font-size="58" fill="#1E1A16">8:52</text>
+                <g transform="translate(0 58) rotate(-6)"><rect x="-50" y="-20" width="100" height="40" rx="8" fill="#C65A3A" stroke="#1E1A16" stroke-width="4"/>
+                <text x="0" y="12" text-anchor="middle" class="s4-ui" font-weight="900" font-size="30" fill="#F3E9D2">LATE</text></g>
+              </g></g>
+
+              <!-- ===== grawlix rage cloud (yelling) ===== -->
+              <g transform="translate(790 470)"><g id="s4-rage" opacity="0">
+                <path d="M-200 30 L-230 -20 L-180 -50 L-200 -110 L-130 -110 L-110 -170 L-50 -130 L0 -180 L40 -120 L110 -160 L120 -100 L200 -110 L180 -50 L230 -20 L190 30 L220 90 L150 100 L130 160 L60 120 L0 170 L-50 120 L-120 150 L-130 90 L-210 90 Z" fill="#C65A3A" stroke="#1E1A16" stroke-width="8" stroke-linejoin="round"/>
+                <g stroke="#1E1A16" stroke-width="9" stroke-linecap="round" fill="none">
+                  <path d="M-120 -40 l0 70 M-96 -40 l0 70 M-136 -16 l56 0 M-136 8 l56 0"/>
+                  <path d="M-20 -50 c-30 0 -30 46 0 46 c26 0 26 -32 2 -32 c-14 0 -14 18 -2 18"/>
+                  <path d="M90 -60 L60 0 L94 -4 L64 56"/>
+                  <path d="M150 -30 l0 50 M150 44 l0 4"/>
+                </g>
+                <path d="M-150 120 L-210 200" stroke="#1E1A16" stroke-width="8" stroke-linecap="round"/>
+              </g></g>
+              <g transform="translate(700 540)"><g id="s4-puff" opacity="0"><circle cx="0" cy="0" r="16" fill="#BDB2A0" stroke="#1E1A16" stroke-width="4"/><circle cx="16" cy="-10" r="10" fill="#BDB2A0" stroke="#1E1A16" stroke-width="4"/></g></g>
+
+              <!-- ===== quick text bubble ===== -->
+              <g transform="translate(500 420)"><g id="s4-text" opacity="0">
+                <path d="M-330 -78 Q-330 -98 -310 -98 L310 -98 Q330 -98 330 -78 L330 62 Q330 82 310 82 L200 82 L230 128 L150 82 L-310 82 Q-330 82 -330 62 Z" fill="#FFFAEC" stroke="#E0A84A" stroke-width="8" stroke-linejoin="round"/>
+                <text x="-300" y="-30" class="s4-ui" font-size="46" fill="#1E1A16">Running 10 min late,</text>
+                <text x="-300" y="34" class="s4-ui" font-size="46" fill="#1E1A16">sorry!</text>
+                <path id="s4-tick1" d="M220 30 L236 46 L268 12" fill="none" stroke="#E0A84A" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="70 70" stroke-dashoffset="70"/>
+                <path id="s4-tick2" d="M246 30 L262 46 L294 12" fill="none" stroke="#E0A84A" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="70 70" stroke-dashoffset="70"/>
+              </g></g>
+              <!-- phone in Alex's hand -->
+              <g transform="translate(722 820) rotate(-12)"><g id="s4-phone" opacity="0">
+                <rect x="-24" y="-42" width="48" height="84" rx="10" fill="#2E2924" stroke="#1E1A16" stroke-width="5"/>
+                <rect x="-17" y="-32" width="34" height="58" rx="4" fill="#8DB1C4"/>
+              </g></g>
+
+              <!-- ===== podcast card ===== -->
+              <g transform="translate(540 420)"><g id="s4-pod" opacity="0">
+                <rect x="-230" y="-70" width="460" height="140" rx="30" fill="#FFFAEC" stroke="#E0A84A" stroke-width="8"/>
+                <circle cx="-160" cy="0" r="40" fill="#E0A84A" stroke="#1E1A16" stroke-width="6"/>
+                <path d="M-172 -20 L-140 0 L-172 20 Z" fill="#1E1A16"/>
+                <g stroke="#1E1A16" stroke-width="12" stroke-linecap="round">
+                  <path id="s4-bar1" d="M-80 -20 L-80 20"/><path id="s4-bar2" d="M-40 -36 L-40 36"/><path id="s4-bar3" d="M0 -14 L0 14"/>
+                  <path id="s4-bar4" d="M40 -40 L40 40"/><path id="s4-bar5" d="M80 -24 L80 24"/><path id="s4-bar6" d="M120 -10 L120 10"/><path id="s4-bar7" d="M160 -30 L160 30"/>
+                </g>
+              </g></g>
+              <!-- music notes -->
+              <g fill="#1E1A16" stroke="#1E1A16" stroke-width="5" stroke-linecap="round">
+                <g transform="translate(470 600)"><g id="s4-note1" opacity="0"><ellipse cx="0" cy="0" rx="12" ry="9"/><path d="M10 -2 L10 -46 L28 -38" fill="none"/></g></g>
+                <g transform="translate(780 590)"><g id="s4-note2" opacity="0"><ellipse cx="0" cy="0" rx="12" ry="9"/><path d="M10 -2 L10 -46 L28 -38" fill="none"/></g></g>
+              </g>
+
+              <!-- EXAMPLE tag -->
+              <g transform="translate(240 265) rotate(-4)"><g id="s4-example" opacity="0">
+                <rect x="-150" y="-40" width="300" height="80" rx="10" fill="#F3E9D2" stroke="#1E1A16" stroke-width="6"/>
+                <text x="0" y="18" text-anchor="middle" class="s4-letter" font-style="italic" font-size="52" fill="#1E1A16">Example</text>
+              </g></g>
+            </g>
+          </g>
+          </g>
+        </svg>
+      </div>
+    </div>
   </div>
   <script>
-    const tl = gsap.timeline({ paused: true });
-    window.__timelines["s4_traffic"] = tl;
+    (function () {
+      const D = 12.79;
+      const tl = gsap.timeline({ paused: true, defaults: { immediateRender: false } });
+      const F = (sel, a, b, t) => tl.fromTo(sel, a, b, t);
+      const C = "50% 50%";
+      function pop(sel, t, d) {
+        F(sel, { opacity: 0, scale: 0.2, transformOrigin: C }, { opacity: 1, scale: 1, transformOrigin: C, duration: d || 0.3, ease: "back.out(2.6)" }, t);
+      }
+      function out(sel, t, d) { F(sel, { opacity: 1 }, { opacity: 0, duration: d || 0.25, ease: "power2.in" }, t); }
+      function shake(t, amp, n) {
+        n = n || 5; let prev = 0;
+        for (let i = 0; i < n; i++) {
+          const v = i === n - 1 ? 0 : amp * (i % 2 ? -1 : 1) * (1 - i / n);
+          F("#s4-shake", { x: prev, y: prev * 0.4 }, { x: v, y: v * 0.4, duration: 0.045, ease: "none" }, t + i * 0.045); prev = v;
+        }
+      }
+
+      F("#s4-turb", { attr: { seed: 1 } }, { attr: { seed: 154 }, duration: D, ease: "steps(153)" }, 0);
+      F("#s4-whip", { x: 620, opacity: 0.35, filter: "blur(22px)" }, { x: 0, opacity: 1, filter: "blur(0px)", duration: 0.3, ease: "power3.out" }, 0);
+
+      // camera
+      F("#s4-cam", { scale: 1.0, svgOrigin: "600 760" }, { scale: 1.08, svgOrigin: "600 760", duration: 2.8, ease: "sine.inOut" }, 0);
+      F("#s4-cam", { scale: 1.08, svgOrigin: "600 760" }, { scale: 1.0, svgOrigin: "600 760", duration: 0.5, ease: "power2.inOut" }, 3.0);
+      F("#s4-cam", { scale: 1.0, svgOrigin: "620 640" }, { scale: 1.12, svgOrigin: "620 640", duration: 0.4, ease: "power3.out" }, 4.38);
+      F("#s4-cam", { scale: 1.12, svgOrigin: "620 640" }, { scale: 1.04, svgOrigin: "620 640", duration: 0.7, ease: "power2.inOut" }, 6.0);
+      F("#s4-cam", { scale: 1.04, svgOrigin: "620 640" }, { scale: 1.0, svgOrigin: "620 640", duration: 0.7, ease: "power2.inOut" }, 9.84);
+      F("#s4-cam", { scale: 1.0, svgOrigin: "620 640" }, { scale: 1.05, svgOrigin: "620 640", duration: 1.4, ease: "sine.inOut" }, 11.1);
+
+      // 0.14 Example
+      pop("#s4-example", 0.12, 0.3); out("#s4-example", 2.9);
+      // idle engine rumble on our car (angry phase)
+      for (let i = 0; i < 12; i++) F("#s4-car-mv", { y: 0 }, { y: -3, duration: 0.12, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0.3 + i * 0.5);
+      // 0.91 "stuck": HONK
+      pop("#s4-honk", 0.92, 0.2);
+      F("#s4-honk", { rotation: 0, transformOrigin: C }, { rotation: 8, transformOrigin: C, duration: 0.06, yoyo: true, repeat: 5, ease: "none" }, 1.1);
+      out("#s4-honk", 1.55, 0.15);
+      F("#s4-alex-mv", { y: 0 }, { y: 12, duration: 0.08, ease: "power2.out", yoyo: true, repeat: 1 }, 0.92);
+      // 1.91 "late": alarm clock 8:52 rattles
+      pop("#s4-clock", 1.91, 0.26);
+      F("#s4-clock", { rotation: -6, transformOrigin: C }, { rotation: 6, transformOrigin: C, duration: 0.05, yoyo: true, repeat: 15, ease: "none" }, 2.2);
+      out("#s4-clock", 6.97);
+      // 2.44 "work": steam from the ears
+      for (let i = 0; i < 6; i++) {
+        const t = 2.44 + i * 0.58;
+        ["#s4-steam-l", "#s4-steam-r"].forEach((s, k) => {
+          F(s, { opacity: 0, y: 0, scale: 0.5, transformOrigin: "50% 100%" }, { opacity: 1, y: -40, scale: 1.1, transformOrigin: "50% 100%", duration: 0.3, ease: "power2.out" }, t + k * 0.12);
+          F(s, { opacity: 1, y: -40 }, { opacity: 0, y: -70, duration: 0.22, ease: "power1.in" }, t + k * 0.12 + 0.3);
+        });
+      }
+      // 3.03 "The traffic?": Epictetus pops up in the back seat
+      F("#s4-epi-mv", { y: 320 }, { y: 0, duration: 0.34, ease: "back.out(1.7)" }, 3.0);
+      // 3.65 "not yours": stamp slams on the jam
+      F("#s4-stamp", { opacity: 0, scale: 2.3, transformOrigin: C }, { opacity: 1, scale: 1, transformOrigin: C, duration: 0.15, ease: "power4.in" }, 3.52);
+      shake(3.67, 12);
+      out("#s4-stamp", 6.95, 0.3);
+      // 4.38 "Yelling": rage cloud erupts
+      F("#s4-rage", { opacity: 0, scale: 0.15, transformOrigin: "10% 90%" }, { opacity: 1, scale: 1, transformOrigin: "10% 90%", duration: 0.3, ease: "back.out(2)" }, 4.38);
+      F("#s4-rage", { rotation: -3, transformOrigin: C }, { rotation: 3, transformOrigin: C, duration: 0.07, yoyo: true, repeat: 15, ease: "none" }, 4.7);
+      shake(4.42, 9, 7);
+      F("#s4-alex-mv", { y: 0 }, { y: -18, duration: 0.15, ease: "power2.out" }, 4.36);
+      // 5.88 "nothing": fizzles out
+      F("#s4-rage", { scale: 1, transformOrigin: C }, { scale: 0.05, transformOrigin: C, duration: 0.45, ease: "power3.in" }, 5.88);
+      out("#s4-rage", 6.28, 0.06);
+      F("#s4-puff", { opacity: 0, scale: 0.4, y: 0, transformOrigin: C }, { opacity: 1, scale: 1, y: -30, transformOrigin: C, duration: 0.25, ease: "power2.out" }, 6.3);
+      out("#s4-puff", 6.6, 0.2);
+      F("#s4-alex-mv", { y: -18 }, { y: 22, duration: 0.4, ease: "power2.inOut" }, 6.0);
+      // 6.97 "What is yours?": calm
+      F("#s4-alex-mv", { y: 22 }, { y: 0, duration: 0.5, ease: "power2.out" }, 6.97);
+      F("#s4-ph-angry", { opacity: 1 }, { opacity: 0, duration: 0.12 }, 7.0);
+      F("#s4-ph-happy", { opacity: 0 }, { opacity: 1, duration: 0.12 }, 7.05);
+      // 7.81 "quick text"
+      pop("#s4-phone", 7.7, 0.2);
+      pop("#s4-text", 7.81, 0.32);
+      F("#s4-tick1", { strokeDashoffset: 70 }, { strokeDashoffset: 0, duration: 0.15, ease: "power2.out" }, 8.3);
+      F("#s4-tick2", { strokeDashoffset: 70 }, { strokeDashoffset: 0, duration: 0.15, ease: "power2.out" }, 8.45);
+      F("#s4-text", { y: 0, scale: 1, transformOrigin: C }, { y: -160, scale: 0.6, transformOrigin: C, duration: 0.25, ease: "power3.in" }, 8.8);
+      out("#s4-text", 8.9, 0.15);
+      out("#s4-phone", 8.9, 0.15);
+      // 9.1 "podcast": headphones + card
+      F("#s4-phones", { opacity: 0, y: -160 }, { opacity: 1, y: 0, duration: 0.24, ease: "back.out(2)" }, 8.98);
+      pop("#s4-pod", 9.1, 0.3);
+      ["#s4-bar1", "#s4-bar2", "#s4-bar3", "#s4-bar4", "#s4-bar5", "#s4-bar6", "#s4-bar7"].forEach((s, i) => {
+        F(s, { scaleY: 0.4, transformOrigin: C }, { scaleY: 1.2, transformOrigin: C, duration: 0.16 + (i % 3) * 0.04, yoyo: true, repeat: 17, ease: "sine.inOut" }, 9.3 + i * 0.03);
+      });
+      out("#s4-pod", 10.9, 0.3);
+      // head bob to the podcast
+      for (let i = 0; i < 9; i++) F("#s4-alex-mv", { y: 0 }, { y: 8, duration: 0.17, ease: "sine.inOut", yoyo: true, repeat: 1 }, 9.3 + i * 0.36);
+      for (let i = 0; i < 4; i++) F("#s4-epi-mv", { y: 0 }, { y: 7, duration: 0.17, ease: "sine.inOut", yoyo: true, repeat: 1 }, 11.2 + i * 0.36);
+      [["#s4-note1", -30], ["#s4-note2", 30]].forEach(([s, dx], k) => {
+        for (let i = 0; i < 3; i++) {
+          const t = 9.4 + k * 0.4 + i * 1.0;
+          F(s, { opacity: 0, x: 0, y: 0 }, { opacity: 1, x: dx * 0.5, y: -40, duration: 0.3, ease: "power1.out" }, t);
+          F(s, { opacity: 1, x: dx * 0.5, y: -40 }, { opacity: 0, x: dx, y: -90, duration: 0.4, ease: "power1.in" }, t + 0.3);
+        }
+      });
+      // 11.1 "Totally different day": gloom lifts, sun rises
+      F("#s4-gloom", { opacity: 0.2 }, { opacity: 0, duration: 0.7, ease: "power2.inOut" }, 11.1);
+      F("#s4-gloom-cloud", { x: 0, opacity: 1 }, { x: 700, opacity: 0, duration: 0.9, ease: "power2.in" }, 11.1);
+      F("#s4-sun", { opacity: 0, x: 820, y: 560 }, { opacity: 1, x: 820, y: 330, duration: 0.8, ease: "power3.out" }, 11.15);
+      F("#s4-rays", { rotation: 0, svgOrigin: "0 0" }, { rotation: 45, svgOrigin: "0 0", duration: 1.6, ease: "none" }, 11.15);
+      F("#s4-sun", { scale: 1, transformOrigin: C }, { scale: 1.12, transformOrigin: C, duration: 0.18, ease: "power2.out", yoyo: true, repeat: 1 }, 12.13);
+
+      F("#s4-whip", { x: 0, opacity: 1, filter: "blur(0px)" }, { x: -620, opacity: 0.35, filter: "blur(22px)", duration: 0.3, ease: "power3.in" }, D - 0.3);
+
+      tl.progress(1).progress(0);
+      window.__timelines = window.__timelines || {};
+      window.__timelines["s4_traffic"] = tl;
+    })();
   </script>
 </template>

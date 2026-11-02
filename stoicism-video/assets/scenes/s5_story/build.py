@@ -42,9 +42,8 @@ meter = (f'<text x="137" y="614" font-family="Inter" font-weight="900" font-size
 alex = f'''<g id="s5-alex-mv"><!-- CHAR:alex -->
 <g id="s5-alex" transform="translate(470 1078) scale(1)">{ph_alex(P, seated=True)}</g>
 <!-- /CHAR:alex --></g>'''
-phone = g("s5-phone", path(rrect(-28, -50, 56, 100, 10, 90), INK) + f'<rect x="-20" y="-40" width="40" height="76" rx="5" fill="{SKY}"/>',
-          attrs=' transform="translate(470 805)"')
-phone_glow = f'<ellipse id="s5-glow" cx="470" cy="700" rx="150" ry="170" fill="{SKY}" opacity=".18"/>'
+phone = '<g transform="translate(470 805)">' + g("s5-phone", path(rrect(-28, -50, 56, 100, 10, 90), INK) + f'<rect x="-20" y="-40" width="40" height="76" rx="5" fill="{SKY}"/>') + '</g>'
+phone_glow = ""
 marcus = f'''<g clip-path="url(#s5-behind-couch)"><g id="s5-marcus-mv"><!-- CHAR:marcus -->
 <g id="s5-marcus" transform="translate(735 1078) scale(1)">{ph_marcus(P)}</g>
 <!-- /CHAR:marcus -->
@@ -56,7 +55,7 @@ marcus = f'''<g clip-path="url(#s5-behind-couch)"><g id="s5-marcus-mv"><!-- CHAR
 # ---------------- props / beats ----------------
 rule = g("s5-rule-in", path(blob([(230, 290), (850, 270), (862, 500), (240, 515)], 100, 5), PAPER) +
          f'<text x="545" y="455" font-family="Playfair Display" font-weight="900" font-size="168" text-anchor="middle" fill="{INK}">RULE <tspan fill="{GOLD}" stroke="{INK}" stroke-width="7" paint-order="stroke">2</tspan></text>' +
-         f'<path id="s5-rule-ul" d="{wline([(320, 485), (560, 478), (770, 470)], 101, 3)}" fill="none" stroke="{TERRA}" stroke-width="16" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>',
+         f'<path id="s5-rule-ul" d="{wline([(320, 485), (560, 478), (770, 470)], 101, 3)}" fill="none" stroke="{TERRA}" stroke-width="16" stroke-linecap="round" pathLength="1" stroke-dasharray="1 1.2" stroke-dashoffset="1.1"/>',
          attrs="")
 ding = g("s5-ding-in", path(rrect(-46, -36, 92, 72, 22, 110), GOLD) + path("M-10 34 L-22 58 L10 36", GOLD, 6) +
          "".join(f'<circle cx="{x}" cy="0" r="8" fill="{INK}"/>' for x in (-22, 0, 22)))
@@ -96,8 +95,8 @@ story = g("s5-story-in", path(cloud(540, 385, 450, 165, 13, 0.55, 180), PAPER, 8
           f'<g clip-path="url(#s5-story-clip)">{story_inner}</g>')
 story_tag = g("s5-storytag-in", path(rrect(585, 560, 400, 92, 14, 190), TERRA) +
               f'<text x="606" y="618" font-family="Inter" font-weight="900" font-size="34" letter-spacing="2" fill="{PAPER}">STORY:</text>' +
-              "".join(f'<text id="s5-hate-{i}" x="{x}" y="622" font-family="Playfair Display" font-style="italic" font-weight="900" font-size="46" fill="{PAPER}">{w}</text>'
-                      for i, (x, w) in enumerate([(752, "they"), (848, "hate"), (950, "me")])))
+              "".join(f'<text id="s5-hate-{i}" x="{x}" y="622" font-family="Playfair Display" font-style="italic" font-weight="900" font-size="44" fill="{PAPER}">{w}</text>'
+                      for i, (x, w) in enumerate([(728, "they"), (812, "hate"), (902, "me")])))
 # note: "me" ends at ~990 ; tag shakes
 pop = g("s5-pop-in", path(burst(775, 470, 60, 130, 10, 200), GOLD, 7) +
         f'<text x="775" y="500" font-family="Playfair Display" font-weight="900" font-size="88" text-anchor="middle" fill="{INK}">POP!</text>')
@@ -111,7 +110,7 @@ truth = g("s5-truth-in", path(ellipse(395, 528, 12, 11, 8, 220, 1), PAPER, 5) +
           path(rrect(480, 420, 70, 60, 8, 226), GOLD, 6) + path(rrect(492, 408, 46, 14, 4, 227), INK, 3) +
           g("s5-zzz", "".join(f'<text x="{x}" y="{y}" font-family="Playfair Display" font-style="italic" font-weight="900" font-size="{s}" fill="{INK}">z</text>'
                               for x, y, s in [(290, 340, 40), (325, 310, 50), (368, 275, 60)])))
-exhale = g("s5-exhale-in", path(cloud(0, 0, 44, 26, 7, 0.6, 230), PAPER, 6), attrs=' transform="translate(400 695)"')
+exhale = '<g transform="translate(400 695)">' + g("s5-exhale-in", path(cloud(0, 0, 44, 26, 7, 0.6, 230), PAPER, 6)) + '</g>'
 sweat = g("s5-sweat-in", path("M565 560 Q585 590 575 605 Q560 615 552 600 Q550 585 565 560Z", SKY, 5))
 
 wipe_d = "M0 -100 H1300 L1240 200 L1330 520 L1250 840 L1320 1180 L1240 1500 L1310 1820 L1260 2050 H0Z"
@@ -150,7 +149,7 @@ svg = f'''<svg id="s5-stage" viewBox="0 0 1080 1920" width="1080" height="1920" 
       {clip("s5-pop", 9.47, 0.7, pop)}
       {clip("s5-exhale", 11.17, 1.2, exhale)}
       {clip("s5-boink", 1.31, 0.5, boink)}
-      {clip("s5-ding", 0.9, 1.3, g("s5-ding-mv", ding, attrs=' transform="translate(470 300)"'))}
+      {clip("s5-ding", 0.9, 1.3, '<g transform="translate(470 300)">' + g("s5-ding-mv", ding) + '</g>')}
     </g>
   </g></g>
   <g class="ink">{clip("s5-rule", 0.1, 2.3, rule)}</g>
@@ -192,7 +191,7 @@ script = r'''
 
     // ---- RULE 2 stamp ----
     F("#s5-rule-in", { opacity: 0, scale: 1.5, rotation: -9, svgOrigin: "545 390" }, { opacity: 1, scale: 1, rotation: -4, duration: 0.32, ease: "back.out(2.2)" }, 0.12);
-    F("#s5-rule-ul", { attr: { "stroke-dashoffset": 1 } }, { attr: { "stroke-dashoffset": 0 }, duration: 0.3, ease: "power2.out" }, 0.42);
+    F("#s5-rule-ul", { attr: { "stroke-dashoffset": 1.1 } }, { attr: { "stroke-dashoffset": 0 }, duration: 0.3, ease: "power2.out" }, 0.42);
     F("#s5-rule-in", { opacity: 1, y: 0 }, { opacity: 0, y: -40, duration: 0.24, ease: "power2.in" }, 2.08);
 
     // ---- camera: slow push, then to the phone, back for the bubble ----
@@ -203,9 +202,9 @@ script = r'''
     F("#s5-cam", { scale: 1.05 }, { scale: 1.02, duration: 2.2, ease: "power2.inOut" }, 9.7);
 
     // ---- ambient: phone glow flicker (keyed), Alex breath ----
-    [0, 1.3, 2.9, 4.6, 6.2, 7.9, 9.5].forEach((t, i) => F("#s5-glow", { opacity: i % 2 ? .24 : .16 }, { opacity: i % 2 ? .16 : .24, duration: 1.4, ease: "sine.inOut" }, t));
+    // (phone glow removed)
     for (let t = 0, i = 0; t < D - 1.2; t += 1.3, i++) F("#s5-alex-mv", { scaleY: i % 2 ? 1.012 : 1, svgOrigin: "470 1078" }, { scaleY: i % 2 ? 1 : 1.012, duration: 1.3, ease: "sine.inOut" }, t);
-    [0.2, 3.0, 5.9, 9.2].forEach(t => F("#s5-alex-ph-eyes", { scaleY: 1, svgOrigin: "470 628" }, { scaleY: 0.1, duration: 0.06, yoyo: true, repeat: 1, ease: "power1.in" }, t));
+    [0.2, 3.0, 5.9, 9.2].forEach(t => F("#s5-alex-ph-eyes", { scaleY: 1, svgOrigin: "0 -448" }, { scaleY: 0.1, duration: 0.06, yoyo: true, repeat: 1, ease: "power1.in" }, t));
 
     // ---- "events don't hurt you": a notification bonks him, harmless ----
     F("#s5-ding-in", { scale: 0, svgOrigin: "0 0" }, { scale: 1, duration: 0.25, ease: "back.out(3)" }, 0.9);
@@ -222,12 +221,12 @@ script = r'''
     F("#s5-pain-fill", { scaleY: 0.06, svgOrigin: "137 1002" }, { scaleY: 0.32, duration: 0.35, ease: "back.out(2)" }, 3.36);
 
     // ---- "your friend leaves you on read": chat panel pops out of the phone ----
-    F("#s5-phone", { y: 0, rotation: 0, svgOrigin: "470 805" }, { y: -40, rotation: -6, duration: 0.3, ease: "power2.out" }, 3.9);
+    F("#s5-phone", { y: 0, rotation: 0, svgOrigin: "0 0" }, { y: -40, rotation: -6, duration: 0.3, ease: "power2.out" }, 3.9);
     F("#s5-chat-in", { scale: 0.08, opacity: 0, svgOrigin: "540 790" }, { scale: 1, opacity: 1, duration: 0.35, ease: "back.out(1.8)" }, 4.18);
     F("#s5-read-in", { opacity: 0, x: 20 }, { opacity: 1, x: 0, duration: 0.18, ease: "power3.out" }, 5.37);
     F("#s5-sweat-in", { scale: 0, svgOrigin: "565 600" }, { scale: 1, duration: 0.2, ease: "back.out(3)" }, 5.6);
     F("#s5-sweat-in", { y: 0 }, { y: 40, duration: 1.6, ease: "power1.in" }, 5.8);
-    F("#s5-alex-ph-head", { rotation: 0, svgOrigin: "470 728" }, { rotation: 6, duration: 0.25, ease: "power2.out" }, 5.5);
+    F("#s5-alex-ph-head", { rotation: 0, svgOrigin: "0 -350" }, { rotation: 6, duration: 0.25, ease: "power2.out" }, 5.5);
 
     // ---- "the event: no reply" plain tag ----
     F("#s5-event-in", { scale: 1.4, opacity: 0, svgOrigin: "805 1000" }, { scale: 1, opacity: 1, duration: 0.25, ease: "back.out(2)" }, 6.2);

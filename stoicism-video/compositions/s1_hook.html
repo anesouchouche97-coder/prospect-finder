@@ -120,7 +120,7 @@
           </g>
 
           <!-- ---------- CHAR: selfish courtier (behind the throne's right shoulder) ---------- -->
-          <g id="s1-selfish-pop">
+          <g id="s1-selfish-pop" opacity="0">
             <!-- CHAR:selfish -->
             <g id="s1-selfish" transform="translate(752 905) scale(0.85)">
               <g class="char extra">
@@ -372,14 +372,14 @@
         <g id="s1-title-move">
           <g class="ink" filter="url(#s1-ink)">
             <!-- ribbon banner -->
-            <path d="M70 250 L120 232 Q540 200 960 232 L1010 250 L980 318 L1010 388 L960 398 Q540 372 120 398 L70 388 L100 318 Z" fill="#E0A84A" stroke="#1E1A16" stroke-width="8" stroke-linejoin="round"/>
-            <path d="M116 226 Q540 196 964 226 L964 404 Q540 376 116 404 Z" fill="#F7EFDC" stroke="#1E1A16" stroke-width="8" stroke-linejoin="round"/>
+            <path d="M70 250 L120 232 Q540 200 960 232 L1010 250 L980 350 L1010 462 L960 470 Q540 446 120 470 L70 462 L100 350 Z" fill="#E0A84A" stroke="#1E1A16" stroke-width="8" stroke-linejoin="round"/>
+            <path d="M116 226 Q540 196 964 226 L964 474 Q540 448 116 474 Z" fill="#F7EFDC" stroke="#1E1A16" stroke-width="8" stroke-linejoin="round"/>
             <text class="s1-letter" x="540" y="286" text-anchor="middle" font-size="52" fill="#1E1A16" letter-spacing="6" transform="rotate(-2 540 286)">THE MOST</text>
             <text class="s1-letter" x="540" y="370" text-anchor="middle" font-size="86" fill="#C65A3A" stroke="#1E1A16" stroke-width="3" paint-order="stroke" transform="rotate(-2 540 370)">POWERFUL MAN</text>
             <text class="s1-letter" x="540" y="452" text-anchor="middle" font-size="52" fill="#1E1A16" letter-spacing="6" transform="rotate(-1 540 452)">ON EARTH</text>
             <!-- "this guy" arrow -->
-            <path d="M808 438 Q790 480 712 500" stroke="#1E1A16" stroke-width="7" fill="none" stroke-linecap="round"/>
-            <path d="M734 478 L708 501 L740 512" stroke="#1E1A16" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M900 482 Q884 548 668 566" stroke="#1E1A16" stroke-width="7" fill="none" stroke-linecap="round"/>
+            <path d="M694 544 L664 566 L694 584" stroke="#1E1A16" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
           </g>
         </g>
       </svg>
@@ -475,6 +475,7 @@
     tl.fromTo("#s1-gift", { x: 0, y: 0, rotation: 0 }, { x: 260, y: -620, rotation: 200, duration: 0.6, ease: "power1.out", immediateRender: false }, 6.85);
 
     // --- SELFISH courtier on "selfish" (7.35): pops up behind the throne, grabs the platter, cheeks stuffed
+    tl.set("#s1-selfish-pop", { opacity: 1 }, 7.3);
     tl.fromTo("#s1-selfish-pop", { y: 420 }, { y: 0, duration: 0.3, ease: "back.out(1.8)" }, 7.3);
     tl.fromTo("#s1-platter", { x: 0, y: 0, rotation: 0, svgOrigin: "760 822" }, { x: -10, y: -90, rotation: -8, duration: 0.3, ease: "power3.out" }, 7.55);
     tl.fromTo("#s1-selfish-cheeks", { scale: 1, svgOrigin: "0 -408" }, { scale: 1.25, duration: 0.12, ease: "sine.inOut", yoyo: true, repeat: 23 }, 7.9);
