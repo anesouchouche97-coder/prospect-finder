@@ -9,7 +9,7 @@
 | Animator 3 | a19e1e2c00f11dad9 | s5_story, s6_obstacle | Step A | |
 | Animator 4 | a1c4d210f89a13d22 | s7_seneca, s8_close | Step A | |
 | Captions | a65c3bdbc75c2570b | `compositions/captions.html` | v2 ACCEPTED | v1: 108 groups, spacing fixed. Fixes: bridge gaps <0.4 s (blank at 30.2), always one gold word (52.0) |
-| Sound | a9767ac2ceadf8586 | `assets/music/*`, `script/audio_cues.json` | running | |
+| Sound | a9767ac2ceadf8586 | `assets/music/*`, `script/audio_cues.json` | ACCEPTED (orchestrator reviewed) | 27 cues wired + CEO click-boulder @61.16 (phone-audible layer); riser clamped to film end. Mix −20.1 LUFS / 0.0 dBTP → master at delivery: 2-pass loudnorm I=−14 TP=−1.5 LRA=11, keep renders/raw.mp4 |
 
 ## Milestones
 - [x] Parchment background + rig stub (CEO)
@@ -17,10 +17,11 @@
 - [ ] RIG READY → CEO review of expression sheet → "RIG READY" to animators
 - [ ] All scenes Step B reviewed and accepted
 - [x] Captions accepted (v2; re-check over scene art at integration)
-- [ ] Sound cues accepted + inserted into AUDIO-CUES
+- [x] Sound cues accepted + inserted into AUDIO-CUES (re-time if scene beats move)
 - [ ] `check --json` clean, `snapshot --review` pass
 - [ ] Render `renders/stoicism-in-90-seconds.mp4` verified
 
 ## Review log
 - Captions v1 (CEO): good look on parchment; 2 timing fixes sent.
 - Captions v2 (CEO): gaps bridged, one gold word always; accepted.
+- Sound: accepted; 28 cues in index.html (track 31–58). Delivery: loudnorm pass required.
