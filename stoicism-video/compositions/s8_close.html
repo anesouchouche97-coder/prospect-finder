@@ -326,7 +326,7 @@
       tl.fromTo("#s8-move", { scale: 1 }, { scale: 1.06, duration: 0.12, ease: "power2.out", svgOrigin: "0 -40", immediateRender: false }, 9.7);
       tl.fromTo("#s8-move", { scale: 1.06 }, { scale: 1, duration: 0.3, ease: "power2.out", svgOrigin: "0 -40", immediateRender: false }, 9.82);
       // Alex turns to camera on "move" (placeholder: a turn squash)
-      K("#s8-alex-mv", [[9.6, { scaleX: 1 }], [9.72, { scaleX: 0.9 }, "power2.in"], [9.9, { scaleX: 1.02 }, "power2.out"], [10.1, { scaleX: 1 }, "sine.out"]], { svgOrigin: "540 1100" });
+      K("#s8-alex-mv", [[9.6, { scaleX: 0.96 }], [9.72, { scaleX: 0.86 }, "power2.in"], [9.9, { scaleX: 0.98 }, "power2.out"], [10.1, { scaleX: 0.96 }, "sine.out"]], { svgOrigin: "470 1100" });
       // end-frame breathing (last ~1.6 s): gentle offset sways on the line-up
       K("#s8-big-epi-mv", [[10.1, { y: 0 }], [10.9, { y: -6 }, "sine.inOut"], [11.68, { y: 0 }, "sine.inOut"]]);
       K("#s8-big-mar-mv", [[10.1, { y: -2 }], [11.0, { y: -9 }, "sine.inOut"], [11.68, { y: -3 }, "sine.inOut"]]);
