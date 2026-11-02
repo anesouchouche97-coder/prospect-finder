@@ -193,6 +193,12 @@
       const D = 11.68;
       const tl = gsap.timeline({ paused: true });
       const $ = function (s) { return document.querySelector(s); };
+      const O = {"#s8-mug": "50% 70%", "#s8-splash": "50% 50%", "#s8-puddle": "50% 50%", "#s8-towel": "50% 50%", "#s8-card": "50% 50%", "#s8-yes": "50% 50%", "#s8-no": "50% 50%", "#s8-move": "50% 50%", "#s8-balloon": "100% 100%", "#s8-balloon-mv": "100% 100%", "#s8-alex-mv": "50% 100%", "#s8-mini-epi-mv": "50% 100%", "#s8-mini-mar-mv": "50% 100%", "#s8-mini-sen-mv": "50% 100%", "#s8-big-epi-mv": "50% 100%", "#s8-big-mar-mv": "50% 100%", "#s8-big-sen-mv": "50% 100%", "#s8-poof-0": "50% 50%", "#s8-poof-1": "50% 50%", "#s8-poof-2": "50% 50%"};
+      const _ft = tl.fromTo.bind(tl);
+      tl.fromTo = function (sel, f, t, pos) {
+        if (typeof sel === "string" && O[sel]) { t = Object.assign({}, t); delete t.svgOrigin; t.transformOrigin = O[sel]; }
+        return _ft(sel, f, t, pos);
+      };
       const W = [["Is",3.38,3.68],["this",3.68,3.8],["in",3.8,3.9],["my",4.01,4.08],["control?",4.08,4.82],
                  ["Three",7.58,7.88],["rules,",7.88,8.25],["2,000",8.25,9.04],["years,",9.04,9.43],["your",9.43,9.65],["move.",9.65,10.08]]
         .map(function (w) { return { text: w[0], start: w[1], end: w[2] }; });

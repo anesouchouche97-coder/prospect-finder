@@ -318,6 +318,12 @@
         ["And",0,0.43],["Seneca,",0.43,0.88],["one",0.88,1.07],["of",1.19,1.23],["the",1.23,1.44],["richest",1.44,1.93],["men",1.93,2.14],["in",2.14,2.28],["Rome,",2.28,2.63],["would",2.72,3.04],["practice",3.04,3.6],["being",3.6,3.82],["poor,",3.93,4.36],["plain",4.54,4.71],["food,",4.71,5.01],["rough",5.4,5.53],["clothes.",5.83,6.47],["Then",6.81,6.85],["he'd",6.85,7.16],["ask,",7.16,7.47],["is",7.59,7.73],["this",7.73,8.05],["what",8.05,8.37],["I",8.37,8.44],["was",8.52,8.69],["so",8.7,8.85],["afraid",8.85,9.33],["of?",9.33,9.77],["Fear",9.77,10.07],["shrinks",10.07,10.5],["when",10.5,10.71],["you",10.83,10.98],["rehearse",10.98,11.52],["it.",11.52,11.89]
       ].map(function (w) { return { text: w[0], start: w[1], end: w[2] }; });
       const $ = function (s) { return document.querySelector(s); };
+      const O = {"#s7-platter": "50% 50%", "#s7-bread": "50% 100%", "#s7-bonk": "50% 50%", "#s7-puff": "50% 50%", "#s7-togafly": "50% 50%", "#s7-qmark": "50% 50%", "#s7-heart": "50% 50%", "#s7-banner": "50% 50%", "#s7-fear-mv": "50% 100%", "#s7-fear-jaw": "50% 0%", "#s7-fearling-mv": "50% 100%", "#s7-fearling": "50% 100%", "#s7-fearling-eyes": "50% 50%", "#s7-coin-0": "50% 50%", "#s7-coin-1": "50% 50%", "#s7-coin-2": "50% 50%", "#s7-coin-3": "50% 50%", "#s7-coin-4": "50% 50%", "#s7-coin-5": "50% 50%", "#s7-coin-6": "50% 50%", "#s7-coin-7": "50% 50%", "#s7-coin-8": "50% 50%", "#s7-coin-9": "50% 50%", "#s7-coin-10": "50% 50%", "#s7-coin-11": "50% 50%"};
+      const _ft = tl.fromTo.bind(tl);
+      tl.fromTo = function (sel, f, t, pos) {
+        if (typeof sel === "string" && O[sel]) { t = Object.assign({}, t); delete t.svgOrigin; t.transformOrigin = O[sel]; }
+        return _ft(sel, f, t, pos);
+      };
       // keyed segments: K(sel, [[t,{props},ease],...], extra) -> chained fromTo
       function K(sel, keys, extra) {
         for (let i = 1; i < keys.length; i++) {
@@ -354,8 +360,9 @@
 
       // Alex acting
       Rig.idle(tl, alex, 9.4, D, { seed: 3 });
-      Rig.emote(tl, alex, [[9.4, "shocked"], [10.48, "neutral"], [10.75, "happy"]]);
-      Rig.look(tl, alex, 9.5, -0.6, -0.9);
+      Rig.emote(tl, alex, [[9.4, "scared"], [10.48, "neutral"], [10.75, "happy"]]);
+      Rig.look(tl, alex, 9.5, 0.6, -0.9);
+      Rig.tremble(tl, alex, 9.5, 10.45);
       Rig.look(tl, alex, 10.45, -0.8, 0.8);
       Rig.reach(tl, alex, "r", 10.55, [-170, -150], { dur: 0.25 });
       Rig.reach(tl, alex, "r", 10.95, [-150, -290], { dur: 0.3 });
