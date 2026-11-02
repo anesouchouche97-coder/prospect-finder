@@ -1,12 +1,492 @@
 <template>
   <style>
-    #root { position: absolute; inset: 0; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #s1-stage, #s1-title, #s1-wipe { position: absolute; inset: 0; }
+    #s1-stage svg, #s1-title svg, #s1-wipe svg { position: absolute; inset: 0; overflow: visible; }
+    .s1-letter { font-family: "Playfair Display", serif; font-weight: 900; }
+    .s1-hand { font-family: "Playfair Display", serif; font-style: italic; font-weight: 700; }
   </style>
   <div id="root" data-composition-id="s1_hook" data-width="1080" data-height="1920">
-    <div id="s1_hook-placeholder" class="clip" data-start="0" data-duration="1"></div>
+
+    <!-- ================= STAGE: the throne room (whole scene) ================= -->
+    <div id="s1-stage" class="clip" data-start="0" data-duration="11.14">
+      <svg id="s1-svg" viewBox="0 0 1080 1920" width="1080" height="1920">
+        <defs>
+          <!-- boil filter (characters/defs.svg contract, prefix s1) -->
+          <filter id="s1-ink" class="ink-boil" x="-15%" y="-15%" width="130%" height="130%" color-interpolation-filters="sRGB">
+            <feTurbulence class="ink-turb" type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="1" result="n"/>
+            <feDisplacementMap in="SourceGraphic" in2="n" scale="5" xChannelSelector="R" yChannelSelector="G"/>
+          </filter>
+          <clipPath id="s1-window-clip">
+            <path d="M220 860 V520 A320 320 0 0 1 860 520 V860 Z"/>
+          </clipPath>
+        </defs>
+
+        <g id="s1-cam">
+          <!-- ---------- LAYER 1: back wall + dawn window ---------- -->
+          <g id="s1-back" class="ink" filter="url(#s1-ink)">
+            <rect x="-120" y="-120" width="1320" height="1240" fill="#E9D7B0"/>
+            <!-- stone courses -->
+            <g stroke="#1E1A16" stroke-width="3" stroke-opacity="0.22" fill="none" stroke-linecap="round">
+              <path d="M-40 180 H1120 M-40 330 H1120 M-40 480 H1120 M-40 630 H1120 M-40 780 H1120 M-40 930 H1120"/>
+              <path d="M300 180 V330 M760 180 V330 M180 330 V480 M900 330 V480 M120 630 V780 M960 630 V780 M200 780 V930 M880 780 V930"/>
+            </g>
+            <!-- window interior (sky, sun, hills) -->
+            <g clip-path="url(#s1-window-clip)">
+              <rect x="200" y="180" width="680" height="700" fill="#8DB1C4"/>
+              <rect x="200" y="560" width="680" height="320" fill="#E8C98A"/>
+              <rect x="200" y="660" width="680" height="220" fill="#F0B866"/>
+              <g id="s1-sun-move">
+                <circle cx="540" cy="760" r="86" fill="#F6D27A" stroke="#1E1A16" stroke-width="6"/>
+              </g>
+              <!-- distant hills + rooftops -->
+              <path d="M200 760 Q300 690 400 735 T600 720 T880 745 V880 H200 Z" fill="#7A8450" stroke="#1E1A16" stroke-width="6"/>
+              <path d="M240 760 h70 v-30 l-35 -22 l-35 22 Z M780 755 h60 v-26 l-30 -20 l-30 20 Z" fill="#C65A3A" stroke="#1E1A16" stroke-width="5"/>
+              <path d="M330 760 q8 -70 16 0 Z M352 762 q7 -55 14 0 Z M740 758 q8 -70 16 0 Z" fill="#5E6A3A" stroke="#1E1A16" stroke-width="4"/>
+              <!-- pre-dawn tint, lifts on "morning" -->
+              <rect id="s1-night" x="200" y="180" width="680" height="700" fill="#34405E" opacity="0.55"/>
+            </g>
+            <path d="M220 860 V520 A320 320 0 0 1 860 520 V860 Z" fill="none" stroke="#1E1A16" stroke-width="9" stroke-linejoin="round"/>
+            <path d="M206 872 H874" stroke="#1E1A16" stroke-width="9" stroke-linecap="round"/>
+          </g>
+
+          <!-- ---------- LAYER 2: drapes + columns ---------- -->
+          <g id="s1-mid" class="ink" filter="url(#s1-ink)">
+            <!-- left drape -->
+            <path d="M150 170 Q260 180 300 200 Q270 420 250 610 Q330 700 330 1000 L210 1010 Q240 760 196 650 Q160 420 150 170 Z" fill="#6B2D5C" stroke="#1E1A16" stroke-width="7" stroke-linejoin="round"/>
+            <path d="M210 230 Q225 420 230 600 M270 690 Q290 820 280 990" stroke="#1E1A16" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.6"/>
+            <path d="M188 618 Q238 640 272 612" stroke="#E0A84A" stroke-width="14" fill="none" stroke-linecap="round"/>
+            <circle cx="232" cy="640" r="14" fill="#E0A84A" stroke="#1E1A16" stroke-width="5"/>
+            <!-- right drape -->
+            <path d="M930 170 Q820 180 780 200 Q810 420 830 610 Q750 700 750 1000 L870 1010 Q840 760 884 650 Q920 420 930 170 Z" fill="#6B2D5C" stroke="#1E1A16" stroke-width="7" stroke-linejoin="round"/>
+            <path d="M870 230 Q855 420 850 600 M810 690 Q790 820 800 990" stroke="#1E1A16" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.6"/>
+            <path d="M892 618 Q842 640 808 612" stroke="#E0A84A" stroke-width="14" fill="none" stroke-linecap="round"/>
+            <circle cx="848" cy="640" r="14" fill="#E0A84A" stroke="#1E1A16" stroke-width="5"/>
+            <!-- curtain rod -->
+            <path d="M120 172 H960" stroke="#E0A84A" stroke-width="16" stroke-linecap="round"/>
+            <path d="M120 172 H960" stroke="#1E1A16" stroke-width="4" stroke-linecap="round" opacity="0.5"/>
+            <!-- left column -->
+            <g>
+              <rect x="-10" y="130" width="180" height="60" rx="6" fill="#F7EFDC" stroke="#1E1A16" stroke-width="7"/>
+              <path d="M-10 190 Q20 230 60 200 Q85 235 110 200 Q140 230 170 190" fill="#F7EFDC" stroke="#1E1A16" stroke-width="6"/>
+              <rect x="20" y="210" width="120" height="880" fill="#F7EFDC" stroke="#1E1A16" stroke-width="7"/>
+              <path d="M50 225 V1075 M80 225 V1075 M110 225 V1075" stroke="#1E1A16" stroke-width="4" opacity="0.45"/>
+              <rect x="0" y="1060" width="160" height="50" rx="6" fill="#F7EFDC" stroke="#1E1A16" stroke-width="7"/>
+            </g>
+            <!-- right column -->
+            <g>
+              <rect x="910" y="130" width="180" height="60" rx="6" fill="#F7EFDC" stroke="#1E1A16" stroke-width="7"/>
+              <path d="M910 190 Q940 230 970 200 Q995 235 1020 200 Q1050 230 1090 190" fill="#F7EFDC" stroke="#1E1A16" stroke-width="6"/>
+              <rect x="940" y="210" width="120" height="880" fill="#F7EFDC" stroke="#1E1A16" stroke-width="7"/>
+              <path d="M970 225 V1075 M1000 225 V1075 M1030 225 V1075" stroke="#1E1A16" stroke-width="4" opacity="0.45"/>
+              <rect x="920" y="1060" width="160" height="50" rx="6" fill="#F7EFDC" stroke="#1E1A16" stroke-width="7"/>
+            </g>
+          </g>
+
+          <!-- ---------- LAYER 3: floor, carpet, dais ---------- -->
+          <g id="s1-floor" class="ink" filter="url(#s1-ink)">
+            <path d="M-120 1090 H1200 V2040 H-120 Z" fill="#D8B888" stroke="#1E1A16" stroke-width="7"/>
+            <g stroke="#1E1A16" stroke-width="4" opacity="0.35" fill="none">
+              <path d="M-120 1180 H1200 M-120 1300 H1200 M-120 1460 H1200 M-120 1680 H1200"/>
+              <path d="M540 1090 L540 2040 M380 1090 L120 2040 M700 1090 L960 2040 M220 1090 L-300 2040 M860 1090 L1380 2040"/>
+            </g>
+            <!-- royal carpet -->
+            <path d="M390 1092 L690 1092 L960 2040 L120 2040 Z" fill="#6B2D5C" stroke="#1E1A16" stroke-width="7"/>
+            <path d="M412 1110 L668 1110 L912 2040 L168 2040 Z" fill="none" stroke="#E0A84A" stroke-width="10"/>
+            <!-- dais step -->
+            <path d="M190 1060 H890 L920 1100 H160 Z" fill="#EFE3C8" stroke="#1E1A16" stroke-width="7" stroke-linejoin="round"/>
+          </g>
+
+          <!-- ---------- LAYER 4: halo rays + throne ---------- -->
+          <g id="s1-rays" opacity="0.55">
+            <g id="s1-rays-spin">
+              <path d="M540 600 L460 -40 L620 -40 Z M540 600 L1060 120 L1140 260 Z M540 600 L1180 760 L1150 920 Z M540 600 L20 120 L-60 260 Z M540 600 L-100 760 L-70 920 Z M540 600 L880 -40 L1010 40 Z M540 600 L200 -40 L70 40 Z" fill="#F2C76E"/>
+            </g>
+          </g>
+          <g id="s1-throne" class="ink" filter="url(#s1-ink)">
+            <path d="M370 880 V500 Q370 410 540 410 Q710 410 710 500 V880 Z" fill="#E0A84A" stroke="#1E1A16" stroke-width="8" stroke-linejoin="round"/>
+            <path d="M405 870 V515 Q405 448 540 448 Q675 448 675 515 V870 Z" fill="#6B2D5C" stroke="#1E1A16" stroke-width="6"/>
+            <path d="M440 520 Q540 490 640 520 M440 600 Q540 570 640 600" stroke="#E0A84A" stroke-width="5" fill="none" opacity="0.8"/>
+            <!-- crest -->
+            <path d="M498 414 Q540 350 582 414 Z" fill="#E0A84A" stroke="#1E1A16" stroke-width="6" stroke-linejoin="round"/>
+            <circle cx="540" cy="372" r="18" fill="#F6D27A" stroke="#1E1A16" stroke-width="6"/>
+            <!-- armrests with lion knobs -->
+            <path d="M318 820 Q318 770 370 770 H400 V840 H318 Z" fill="#E0A84A" stroke="#1E1A16" stroke-width="7" stroke-linejoin="round"/>
+            <circle cx="336" cy="790" r="26" fill="#E0A84A" stroke="#1E1A16" stroke-width="6"/>
+            <path d="M326 786 h4 M342 786 h4 M330 800 q6 6 12 0" stroke="#1E1A16" stroke-width="4" stroke-linecap="round" fill="none"/>
+            <path d="M762 820 Q762 770 710 770 H680 V840 H762 Z" fill="#E0A84A" stroke="#1E1A16" stroke-width="7" stroke-linejoin="round"/>
+            <circle cx="744" cy="790" r="26" fill="#E0A84A" stroke="#1E1A16" stroke-width="6"/>
+            <path d="M734 786 h4 M750 786 h4 M738 800 q6 6 12 0" stroke="#1E1A16" stroke-width="4" stroke-linecap="round" fill="none"/>
+          </g>
+
+          <!-- ---------- CHAR: selfish courtier (behind the throne's right shoulder) ---------- -->
+          <g id="s1-selfish-pop">
+            <!-- CHAR:selfish -->
+            <g id="s1-selfish" transform="translate(752 905) scale(0.85)">
+              <g class="char extra">
+                <g class="body ink" filter="url(#s1-ink)">
+                  <path d="M-110 -150 Q-125 -330 0 -340 Q125 -330 110 -150 Q100 -40 0 -30 Q-100 -40 -110 -150 Z" fill="#E0A84A" stroke="#1E1A16" stroke-width="7"/>
+                  <path d="M-100 -230 Q0 -200 100 -230" stroke="#C65A3A" stroke-width="12" fill="none"/>
+                  <g class="head">
+                    <ellipse cx="0" cy="-440" rx="84" ry="80" fill="#F0C69A" stroke="#1E1A16" stroke-width="7"/>
+                    <path d="M-80 -470 Q-70 -530 0 -528 Q70 -530 80 -470 Q60 -500 0 -498 Q-60 -500 -80 -470 Z" fill="#3B2A1C" stroke="#1E1A16" stroke-width="5"/>
+                    <g id="s1-selfish-cheeks">
+                      <ellipse cx="-56" cy="-408" rx="34" ry="28" fill="#F0B08A" stroke="#1E1A16" stroke-width="5"/>
+                      <ellipse cx="56" cy="-408" rx="34" ry="28" fill="#F0B08A" stroke="#1E1A16" stroke-width="5"/>
+                    </g>
+                    <ellipse class="eye-l" cx="-30" cy="-452" rx="12" ry="14" fill="#fff" stroke="#1E1A16" stroke-width="4"/>
+                    <ellipse class="eye-r" cx="30" cy="-452" rx="12" ry="14" fill="#fff" stroke="#1E1A16" stroke-width="4"/>
+                    <circle cx="-26" cy="-450" r="6" fill="#1E1A16"/>
+                    <circle cx="34" cy="-450" r="6" fill="#1E1A16"/>
+                    <path d="M-50 -480 l34 8 M50 -480 l-34 8" stroke="#1E1A16" stroke-width="6" stroke-linecap="round"/>
+                    <ellipse cx="0" cy="-398" rx="20" ry="14" fill="#7A2A20" stroke="#1E1A16" stroke-width="4"/>
+                    <circle cx="-8" cy="-404" r="7" fill="#6B2D5C"/><circle cx="8" cy="-398" r="7" fill="#6B2D5C"/>
+                  </g>
+                  <!-- grabbing arm (screen-left, toward the platter) -->
+                  <g id="s1-selfish-arm">
+                    <path d="M-80 -300 Q-120 -220 -60 -150" stroke="#1E1A16" stroke-width="40" fill="none" stroke-linecap="round"/>
+                    <path d="M-80 -300 Q-120 -220 -60 -150" stroke="#F0C69A" stroke-width="27" fill="none" stroke-linecap="round"/>
+                  </g>
+                </g>
+              </g>
+            </g>
+            <!-- /CHAR:selfish -->
+          </g>
+
+          <!-- ---------- CHAR: Marcus (placeholder; Step B = Rig.mount "marcus") ---------- -->
+          <g id="s1-marcus-move">
+            <!-- CHAR:marcus -->
+            <g id="s1-marcus" transform="translate(540 1100) scale(1.15)">
+              <g id="s1-marcus-ph" class="char placeholder">
+                <g class="body ink" filter="url(#s1-ink)">
+                  <path d="M-98 -335 C-128 -250 -132 -90 -112 0 L112 0 C132 -90 128 -250 98 -335 Q0 -356 -98 -335 Z" fill="#FBF5E6" stroke="#1E1A16" stroke-width="7"/>
+                  <path d="M-92 -336 L-48 -342 L112 -150 L104 -104 Z" fill="#6B2D5C" stroke="#1E1A16" stroke-width="5"/>
+                  <rect x="-22" y="-372" width="44" height="40" fill="#E9B98C" stroke="#1E1A16" stroke-width="6"/>
+                  <g id="s1-marcus-head" class="head">
+                    <ellipse cx="0" cy="-440" rx="78" ry="82" fill="#E9B98C" stroke="#1E1A16" stroke-width="7"/>
+                    <path d="M-82 -462 Q-90 -530 -40 -522 Q-20 -548 10 -530 Q40 -548 62 -522 Q96 -520 82 -462 Q70 -494 40 -490 Q0 -508 -40 -490 Q-70 -494 -82 -462 Z" fill="#5A3A22" stroke="#1E1A16" stroke-width="5"/>
+                    <path d="M-74 -432 Q-84 -380 -50 -352 Q-30 -332 0 -334 Q30 -332 50 -352 Q84 -380 74 -432 Q60 -400 40 -404 Q0 -386 -40 -404 Q-60 -400 -74 -432 Z" fill="#5A3A22" stroke="#1E1A16" stroke-width="5"/>
+                    <path d="M-30 -416 Q0 -428 30 -416" stroke="#5A3A22" stroke-width="10" fill="none" stroke-linecap="round"/>
+                    <path d="M0 -440 q-10 22 4 26" stroke="#1E1A16" stroke-width="4" fill="none" stroke-linecap="round"/>
+                    <g id="s1-marcus-eyes-open">
+                      <ellipse cx="-30" cy="-452" rx="12" ry="15" fill="#fff" stroke="#1E1A16" stroke-width="4"/>
+                      <ellipse cx="30" cy="-452" rx="12" ry="15" fill="#fff" stroke="#1E1A16" stroke-width="4"/>
+                      <g id="s1-marcus-pupils"><circle cx="-30" cy="-450" r="6.5" fill="#1E1A16"/><circle cx="30" cy="-450" r="6.5" fill="#1E1A16"/></g>
+                    </g>
+                    <g id="s1-marcus-eyes-smug" opacity="0">
+                      <path d="M-44 -450 Q-30 -440 -16 -450 M16 -450 Q30 -440 44 -450" stroke="#1E1A16" stroke-width="6" fill="none" stroke-linecap="round"/>
+                    </g>
+                    <path d="M-46 -480 Q-30 -488 -14 -480 M14 -480 Q30 -488 46 -480" stroke="#1E1A16" stroke-width="6" fill="none" stroke-linecap="round"/>
+                    <path id="s1-marcus-mouth-rest" d="M-14 -398 Q0 -394 14 -398" stroke="#1E1A16" stroke-width="5" fill="none" stroke-linecap="round"/>
+                    <path id="s1-marcus-mouth-smile" opacity="0" d="M-20 -402 Q0 -386 20 -402" stroke="#1E1A16" stroke-width="5" fill="none" stroke-linecap="round"/>
+                    <!-- laurel -->
+                    <g fill="#7A8450" stroke="#1E1A16" stroke-width="3">
+                      <ellipse cx="-70" cy="-492" rx="16" ry="8" transform="rotate(-50 -70 -492)"/>
+                      <ellipse cx="-50" cy="-512" rx="16" ry="8" transform="rotate(-30 -50 -512)"/>
+                      <ellipse cx="-24" cy="-524" rx="16" ry="8" transform="rotate(-12 -24 -524)"/>
+                      <ellipse cx="70" cy="-492" rx="16" ry="8" transform="rotate(50 70 -492)"/>
+                      <ellipse cx="50" cy="-512" rx="16" ry="8" transform="rotate(30 50 -512)"/>
+                      <ellipse cx="24" cy="-524" rx="16" ry="8" transform="rotate(12 24 -524)"/>
+                    </g>
+                  </g>
+                  <!-- arms: screen-left holds the journal / goblet, screen-right writes -->
+                  <g id="s1-marcus-arm-l">
+                    <path d="M-84 -318 Q-118 -260 -70 -232" stroke="#1E1A16" stroke-width="40" fill="none" stroke-linecap="round"/>
+                    <path d="M-84 -318 Q-118 -260 -70 -232" stroke="#FBF5E6" stroke-width="27" fill="none" stroke-linecap="round"/>
+                    <circle cx="-62" cy="-230" r="17" fill="#E9B98C" stroke="#1E1A16" stroke-width="5"/>
+                  </g>
+                  <g id="s1-marcus-arm-r">
+                    <path d="M84 -318 Q118 -260 60 -238" stroke="#1E1A16" stroke-width="40" fill="none" stroke-linecap="round"/>
+                    <path d="M84 -318 Q118 -260 60 -238" stroke="#FBF5E6" stroke-width="27" fill="none" stroke-linecap="round"/>
+                    <circle cx="54" cy="-236" r="17" fill="#E9B98C" stroke="#1E1A16" stroke-width="5"/>
+                    <!-- quill -->
+                    <path d="M56 -238 L92 -318 Q104 -300 70 -246 Z" fill="#F7EFDC" stroke="#1E1A16" stroke-width="4" stroke-linejoin="round"/>
+                  </g>
+                </g>
+              </g>
+            </g>
+            <!-- /CHAR:marcus -->
+          </g>
+
+          <!-- ---------- CHAR: rooster on the armrest ("every morning") ---------- -->
+          <g id="s1-rooster-pop" opacity="0">
+            <g id="s1-rooster" class="ink" filter="url(#s1-ink)">
+              <path d="M300 768 Q296 712 330 700 Q350 668 372 690 Q392 720 380 758 Q350 780 300 768 Z" fill="#F7EFDC" stroke="#1E1A16" stroke-width="6" stroke-linejoin="round"/>
+              <path d="M300 740 Q268 700 282 676 Q300 700 306 726 Z" fill="#C65A3A" stroke="#1E1A16" stroke-width="5"/>
+              <path d="M290 738 Q262 728 266 706 Q288 716 300 730 Z" fill="#7A8450" stroke="#1E1A16" stroke-width="5"/>
+              <path d="M352 672 q4 -16 12 -6 q6 -14 12 0 q8 -8 6 10 Z" fill="#C65A3A" stroke="#1E1A16" stroke-width="4"/>
+              <circle cx="366" cy="690" r="4" fill="#1E1A16"/>
+              <g id="s1-rooster-beak">
+                <path d="M378 688 L402 682 L380 698 Z" fill="#E0A84A" stroke="#1E1A16" stroke-width="4" stroke-linejoin="round"/>
+              </g>
+              <path d="M374 704 q4 12 -4 14" fill="#C65A3A" stroke="#1E1A16" stroke-width="3"/>
+              <path d="M330 770 v18 M346 770 v18" stroke="#E0A84A" stroke-width="6" stroke-linecap="round"/>
+              <g id="s1-crow" opacity="0" stroke="#1E1A16" stroke-width="5" stroke-linecap="round" fill="none">
+                <path d="M412 670 l26 -18 M418 688 h32 M412 706 l26 16"/>
+              </g>
+            </g>
+          </g>
+
+          <!-- ---------- LAYER 5: the table + props ---------- -->
+          <g id="s1-table" class="ink" filter="url(#s1-ink)">
+            <path d="M232 1040 Q226 1100 250 1104 M848 1040 Q854 1100 830 1104" stroke="#1E1A16" stroke-width="7" fill="none"/>
+            <path d="M246 868 H834 V1042 H246 Z" fill="#C65A3A" stroke="#1E1A16" stroke-width="8" stroke-linejoin="round"/>
+            <path d="M262 900 H818 M262 1010 H818" stroke="#E0A84A" stroke-width="8"/>
+            <path d="M290 930 h30 v30 h30 v-30 h30 v30 h30 v-30 h30 v30 h30 v-30 h30 v30 h30 v-30 h30 v30 h30 v-30 h30 v30 h30 v-30 h30 v30 h30 v-30 h30 v30" stroke="#E0A84A" stroke-width="6" fill="none" stroke-linejoin="round"/>
+            <path d="M222 836 Q222 826 232 826 H848 Q858 826 858 836 V868 H222 Z" fill="#F7EFDC" stroke="#1E1A16" stroke-width="8" stroke-linejoin="round"/>
+            <!-- lion feet -->
+            <path d="M226 1042 Q216 1096 250 1100 Q286 1100 276 1042 Z M804 1042 Q794 1100 830 1100 Q864 1096 854 1042 Z" fill="#E0A84A" stroke="#1E1A16" stroke-width="7"/>
+          </g>
+          <!-- candle -->
+          <g id="s1-candle" class="ink" filter="url(#s1-ink)">
+            <circle cx="268" cy="752" r="58" fill="#F6D27A" opacity="0.35"/>
+            <path d="M240 828 Q268 812 296 828 Z" fill="#E0A84A" stroke="#1E1A16" stroke-width="6"/>
+            <rect x="254" y="760" width="28" height="62" rx="4" fill="#F7EFDC" stroke="#1E1A16" stroke-width="6"/>
+            <g id="s1-flame">
+              <path d="M268 712 Q286 736 278 752 Q268 762 258 752 Q250 736 268 712 Z" fill="#F0B866" stroke="#1E1A16" stroke-width="5" stroke-linejoin="round"/>
+            </g>
+          </g>
+          <!-- journal (open book) -->
+          <g id="s1-journal" class="ink" filter="url(#s1-ink)">
+            <path d="M436 826 L452 800 Q500 792 540 806 Q580 792 628 800 L644 826 Q590 814 540 830 Q490 814 436 826 Z" fill="#F7EFDC" stroke="#1E1A16" stroke-width="6" stroke-linejoin="round"/>
+            <path d="M540 806 V830" stroke="#1E1A16" stroke-width="4"/>
+            <g id="s1-scribble" stroke="#1E1A16" stroke-width="3" fill="none" stroke-linecap="round">
+              <path id="s1-scrib-1" d="M466 806 q8 -4 16 0 t16 0 t16 0 t16 0" stroke-dasharray="80" stroke-dashoffset="80"/>
+              <path id="s1-scrib-2" d="M560 806 q8 -4 16 0 t16 0 t16 0 t16 0" stroke-dasharray="80" stroke-dashoffset="80"/>
+              <path id="s1-scrib-3" d="M562 816 q8 -4 16 0 t16 0 t16 0" stroke-dasharray="60" stroke-dashoffset="60"/>
+            </g>
+          </g>
+          <!-- goblet (wrapper is the mover) -->
+          <g id="s1-goblet">
+            <g class="ink" filter="url(#s1-ink)">
+              <path d="M326 828 Q346 818 366 828 Z M342 822 V796 h8 v26 Z" fill="#E0A84A" stroke="#1E1A16" stroke-width="5" stroke-linejoin="round"/>
+              <path d="M318 758 H374 Q372 798 346 800 Q320 798 318 758 Z" fill="#E0A84A" stroke="#1E1A16" stroke-width="6" stroke-linejoin="round"/>
+              <path d="M324 768 H368" stroke="#6B2D5C" stroke-width="6"/>
+            </g>
+          </g>
+          <!-- platter of food (selfish grabs it) -->
+          <g id="s1-platter">
+            <g class="ink" filter="url(#s1-ink)">
+              <ellipse cx="760" cy="822" rx="78" ry="16" fill="#E0A84A" stroke="#1E1A16" stroke-width="6"/>
+              <g fill="#6B2D5C" stroke="#1E1A16" stroke-width="4">
+                <circle cx="724" cy="806" r="13"/><circle cx="748" cy="806" r="13"/><circle cx="736" cy="786" r="13"/><circle cx="760" cy="788" r="13"/><circle cx="748" cy="768" r="13"/>
+              </g>
+              <circle cx="796" cy="800" r="20" fill="#C65A3A" stroke="#1E1A16" stroke-width="5"/>
+              <path d="M796 780 q4 -10 10 -12" stroke="#7A8450" stroke-width="5" fill="none" stroke-linecap="round"/>
+            </g>
+          </g>
+
+          <!-- ---------- CHAR: rude senator (screen-left) ---------- -->
+          <g id="s1-rude-pop">
+            <!-- CHAR:rude -->
+            <g id="s1-rude" transform="translate(185 1100) scale(1.0)">
+              <g class="char extra">
+                <g class="body ink" filter="url(#s1-ink)">
+                  <path d="M-80 -330 C-100 -240 -100 -90 -88 0 L88 0 C100 -90 100 -240 80 -330 Q0 -350 -80 -330 Z" fill="#FBF5E6" stroke="#1E1A16" stroke-width="7"/>
+                  <path d="M20 -338 L44 -336 L60 0 L34 0 Z" fill="#C65A3A" stroke="#1E1A16" stroke-width="4"/>
+                  <rect x="-18" y="-370" width="36" height="40" fill="#EFC79C" stroke="#1E1A16" stroke-width="6"/>
+                  <g id="s1-rude-head" class="head">
+                    <path d="M-66 -430 Q-70 -530 0 -532 Q72 -530 70 -430 Q66 -352 0 -350 Q-62 -352 -66 -430 Z" fill="#EFC79C" stroke="#1E1A16" stroke-width="7"/>
+                    <path d="M-62 -470 Q-80 -500 -50 -496 M60 -470 Q80 -500 52 -496" stroke="#9A9A9A" stroke-width="10" fill="none" stroke-linecap="round"/>
+                    <path d="M-50 -514 Q0 -540 50 -514" stroke="#9A9A9A" stroke-width="6" fill="none" stroke-linecap="round"/>
+                    <circle cx="-26" cy="-452" r="11" fill="#fff" stroke="#1E1A16" stroke-width="4"/>
+                    <circle cx="26" cy="-452" r="11" fill="#fff" stroke="#1E1A16" stroke-width="4"/>
+                    <circle cx="-22" cy="-452" r="5.5" fill="#1E1A16"/><circle cx="30" cy="-452" r="5.5" fill="#1E1A16"/>
+                    <path d="M-46 -476 L-10 -466 M46 -476 L10 -466" stroke="#1E1A16" stroke-width="7" stroke-linecap="round"/>
+                    <path d="M4 -446 Q40 -420 10 -410" fill="#E9A884" stroke="#1E1A16" stroke-width="5"/>
+                    <ellipse cx="6" cy="-386" rx="20" ry="12" fill="#5A2318" stroke="#1E1A16" stroke-width="4"/>
+                    <g id="s1-rude-tongue">
+                      <path d="M-4 -384 Q6 -350 20 -384 Z" fill="#E07A7A" stroke="#1E1A16" stroke-width="4"/>
+                    </g>
+                    <g id="s1-rude-spit" opacity="0" stroke="#8DB1C4" stroke-width="5" stroke-linecap="round">
+                      <path d="M40 -396 l22 -8 M44 -378 l24 4 M38 -362 l18 12"/>
+                    </g>
+                  </g>
+                  <!-- pointing arm (toward Marcus, screen-right) -->
+                  <g id="s1-rude-arm">
+                    <path d="M62 -316 Q120 -300 150 -330" stroke="#1E1A16" stroke-width="38" fill="none" stroke-linecap="round"/>
+                    <path d="M62 -316 Q120 -300 150 -330" stroke="#FBF5E6" stroke-width="25" fill="none" stroke-linecap="round"/>
+                    <circle cx="158" cy="-334" r="15" fill="#EFC79C" stroke="#1E1A16" stroke-width="5"/>
+                    <path d="M168 -340 l26 -10" stroke="#1E1A16" stroke-width="15" stroke-linecap="round"/>
+                    <path d="M168 -340 l26 -10" stroke="#EFC79C" stroke-width="7" stroke-linecap="round"/>
+                  </g>
+                </g>
+              </g>
+            </g>
+            <!-- /CHAR:rude -->
+          </g>
+
+          <!-- ---------- CHAR: ungrateful servant (screen-right) ---------- -->
+          <g id="s1-ungrateful-pop">
+            <!-- CHAR:ungrateful -->
+            <g id="s1-ungrateful" transform="translate(900 1100) scale(0.95)">
+              <g class="char extra">
+                <g class="body ink" filter="url(#s1-ink)">
+                  <path d="M-30 -150 V-6 M30 -150 V-6" stroke="#1E1A16" stroke-width="30" stroke-linecap="round"/>
+                  <path d="M-30 -150 V-6 M30 -150 V-6" stroke="#D9A57A" stroke-width="18" stroke-linecap="round"/>
+                  <path d="M-84 -330 Q-100 -230 -90 -140 L90 -140 Q100 -230 84 -330 Q0 -350 -84 -330 Z" fill="#7A8450" stroke="#1E1A16" stroke-width="7"/>
+                  <path d="M-90 -170 H90" stroke="#E0A84A" stroke-width="10"/>
+                  <rect x="-18" y="-370" width="36" height="40" fill="#D9A57A" stroke="#1E1A16" stroke-width="6"/>
+                  <g id="s1-ungrateful-head" class="head">
+                    <ellipse cx="0" cy="-440" rx="72" ry="78" fill="#D9A57A" stroke="#1E1A16" stroke-width="7"/>
+                    <path d="M-74 -452 Q-86 -520 -40 -516 Q-10 -546 24 -522 Q70 -530 74 -452 Q60 -482 0 -488 Q-60 -482 -74 -452 Z" fill="#2E2218" stroke="#1E1A16" stroke-width="5"/>
+                    <path d="M-44 -452 Q-30 -462 -16 -452 M16 -452 Q30 -462 44 -452" stroke="#1E1A16" stroke-width="6" fill="none" stroke-linecap="round"/>
+                    <path d="M-48 -478 L-14 -486 M14 -486 L48 -478" stroke="#1E1A16" stroke-width="6" stroke-linecap="round"/>
+                    <path d="M-2 -446 Q-16 -424 0 -420" stroke="#1E1A16" stroke-width="4" fill="none" stroke-linecap="round"/>
+                    <path d="M-18 -392 Q0 -402 18 -392" stroke="#1E1A16" stroke-width="5" fill="none" stroke-linecap="round"/>
+                  </g>
+                  <!-- arms holding the gift box -->
+                  <g id="s1-ungrateful-arms">
+                    <path d="M-70 -320 Q-100 -250 -40 -250 M70 -320 Q100 -250 40 -250" stroke="#1E1A16" stroke-width="36" fill="none" stroke-linecap="round"/>
+                    <path d="M-70 -320 Q-100 -250 -40 -250 M70 -320 Q100 -250 40 -250" stroke="#D9A57A" stroke-width="23" fill="none" stroke-linecap="round"/>
+                  </g>
+                </g>
+              </g>
+            </g>
+            <!-- /CHAR:ungrateful -->
+          </g>
+          <!-- the gift the servant tosses -->
+          <g id="s1-gift">
+            <g class="ink" filter="url(#s1-ink)">
+              <rect x="852" y="808" width="96" height="76" rx="6" fill="#6B2D5C" stroke="#1E1A16" stroke-width="6"/>
+              <path d="M900 808 V884 M852 846 H948" stroke="#E0A84A" stroke-width="10"/>
+              <path d="M900 808 q-30 -30 -34 -4 q4 10 34 4 q30 -30 34 -4 q-4 10 -34 4" fill="#E0A84A" stroke="#1E1A16" stroke-width="4"/>
+            </g>
+          </g>
+
+          <!-- reaction doodles -->
+          <g id="s1-grawlix" opacity="0" class="ink" filter="url(#s1-ink)">
+            <path d="M120 470 q20 -40 50 -10 q30 -36 56 4 q34 -6 28 30 q24 30 -14 40 q-10 34 -46 14 q-30 24 -50 -8 q-40 4 -30 -32 q-26 -22 6 -38 Z" fill="#F7EFDC" stroke="#1E1A16" stroke-width="6"/>
+            <path d="M150 500 l24 24 M174 500 l-24 24 M196 492 q16 -6 18 10 q2 16 -16 16 M232 494 l-8 34 M244 494 l-8 34 M218 506 h34 M216 518 h34" stroke="#C65A3A" stroke-width="6" stroke-linecap="round" fill="none"/>
+          </g>
+          <g id="s1-sparkle" opacity="0" stroke="#E0A84A" stroke-width="7" stroke-linecap="round" fill="none">
+            <path d="M640 470 v-34 M623 453 h34 M690 540 v-22 M679 529 h22 M408 486 v-24 M396 474 h24"/>
+          </g>
+        </g>
+      </svg>
+    </div>
+
+    <!-- ================= TITLE: hand-lettered banner (on screen at t=0) ================= -->
+    <div id="s1-title" class="clip" data-start="0" data-duration="2.4">
+      <svg viewBox="0 0 1080 1920" width="1080" height="1920">
+        <g id="s1-title-move">
+          <g class="ink" filter="url(#s1-ink)">
+            <!-- ribbon banner -->
+            <path d="M70 250 L120 232 Q540 200 960 232 L1010 250 L980 318 L1010 388 L960 398 Q540 372 120 398 L70 388 L100 318 Z" fill="#E0A84A" stroke="#1E1A16" stroke-width="8" stroke-linejoin="round"/>
+            <path d="M116 226 Q540 196 964 226 L964 404 Q540 376 116 404 Z" fill="#F7EFDC" stroke="#1E1A16" stroke-width="8" stroke-linejoin="round"/>
+            <text class="s1-letter" x="540" y="286" text-anchor="middle" font-size="52" fill="#1E1A16" letter-spacing="6" transform="rotate(-2 540 286)">THE MOST</text>
+            <text class="s1-letter" x="540" y="370" text-anchor="middle" font-size="86" fill="#C65A3A" stroke="#1E1A16" stroke-width="3" paint-order="stroke" transform="rotate(-2 540 370)">POWERFUL MAN</text>
+            <text class="s1-letter" x="540" y="452" text-anchor="middle" font-size="52" fill="#1E1A16" letter-spacing="6" transform="rotate(-1 540 452)">ON EARTH</text>
+            <!-- "this guy" arrow -->
+            <path d="M808 438 Q790 480 712 500" stroke="#1E1A16" stroke-width="7" fill="none" stroke-linecap="round"/>
+            <path d="M734 478 L708 501 L740 512" stroke="#1E1A16" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+        </g>
+      </svg>
+    </div>
+
+    <!-- ================= TRANSITION OUT: ink wipe (last 0.3 s) ================= -->
+    <div id="s1-wipe" class="clip" data-start="10.84" data-duration="0.3">
+      <svg viewBox="0 0 1080 1920" width="1080" height="1920">
+        <g id="s1-wipe-move">
+          <path d="M-1500 -60 H0 Q60 120 10 300 Q80 480 20 640 Q90 820 30 980 Q100 1160 20 1340 Q80 1520 10 1700 Q60 1860 0 1990 H-1500 Z" fill="#1E1A16"/>
+          <circle cx="70" cy="420" r="22" fill="#1E1A16"/><circle cx="110" cy="1100" r="16" fill="#1E1A16"/><circle cx="60" cy="1560" r="26" fill="#1E1A16"/>
+        </g>
+      </svg>
+    </div>
   </div>
+
   <script>
+    const D = 11.14;
     const tl = gsap.timeline({ paused: true });
+    const stage = document.querySelector("#s1-svg");
+
+    // --- boil (Rig.boil is the official one; no-op until the real rig lands)
+    Rig.boil(tl, stage, 0, D);
+
+    // --- ambient: halo rays turn, candle flickers
+    tl.fromTo("#s1-rays-spin", { rotation: 0, svgOrigin: "540 600" }, { rotation: 14, duration: D, ease: "none" }, 0);
+    tl.fromTo("#s1-flame", { scaleY: 1, svgOrigin: "268 760" }, { scaleY: 1.18, duration: 0.17, ease: "sine.inOut", yoyo: true, repeat: 63 }, 0);
+
+    // --- CAMERA
+    tl.fromTo("#s1-cam", { scale: 1.0, x: 0, y: 0, svgOrigin: "540 700" }, { scale: 1.03, duration: 1.95, ease: "sine.inOut" }, 0);
+    // "wrote himself a warning": push in on the journal
+    tl.fromTo("#s1-cam", { scale: 1.03, svgOrigin: "540 700" }, { scale: 1.32, svgOrigin: "540 700", duration: 0.6, ease: "power2.inOut", immediateRender: false }, 1.95);
+    // "every morning": pull back for the sunrise
+    tl.fromTo("#s1-cam", { scale: 1.32, svgOrigin: "540 700" }, { scale: 1.0, svgOrigin: "540 700", duration: 0.7, ease: "power2.inOut", immediateRender: false }, 3.15);
+    // "Today, I will meet": lean in
+    tl.fromTo("#s1-cam", { scale: 1.0, svgOrigin: "540 700" }, { scale: 1.06, svgOrigin: "540 700", duration: 1.0, ease: "power2.out", immediateRender: false }, 4.5);
+    // pop-ins: snap back wide on "rude"
+    tl.fromTo("#s1-cam", { scale: 1.06, svgOrigin: "540 700" }, { scale: 0.98, svgOrigin: "540 700", duration: 0.25, ease: "power3.out", immediateRender: false }, 5.62);
+    // "people": shake
+    tl.fromTo("#s1-cam", { x: 0 }, { x: 10, duration: 0.05, ease: "none", yoyo: true, repeat: 5, immediateRender: false }, 7.99);
+    // "totally fine with it": slow push on Marcus
+    tl.fromTo("#s1-cam", { scale: 0.98, svgOrigin: "540 600" }, { scale: 1.2, svgOrigin: "540 600", duration: 1.4, ease: "power2.inOut", immediateRender: false }, 9.42);
+
+    // --- TITLE banner: on screen at frame 0, small wobble, flies out on "wrote"
+    tl.fromTo("#s1-title-move", { rotation: -1.5, svgOrigin: "540 320" }, { rotation: 1, duration: 1.9, ease: "sine.inOut" }, 0);
+    tl.fromTo("#s1-title-move", { y: 0, rotation: 1, svgOrigin: "540 320" }, { y: -520, rotation: -8, duration: 0.42, ease: "power3.in", immediateRender: false }, 1.92);
+
+    // --- MARCUS (placeholder acting; Step B = Rig.emote/talk/gesture)
+    // writes: the quill hand scribbles, lines appear on the page
+    tl.fromTo("#s1-marcus-arm-r", { rotation: 0, svgOrigin: "84 -318" }, { rotation: -4, duration: 0.12, ease: "sine.inOut", yoyo: true, repeat: 15 }, 2.0);
+    tl.fromTo("#s1-scrib-1", { strokeDashoffset: 80 }, { strokeDashoffset: 0, duration: 0.7, ease: "none" }, 2.05);
+    tl.fromTo("#s1-scrib-2", { strokeDashoffset: 80 }, { strokeDashoffset: 0, duration: 0.6, ease: "none" }, 2.8);
+    tl.fromTo("#s1-scrib-3", { strokeDashoffset: 60 }, { strokeDashoffset: 0, duration: 0.5, ease: "none" }, 3.45);
+    // glances at each pest, then deadpan to camera
+    tl.fromTo("#s1-marcus-pupils", { x: 0, y: 0 }, { x: 0, y: 6, duration: 0.15, ease: "power2.out" }, 2.0);
+    tl.fromTo("#s1-marcus-pupils", { x: 0, y: 6 }, { x: 0, y: 0, duration: 0.15, ease: "power2.out", immediateRender: false }, 4.5);
+    tl.fromTo("#s1-marcus-pupils", { x: 0 }, { x: -7, duration: 0.12, ease: "power2.out", immediateRender: false }, 5.75);
+    tl.fromTo("#s1-marcus-pupils", { x: -7 }, { x: 7, duration: 0.12, ease: "power2.out", immediateRender: false }, 6.3);
+    tl.fromTo("#s1-marcus-pupils", { x: 7, y: 0 }, { x: 6, y: -6, duration: 0.12, ease: "power2.out", immediateRender: false }, 7.42);
+    tl.fromTo("#s1-marcus-pupils", { x: 6, y: -6 }, { x: 0, y: 0, duration: 0.15, ease: "power2.out", immediateRender: false }, 8.1);
+    // takes the goblet: left arm reaches, goblet rises to the mouth, sip
+    tl.fromTo("#s1-marcus-arm-l", { rotation: 0, svgOrigin: "-84 -318" }, { rotation: 18, duration: 0.3, ease: "power2.out" }, 8.8);
+    tl.fromTo("#s1-goblet", { x: 0, y: 0, rotation: 0, svgOrigin: "346 800" }, { x: 140, y: -150, rotation: -25, duration: 0.45, ease: "power3.inOut" }, 9.0);
+    tl.fromTo("#s1-marcus-arm-l", { rotation: 18, svgOrigin: "-84 -318" }, { rotation: -10, duration: 0.45, ease: "power3.inOut", immediateRender: false }, 9.0);
+    tl.fromTo("#s1-marcus-eyes-open", { opacity: 1 }, { opacity: 0, duration: 0.06 }, 9.62);
+    tl.fromTo("#s1-marcus-eyes-smug", { opacity: 0 }, { opacity: 1, duration: 0.06 }, 9.62);
+    tl.fromTo("#s1-marcus-mouth-rest", { opacity: 1 }, { opacity: 0, duration: 0.06 }, 10.0);
+    tl.fromTo("#s1-marcus-mouth-smile", { opacity: 0 }, { opacity: 1, duration: 0.06 }, 10.0);
+    tl.fromTo("#s1-goblet", { x: 140, y: -150, rotation: -25 }, { x: 60, y: -60, rotation: 0, duration: 0.4, ease: "power2.inOut", immediateRender: false }, 9.95);
+    tl.fromTo("#s1-sparkle", { opacity: 0, scale: 0.6, svgOrigin: "540 500" }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(3)" }, 10.05);
+    tl.fromTo("#s1-marcus-head", { rotation: 0, svgOrigin: "0 -350" }, { rotation: -5, duration: 0.4, ease: "power2.out" }, 10.0);
+
+    // --- SUNRISE + ROOSTER ("every morning")
+    tl.fromTo("#s1-sun-move", { y: 0 }, { y: -450, duration: 1.1, ease: "power2.out" }, 3.2);
+    tl.fromTo("#s1-night", { opacity: 0.55 }, { opacity: 0, duration: 0.9, ease: "power1.out" }, 3.25);
+    tl.fromTo("#s1-rooster-pop", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.25, ease: "back.out(2.5)" }, 3.3);
+    tl.fromTo("#s1-rooster-beak", { rotation: 0, svgOrigin: "380 690" }, { rotation: -22, duration: 0.12, ease: "power2.out", yoyo: true, repeat: 3 }, 3.46);
+    tl.fromTo("#s1-crow", { opacity: 0 }, { opacity: 1, duration: 0.06 }, 3.46);
+    tl.fromTo("#s1-crow", { opacity: 1 }, { opacity: 0, duration: 0.1, immediateRender: false }, 4.1);
+    // rooster flees when the senator barges in
+    tl.fromTo("#s1-rooster-pop", { x: 0, y: 0, rotation: 0, svgOrigin: "340 760" }, { x: 260, y: -560, rotation: 40, duration: 0.45, ease: "power2.in", immediateRender: false }, 5.6);
+
+    // --- RUDE senator on "rude" (5.68): slides in from behind the column, points, raspberry
+    tl.fromTo("#s1-rude-pop", { x: -320, rotation: -10, svgOrigin: "185 1100" }, { x: 0, rotation: 0, duration: 0.28, ease: "back.out(2)" }, 5.62);
+    tl.fromTo("#s1-rude-spit", { opacity: 0 }, { opacity: 1, duration: 0.05 }, 5.95);
+    tl.fromTo("#s1-rude-tongue", { scaleY: 0.4, svgOrigin: "6 -384" }, { scaleY: 1.2, duration: 0.09, ease: "sine.inOut", yoyo: true, repeat: 25 }, 5.9);
+    tl.fromTo("#s1-rude-arm", { rotation: 0, svgOrigin: "62 -316" }, { rotation: -8, duration: 0.14, ease: "sine.inOut", yoyo: true, repeat: 31 }, 5.95);
+
+    // --- UNGRATEFUL servant on "ungrateful" (6.23): pops in with the gift, nose up, tosses it
+    tl.fromTo("#s1-ungrateful-pop", { x: 320, rotation: 10, svgOrigin: "900 1100" }, { x: 0, rotation: 0, duration: 0.28, ease: "back.out(2)" }, 6.17);
+    tl.fromTo("#s1-gift", { x: 320, y: 0, rotation: 0, svgOrigin: "900 846" }, { x: 0, y: 0, rotation: 0, duration: 0.28, ease: "back.out(2)" }, 6.17);
+    tl.fromTo("#s1-ungrateful-head", { rotation: 0, svgOrigin: "0 -350" }, { rotation: -14, duration: 0.2, ease: "back.out(2)" }, 6.75);
+    tl.fromTo("#s1-gift", { x: 0, y: 0, rotation: 0 }, { x: 260, y: -620, rotation: 200, duration: 0.6, ease: "power1.out", immediateRender: false }, 6.85);
+
+    // --- SELFISH courtier on "selfish" (7.35): pops up behind the throne, grabs the platter, cheeks stuffed
+    tl.fromTo("#s1-selfish-pop", { y: 420 }, { y: 0, duration: 0.3, ease: "back.out(1.8)" }, 7.3);
+    tl.fromTo("#s1-platter", { x: 0, y: 0, rotation: 0, svgOrigin: "760 822" }, { x: -10, y: -90, rotation: -8, duration: 0.3, ease: "power3.out" }, 7.55);
+    tl.fromTo("#s1-selfish-cheeks", { scale: 1, svgOrigin: "0 -408" }, { scale: 1.25, duration: 0.12, ease: "sine.inOut", yoyo: true, repeat: 23 }, 7.9);
+
+    // --- "people" (7.99): the pack jostles (offset, not in unison)
+    tl.fromTo("#s1-rude-pop", { y: 0 }, { y: -26, duration: 0.14, ease: "power2.out", yoyo: true, repeat: 1, immediateRender: false }, 7.99);
+    tl.fromTo("#s1-ungrateful-pop", { y: 0 }, { y: -20, duration: 0.14, ease: "power2.out", yoyo: true, repeat: 1, immediateRender: false }, 8.07);
+    tl.fromTo("#s1-grawlix", { opacity: 0, scale: 0.5, svgOrigin: "190 500" }, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(3)" }, 8.0);
+
+    // --- INK WIPE OUT (10.84 → 11.14)
+    tl.fromTo("#s1-wipe-move", { x: 0 }, { x: 1180, duration: 0.3, ease: "power2.in" }, 10.84);
+
     window.__timelines["s1_hook"] = tl;
   </script>
 </template>

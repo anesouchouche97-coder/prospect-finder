@@ -25,3 +25,6 @@
 - Captions v1 (CEO): good look on parchment; 2 timing fixes sent.
 - Captions v2 (CEO): gaps bridged, one gold word always; accepted.
 - Sound: accepted; 28 cues in index.html (track 31–58). Delivery: loudnorm pass required.
+
+## Budget directive (user)
+Major issues only (blank/broken scenes, missing/misplaced characters, clipped text, render failures). One review pass per worker, no polish loops. Render once check has 0 errors.
