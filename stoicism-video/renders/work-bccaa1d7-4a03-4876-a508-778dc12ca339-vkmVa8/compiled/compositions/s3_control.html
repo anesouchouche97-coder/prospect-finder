@@ -1,0 +1,373 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #s3-scene { position: absolute; inset: 0; }
+    #s3-whip { position: absolute; inset: 0; }
+    #s3-stage { position: absolute; inset: 0; overflow: visible; }
+    .s3-letter { font-family: "Playfair Display", serif; font-weight: 900; }
+  </style>
+  <div id="root" data-composition-id="s3_control" data-width="1080" data-height="1920">
+    <div id="s3-scene" class="clip" data-start="0" data-duration="12.77" data-layout-allow-overflow>
+      <div id="s3-whip">
+        <svg id="s3-stage" viewBox="0 0 1080 1920" width="1080" height="1920">
+          <defs>
+            <filter id="s3-ink" class="ink-boil" x="-15%" y="-15%" width="130%" height="130%" color-interpolation-filters="sRGB">
+              <feTurbulence class="ink-turb" id="s3-turb" type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="1" result="n"/>
+              <feDisplacementMap in="SourceGraphic" in2="n" scale="5" xChannelSelector="R" yChannelSelector="G"/>
+            </filter>
+          </defs>
+
+          <g id="s3-shake">
+          <g id="s3-cam" class="cam">
+            <g class="ink" filter="url(#s3-ink)">
+
+              <!-- ===== FAR LAYER: hills + sun (parallax, moves least) ===== -->
+              <g id="s3-far">
+                <circle cx="860" cy="610" r="120" fill="#E0A84A" opacity="0.28"/>
+                <path d="M-40 900 Q 160 780 330 850 Q 520 760 700 840 Q 880 770 1120 860 L1120 1080 L-40 1080 Z" fill="#7A8450" opacity="0.22" stroke="#1E1A16" stroke-width="4" stroke-opacity="0.35"/>
+              </g>
+
+              <!-- ===== MID LAYER: the Stoa (painted porch) ===== -->
+              <g id="s3-stoa" stroke="#1E1A16" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M30 430 L1050 430 L1050 478 L30 478 Z" fill="#E8D9B5" stroke-width="6" stroke-opacity="0.55"/>
+                <path d="M30 448 L1050 448" stroke-width="3" stroke-opacity="0.35"/>
+                <path d="M60 462 L120 462 M200 462 L260 462 M820 462 L880 462 M960 462 L1020 462" stroke-width="3" stroke-opacity="0.3"/>
+                <g fill="#EDE0C0" stroke-width="6" stroke-opacity="0.5">
+                  <path d="M70 478 L150 478 L144 500 L76 500 Z"/><path d="M82 500 L138 500 L136 1040 L84 1040 Z"/>
+                  <path d="M390 478 L470 478 L464 500 L396 500 Z"/><path d="M402 500 L458 500 L456 1040 L404 1040 Z"/>
+                  <path d="M610 478 L690 478 L684 500 L616 500 Z"/><path d="M622 500 L678 500 L676 1040 L624 1040 Z"/>
+                  <path d="M930 478 L1010 478 L1004 500 L936 500 Z"/><path d="M942 500 L998 500 L996 1040 L944 1040 Z"/>
+                </g>
+                <g stroke-width="3" stroke-opacity="0.28" fill="none">
+                  <path d="M100 510 L100 1030 M120 510 L120 1030"/>
+                  <path d="M420 510 L420 1030 M440 510 L440 1030"/>
+                  <path d="M640 510 L640 1030 M660 510 L660 1030"/>
+                  <path d="M960 510 L960 1030 M980 510 L980 1030"/>
+                </g>
+                <path d="M20 1040 L1060 1040 L1060 1058 L20 1058 Z" fill="#E6D5AE" stroke-width="5" stroke-opacity="0.5"/>
+              </g>
+
+              <!-- ===== GROUND ===== -->
+              <g id="s3-ground" stroke="#1E1A16" stroke-linecap="round" fill="none">
+                <path d="M-20 1080 Q 270 1074 540 1081 Q 810 1088 1100 1079" stroke-width="7"/>
+                <path d="M60 1110 L170 1112 M330 1118 L420 1116 M640 1112 L760 1115 M880 1120 L990 1117" stroke-width="3" stroke-opacity="0.3"/>
+                <path d="M120 1072 q8 -14 16 0 M860 1074 q8 -16 16 0 M470 1074 q6 -10 12 0" stroke-width="4" stroke-opacity="0.5"/>
+              </g>
+
+              <!-- ===== TITLE: RULE 1 (hand-lettered) ===== -->
+              <g transform="translate(540 330) rotate(-3)">
+                <g id="s3-title">
+                  <text x="0" y="40" text-anchor="middle" class="s3-letter" font-size="150" fill="#1E1A16" letter-spacing="4">RULE 1</text>
+                  <path id="s3-title-swash" d="M-220 72 Q -40 50 230 66" fill="none" stroke="#E0A84A" stroke-width="14" stroke-linecap="round"/>
+                </g>
+              </g>
+
+              <!-- ===== SPLIT LINE (drawn on "Split") ===== -->
+              <path id="s3-divider" d="M540 500 Q 547 640 538 790 Q 531 940 542 1076" fill="none" stroke="#1E1A16" stroke-width="8" stroke-linecap="round" stroke-dasharray="600 600" stroke-dashoffset="600"/>
+
+              <!-- ===== EPICTETUS (mover wraps the static RIG wrapper) ===== -->
+              <g id="s3-epi-mv">
+                <!-- CHAR:epictetus -->
+<g id="s3-epi" transform="translate(270 1080) scale(1)"></g>
+<!-- /CHAR:epictetus -->
+                <!-- shackles + ball-and-chain (scene prop, breaks on "slave") -->
+                <g transform="translate(270 1080)" stroke="#1E1A16" stroke-width="5" fill="none">
+                  <g id="s3-cuff-l"><ellipse cx="-28" cy="-32" rx="19" ry="10" fill="#4A433B"/></g>
+                  <g id="s3-cuff-r"><ellipse cx="34" cy="-32" rx="19" ry="10" fill="#4A433B"/></g>
+                  <g id="s3-link1"><ellipse cx="-6" cy="-20" rx="10" ry="6"/></g>
+                  <g id="s3-link2"><ellipse cx="12" cy="-20" rx="10" ry="6"/></g>
+                  <g id="s3-link3"><ellipse cx="-52" cy="-16" rx="10" ry="6"/></g>
+                  <g id="s3-link4"><ellipse cx="-74" cy="-12" rx="10" ry="6"/></g>
+                  <g id="s3-link5"><ellipse cx="-96" cy="-10" rx="10" ry="6"/></g>
+                  <g id="s3-ball"><circle cx="-130" cy="-26" r="26" fill="#3A332B"/><path d="M-140 -36 q6 -6 14 -4" stroke="#F3E9D2" stroke-width="4" stroke-opacity="0.6"/></g>
+                  <g id="s3-snap" opacity="0" stroke-width="6" stroke-linecap="round">
+                    <path d="M0 -60 L0 -82 M-30 -54 L-46 -70 M30 -54 L46 -70 M-44 -30 L-66 -30 M48 -30 L70 -30"/>
+                  </g>
+                </g>
+              </g>
+
+              <!-- name banner -->
+              <g transform="translate(270 505) rotate(-4)">
+                <g id="s3-epi-name" opacity="0">
+                  <path d="M-150 -26 L150 -26 L136 0 L150 26 L-150 26 L-136 0 Z" fill="#F3E9D2" stroke="#1E1A16" stroke-width="5" stroke-linejoin="round"/>
+                  <text x="0" y="14" text-anchor="middle" class="s3-letter" font-style="italic" font-size="40" fill="#1E1A16" letter-spacing="2">EPICTETUS</text>
+                </g>
+              </g>
+
+              <!-- ===== ALEX ===== -->
+              <g id="s3-alex-mv">
+                <!-- CHAR:alex -->
+<g id="s3-alex" transform="translate(770 1080) scale(1)"></g>
+<!-- /CHAR:alex -->
+              </g>
+
+              <!-- ===== BASKET BACKS ===== -->
+              <g transform="translate(300 900)"><g id="s3-gold-back">
+                <ellipse cx="0" cy="0" rx="152" ry="28" fill="#A8772E" stroke="#1E1A16" stroke-width="7"/>
+              </g></g>
+              <g transform="translate(790 900)"><g id="s3-terra-back">
+                <ellipse cx="0" cy="0" rx="152" ry="28" fill="#8E3F27" stroke="#1E1A16" stroke-width="7"/>
+              </g></g>
+
+              <!-- ===== ITEMS (each centered on its pop position) ===== -->
+              <!-- thoughts -->
+              <g transform="translate(690 450)"><g id="s3-it-thought" opacity="0">
+                <path d="M-62 12 C-86 10 -84 -32 -56 -32 C-56 -62 -14 -68 2 -46 C18 -72 64 -60 60 -30 C88 -28 84 14 60 14 C54 38 18 40 4 26 C-16 44 -56 38 -62 12 Z" fill="#FFFAEC" stroke="#1E1A16" stroke-width="6" stroke-linejoin="round"/>
+                <path d="M-20 -6 c0 -16 26 -16 26 0 c0 12 -18 12 -18 2 c0 -6 8 -8 10 -2" fill="none" stroke="#E0A84A" stroke-width="7" stroke-linecap="round"/>
+                <path d="M26 -14 l10 -10 M30 2 l14 0" stroke="#E0A84A" stroke-width="6" stroke-linecap="round"/>
+                <circle cx="48" cy="54" r="11" fill="#FFFAEC" stroke="#1E1A16" stroke-width="5"/>
+                <circle cx="66" cy="80" r="7" fill="#FFFAEC" stroke="#1E1A16" stroke-width="4"/>
+              </g></g>
+              <!-- effort: dumbbell + sweat -->
+              <g transform="translate(770 596)"><g id="s3-it-effort" opacity="0">
+                <rect x="-56" y="-7" width="112" height="14" rx="6" fill="#4A433B" stroke="#1E1A16" stroke-width="5"/>
+                <rect x="-76" y="-30" width="24" height="60" rx="7" fill="#3A332B" stroke="#1E1A16" stroke-width="5"/>
+                <rect x="52" y="-30" width="24" height="60" rx="7" fill="#3A332B" stroke="#1E1A16" stroke-width="5"/>
+                <path d="M-70 -20 l0 18 M58 -20 l0 18" stroke="#F3E9D2" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+              </g></g>
+              <g transform="translate(700 580)"><g id="s3-sweat1" opacity="0"><path d="M0 -22 C10 -6 14 4 0 12 C-14 4 -10 -6 0 -22 Z" fill="#8DB1C4" stroke="#1E1A16" stroke-width="4"/></g></g>
+              <g transform="translate(846 586)"><g id="s3-sweat2" opacity="0"><path d="M0 -22 C10 -6 14 4 0 12 C-14 4 -10 -6 0 -22 Z" fill="#8DB1C4" stroke="#1E1A16" stroke-width="4"/></g></g>
+              <!-- actions: open hand -->
+              <g transform="translate(680 490)"><g id="s3-it-hand" opacity="0">
+                <path d="M-38 -10 L-38 -62 Q-38 -74 -27 -74 Q-17 -74 -17 -62 L-17 -24 L-17 -78 Q-17 -90 -6 -90 Q5 -90 5 -78 L5 -24 L5 -74 Q5 -86 16 -86 Q27 -86 27 -74 L27 -20 L27 -58 Q27 -70 37 -70 Q47 -70 47 -58 L47 14 Q47 56 6 56 Q-28 56 -42 30 L-66 -6 Q-72 -18 -62 -24 Q-52 -30 -44 -18 Z" fill="#E9B98F" stroke="#1E1A16" stroke-width="6" stroke-linejoin="round"/>
+                <path d="M-80 -60 l-16 -10 M-86 -30 l-20 0 M70 -70 l14 -12" stroke="#E0A84A" stroke-width="6" stroke-linecap="round"/>
+              </g></g>
+              <!-- weather: storm cloud + rain -->
+              <g transform="translate(770 420)"><g id="s3-it-cloud" opacity="0">
+                <g id="s3-rain" stroke="#8DB1C4" stroke-width="6" stroke-linecap="round">
+                  <path d="M-60 40 l-6 26 M-28 50 l-6 26 M4 44 l-6 26 M36 52 l-6 26 M66 42 l-6 26"/>
+                  <path d="M-46 92 l-6 26 M-12 100 l-6 26 M22 96 l-6 26 M54 104 l-6 26"/>
+                </g>
+                <path d="M-90 20 C-122 18 -118 -38 -80 -40 C-80 -82 -22 -90 0 -60 C22 -96 90 -82 84 -40 C122 -36 118 22 84 22 C70 40 -70 40 -90 20 Z" fill="#7C7671" stroke="#1E1A16" stroke-width="7" stroke-linejoin="round"/>
+                <path d="M-8 6 L-26 40 L-6 36 L-18 70 L18 24 L-2 28 L10 6 Z" fill="#E0A84A" stroke="#1E1A16" stroke-width="4" stroke-linejoin="round"/>
+              </g></g>
+              <!-- other people: gossiping silhouettes -->
+              <g transform="translate(905 760)"><g id="s3-it-people" opacity="0">
+                <path d="M-80 60 Q-80 -6 -44 -10 Q-10 -6 -8 60 Z" fill="#3A332B" stroke="#1E1A16" stroke-width="5"/>
+                <circle cx="-44" cy="-40" r="30" fill="#3A332B" stroke="#1E1A16" stroke-width="5"/>
+                <path d="M8 60 Q8 -2 42 -6 Q76 -2 78 60 Z" fill="#4A433B" stroke="#1E1A16" stroke-width="5"/>
+                <circle cx="42" cy="-36" r="28" fill="#4A433B" stroke="#1E1A16" stroke-width="5"/>
+                <ellipse cx="-58" cy="-42" rx="7" ry="5" fill="#F3E9D2"/><ellipse cx="-38" cy="-42" rx="7" ry="5" fill="#F3E9D2"/>
+                <ellipse cx="30" cy="-38" rx="7" ry="5" fill="#F3E9D2"/><ellipse cx="50" cy="-38" rx="7" ry="5" fill="#F3E9D2"/>
+                <circle cx="-62" cy="-42" r="3" fill="#1E1A16"/><circle cx="-42" cy="-42" r="3" fill="#1E1A16"/>
+                <circle cx="26" cy="-38" r="3" fill="#1E1A16"/><circle cx="46" cy="-38" r="3" fill="#1E1A16"/>
+                <path d="M-14 -30 q14 -6 0 -14 M-4 -24 q20 -8 0 -22" fill="none" stroke="#C65A3A" stroke-width="4" stroke-linecap="round"/>
+              </g></g>
+              <!-- the past: clock running backwards -->
+              <g transform="translate(905 520)"><g id="s3-it-clock" opacity="0">
+                <path id="s3-clock-arrow" d="M-58 -36 A 68 68 0 1 1 -66 18" fill="none" stroke="#C65A3A" stroke-width="8" stroke-linecap="round"/>
+                <path d="M-80 4 L-66 26 L-52 6" fill="none" stroke="#C65A3A" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="0" cy="0" r="52" fill="#FFFAEC" stroke="#1E1A16" stroke-width="7"/>
+                <path d="M0 -44 l0 10 M44 0 l-10 0 M0 44 l0 -10 M-44 0 l10 0" stroke="#1E1A16" stroke-width="5" stroke-linecap="round"/>
+                <g id="s3-clock-min"><path d="M0 0 L0 -36" stroke="#1E1A16" stroke-width="6" stroke-linecap="round"/></g>
+                <g id="s3-clock-hr"><path d="M0 0 L22 10" stroke="#1E1A16" stroke-width="7" stroke-linecap="round"/></g>
+                <circle cx="0" cy="0" r="5" fill="#1E1A16"/>
+              </g></g>
+
+              <!-- ===== BASKET FRONTS (over the items) ===== -->
+              <g transform="translate(300 900)"><g id="s3-gold-front">
+                <path d="M-152 0 Q 0 44 152 0 L 118 182 Q 0 200 -118 182 Z" fill="#E0A84A" stroke="#1E1A16" stroke-width="7" stroke-linejoin="round"/>
+                <path d="M-142 52 Q 0 86 142 52 M-134 100 Q 0 132 134 100 M-126 146 Q 0 174 126 146" fill="none" stroke="#1E1A16" stroke-width="4" stroke-opacity="0.45"/>
+                <path d="M-90 26 L-74 188 M-30 34 L-24 196 M30 34 L24 196 M90 26 L74 188" fill="none" stroke="#1E1A16" stroke-width="4" stroke-opacity="0.35"/>
+                <g transform="translate(0 112) rotate(-3)"><g id="s3-tag-yours" opacity="0">
+                  <rect x="-118" y="-40" width="236" height="80" rx="10" fill="#F3E9D2" stroke="#1E1A16" stroke-width="6"/>
+                  <text x="0" y="22" text-anchor="middle" class="s3-letter" font-size="60" fill="#1E1A16" letter-spacing="2">YOURS</text>
+                </g></g>
+              </g></g>
+              <g transform="translate(790 900)"><g id="s3-terra-front">
+                <path d="M-152 0 Q 0 44 152 0 L 118 182 Q 0 200 -118 182 Z" fill="#C65A3A" stroke="#1E1A16" stroke-width="7" stroke-linejoin="round"/>
+                <path d="M-142 52 Q 0 86 142 52 M-134 100 Q 0 132 134 100 M-126 146 Q 0 174 126 146" fill="none" stroke="#1E1A16" stroke-width="4" stroke-opacity="0.45"/>
+                <path d="M-90 26 L-74 188 M-30 34 L-24 196 M30 34 L24 196 M90 26 L74 188" fill="none" stroke="#1E1A16" stroke-width="4" stroke-opacity="0.35"/>
+                <g transform="translate(0 112) rotate(3)"><g id="s3-tag-notyours" opacity="0">
+                  <rect x="-136" y="-38" width="272" height="76" rx="10" fill="#F3E9D2" stroke="#1E1A16" stroke-width="6"/>
+                  <text x="0" y="17" text-anchor="middle" class="s3-letter" font-size="48" fill="#1E1A16" letter-spacing="1">NOT YOURS</text>
+                </g></g>
+              </g></g>
+
+            </g>
+          </g>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const D = 12.77;
+      const tl = gsap.timeline({ paused: true });
+      const seen = {};
+      const F = (sel, a, b, t) => {
+        const k = [].concat(sel).join("|");
+        if (seen[k]) b = Object.assign({ immediateRender: false }, b);
+        seen[k] = 1;
+        return tl.fromTo(sel, a, b, t);
+      };
+      const C = "50% 50%";
+
+      // pop: scale 0 -> overshoot -> 1 around its own center
+      function pop(sel, t, d) {
+        F(sel, { opacity: 0, scale: 0.2, transformOrigin: C }, { opacity: 1, scale: 1, transformOrigin: C, duration: d || 0.3, ease: "back.out(2.6)" }, t);
+      }
+      // fly an item from its pop spot into a basket (arc), shrinking to sit in the pile
+      function toss(sel, t, dx, dy, s, rot, dur) {
+        dur = dur || 0.4;
+        F(sel, { x: 0 }, { x: dx, duration: dur, ease: "power1.inOut" }, t);
+        F(sel, { y: 0 }, { y: -70, duration: dur * 0.4, ease: "power2.out" }, t);
+        F(sel, { y: -70 }, { y: dy, duration: dur * 0.6, ease: "power2.in" }, t + dur * 0.4);
+        F(sel, { scale: 1, rotation: 0, transformOrigin: C }, { scale: s, rotation: rot, transformOrigin: C, duration: dur, ease: "power1.in" }, t);
+      }
+      // basket catch: quick squash of back + front
+      function catchIt(which, t) {
+        F(["#s3-" + which + "-back", "#s3-" + which + "-front"], { y: 12 }, { y: 0, duration: 0.3, ease: "elastic.out(1, 0.45)" }, t);
+      }
+      function shake(t, amp) {
+        const k = [amp, -amp * 0.8, amp * 0.5, -amp * 0.3, 0];
+        let prev = 0;
+        k.forEach((v, i) => { F("#s3-shake", { x: prev, y: -prev * 0.5 }, { x: v, y: -v * 0.5, duration: 0.045, ease: "none" }, t + i * 0.045); prev = v; });
+      }
+      function blink(sel, t) {
+        F(sel, { scaleY: 1, transformOrigin: C }, { scaleY: 0.1, transformOrigin: C, duration: 0.06, ease: "power1.in" }, t);
+        F(sel, { scaleY: 0.1, transformOrigin: C }, { scaleY: 1, transformOrigin: C, duration: 0.09, ease: "power1.out" }, t + 0.1);
+      }
+
+      // ---- boil (placeholder until Rig.boil): 12 fps seed steps ----
+
+      // ---- transition in: whip from the right ----
+      F("#s3-whip", { x: 620, opacity: 0.35, filter: "blur(22px)" }, { x: 0, opacity: 1, filter: "blur(0px)", duration: 0.3, ease: "power3.out" }, 0);
+
+      // ---- camera: push on Epictetus, pull out on "Split", drift with the sorting ----
+      F("#s3-cam", { scale: 1.1, svgOrigin: "300 780" }, { scale: 1.14, svgOrigin: "300 780", duration: 3.5, ease: "sine.inOut" }, 0);
+      F("#s3-cam", { scale: 1.14, svgOrigin: "300 780" }, { scale: 1, svgOrigin: "300 780", duration: 0.7, ease: "power2.inOut" }, 3.62);
+
+      // ---- 0.14 "Rule one": lettering slaps in ----
+      F("#s3-title", { opacity: 0, scale: 1.6, rotation: -6, transformOrigin: C }, { opacity: 1, scale: 1, rotation: 0, transformOrigin: C, duration: 0.32, ease: "back.out(2.2)" }, 0.08);
+      F("#s3-title-swash", { strokeDasharray: "460 460", strokeDashoffset: 460 }, { strokeDasharray: "460 460", strokeDashoffset: 0, duration: 0.3, ease: "power2.out" }, 0.34);
+
+      // ---- 1.13 "Epictetus": hobbles in from the left on his crutch ----
+      F("#s3-epi-mv", { x: -440 }, { x: 0, duration: 1.05, ease: "power1.out" }, 1.0);
+      for (let i = 0; i < 4; i++) {
+        const t = 1.0 + i * 0.26;
+        F("#s3-epi-mv", { y: 0 }, { y: -16, duration: 0.11, ease: "power2.out" }, t);
+        F("#s3-epi-mv", { y: -16 }, { y: 0, duration: 0.15, ease: "power2.in" }, t + 0.11);
+      }
+      pop("#s3-epi-name", 1.2, 0.35);
+      F("#s3-epi-name", { opacity: 1 }, { opacity: 0, duration: 0.25, ease: "power2.in" }, 5.1);
+
+      // ---- 2.70 "slave": the shackles snap off ----
+      F("#s3-snap", { opacity: 0, scale: 0.4, transformOrigin: C }, { opacity: 1, scale: 1.2, transformOrigin: C, duration: 0.12, ease: "power3.out" }, 2.7);
+      F("#s3-snap", { opacity: 1 }, { opacity: 0, duration: 0.2, ease: "power1.in" }, 2.86);
+      const links = [["#s3-link1", -40, -120, -200], ["#s3-link2", 60, -140, 260], ["#s3-link3", -90, -90, -300], ["#s3-link4", -60, -150, 180], ["#s3-link5", -140, -60, -240]];
+      links.forEach(([s, dx, dy, r], i) => {
+        F(s, { x: 0, rotation: 0, transformOrigin: C }, { x: dx, rotation: r, transformOrigin: C, duration: 0.55, ease: "power1.out" }, 2.7);
+        F(s, { y: 0 }, { y: dy, duration: 0.22, ease: "power2.out" }, 2.7);
+        F(s, { y: dy }, { y: 40, duration: 0.33, ease: "power2.in" }, 2.92);
+        F(s, { opacity: 1 }, { opacity: 0, duration: 0.15 }, 3.15 + i * 0.02);
+      });
+      F("#s3-cuff-l", { x: 0, y: 0, rotation: 0, transformOrigin: C }, { x: -30, y: 26, rotation: -50, transformOrigin: C, duration: 0.4, ease: "power2.in" }, 2.72);
+      F("#s3-cuff-r", { x: 0, y: 0, rotation: 0, transformOrigin: C }, { x: 34, y: 26, rotation: 55, transformOrigin: C, duration: 0.4, ease: "power2.in" }, 2.74);
+      F(["#s3-cuff-l", "#s3-cuff-r"], { opacity: 1 }, { opacity: 0, duration: 0.2 }, 3.2);
+      F("#s3-ball", { x: 0, rotation: 0, transformOrigin: C }, { x: -260, rotation: -420, transformOrigin: C, duration: 0.8, ease: "power2.out" }, 2.72);
+      F("#s3-ball", { opacity: 1 }, { opacity: 0, duration: 0.2 }, 3.3);
+      shake(2.7, 7);
+      // freedom hop
+      F("#s3-epi-mv", { y: 0 }, { y: -40, duration: 0.18, ease: "power2.out" }, 2.86);
+      F("#s3-epi-mv", { y: -40 }, { y: 0, duration: 0.2, ease: "power2.in" }, 3.04);
+
+      // ---- 3.67 "Split": the line divides the frame ----
+      F("#s3-divider", { strokeDashoffset: 600 }, { strokeDashoffset: 0, duration: 0.32, ease: "power3.inOut" }, 3.67);
+
+      // ---- 4.02 "life": Alex bounces in from the right ----
+      F("#s3-alex-mv", { x: 420 }, { x: 0, duration: 0.42, ease: "back.out(1.4)" }, 3.9);
+      F("#s3-alex-mv", { y: 0 }, { y: -30, duration: 0.14, ease: "power2.out" }, 3.95);
+      F("#s3-alex-mv", { y: -30 }, { y: 0, duration: 0.18, ease: "power2.in" }, 4.09);
+
+      // ---- 4.58 "two" / 4.79 "piles": baskets drop in ----
+      F(["#s3-gold-back", "#s3-gold-front"], { y: -1400 }, { y: 0, duration: 0.26, ease: "power3.in" }, 4.34);
+      catchIt("gold", 4.58);
+      shake(4.58, 5);
+      F(["#s3-terra-back", "#s3-terra-front"], { y: -1400 }, { y: 0, duration: 0.26, ease: "power3.in" }, 4.55);
+      catchIt("terra", 4.79);
+      shake(4.79, 5);
+
+      // ---- 5.79 "control": YOURS tag slaps on the gold basket ----
+      F("#s3-tag-yours", { opacity: 0, scale: 1.7, rotation: -10, transformOrigin: C }, { opacity: 1, scale: 1, rotation: 0, transformOrigin: C, duration: 0.24, ease: "back.out(2)" }, 5.58);
+
+      // ---- 6.70 "thoughts" ----
+      pop("#s3-it-thought", 6.7, 0.28);
+      toss("#s3-it-thought", 6.98, -440, 440, 0.55, -12, 0.4);
+      catchIt("gold", 7.38);
+
+      // ---- 7.79 "effort": dumbbell heave + sweat ----
+      pop("#s3-it-effort", 7.79, 0.22);
+      F("#s3-it-effort", { y: 0 }, { y: -26, duration: 0.1, ease: "power2.out" }, 7.92);
+      F("#s3-it-effort", { y: -26 }, { y: 0, duration: 0.1, ease: "power2.in" }, 8.02);
+      [["#s3-sweat1", -40, -60], ["#s3-sweat2", 40, -54]].forEach(([s, dx, dy]) => {
+        F(s, { opacity: 0, x: 0, y: 0 }, { opacity: 1, x: dx * 0.4, y: dy, duration: 0.16, ease: "power2.out" }, 7.82);
+        F(s, { x: dx * 0.4, y: dy }, { x: dx, y: 40, duration: 0.3, ease: "power2.in" }, 7.98);
+        F(s, { opacity: 1 }, { opacity: 0, duration: 0.1 }, 8.2);
+      });
+      toss("#s3-it-effort", 8.12, -440, 296, 0.55, -24, 0.36);
+      catchIt("gold", 8.48);
+
+      // ---- 8.65 "actions": a hand ----
+      pop("#s3-it-hand", 8.65, 0.26);
+      F("#s3-it-hand", { rotation: 0, transformOrigin: "50% 100%" }, { rotation: 14, svgOrigin: "0 40", duration: 0.12, ease: "sine.inOut" }, 8.78);
+      toss("#s3-it-hand", 8.92, -300, 392, 0.55, 18, 0.36);
+      catchIt("gold", 9.28);
+
+      // ---- 9.93 "don't": NOT YOURS tag ----
+      F("#s3-tag-notyours", { opacity: 0, scale: 1.7, rotation: 10, transformOrigin: C }, { opacity: 1, scale: 1, rotation: 0, transformOrigin: C, duration: 0.24, ease: "back.out(2)" }, 9.72);
+
+      // ---- 10.55 "weather": storm cloud rains on Alex, then dropped in ----
+      pop("#s3-it-cloud", 10.52, 0.2);
+      F("#s3-rain", { y: -24 }, { y: 24, duration: 0.11, ease: "none", repeat: 2 }, 10.6);
+      F("#s3-rain", { opacity: 1 }, { opacity: 0, duration: 0.08 }, 10.88);
+      F("#s3-it-cloud", { y: 0, scale: 1, transformOrigin: C }, { y: 466, scale: 0.5, transformOrigin: C, duration: 0.22, ease: "power3.in" }, 10.88);
+      F("#s3-it-cloud", { x: 0 }, { x: -30, duration: 0.22, ease: "none" }, 10.88);
+      catchIt("terra", 11.1);
+
+      // ---- 11.11 "other people": gossips rise, whisper, get dropped in ----
+      F("#s3-it-people", { opacity: 0, y: 120 }, { opacity: 1, y: 0, duration: 0.2, ease: "back.out(1.8)" }, 11.1);
+      F("#s3-it-people", { rotation: 0, transformOrigin: "50% 100%" }, { rotation: -5, transformOrigin: "50% 100%", duration: 0.12, ease: "sine.inOut", repeat: 1, yoyo: true }, 11.3);
+      toss("#s3-it-people", 11.56, -70, 122, 0.5, -8, 0.28);
+      catchIt("terra", 11.84);
+
+      // ---- 12.11 "past": a clock runs backwards and drops in ----
+      pop("#s3-it-clock", 12.08, 0.16);
+      F("#s3-clock-min", { rotation: 0, svgOrigin: "0 0" }, { rotation: -720, svgOrigin: "0 0", duration: 0.38, ease: "power1.in" }, 12.08);
+      F("#s3-clock-hr", { rotation: 0, svgOrigin: "0 0" }, { rotation: -90, svgOrigin: "0 0", duration: 0.38, ease: "power1.in" }, 12.08);
+      toss("#s3-it-clock", 12.22, -110, 360, 0.5, -30, 0.22);
+      catchIt("terra", 12.44);
+
+      // ---- characters (Rig) ----
+      const stage = document.querySelector("#s3-stage");
+      const epi = Rig.mount(document.querySelector("#s3-epi"), "epictetus");
+      const alex = Rig.mount(document.querySelector("#s3-alex"), "alex", { flip: true });
+      Rig.boil(tl, stage, 0, D);
+      Rig.idle(tl, epi, 0, D, { seed: 3 });
+      Rig.idle(tl, alex, 3.9, D, { seed: 5 });
+      Rig.walk(tl, epi, 1.0, 2.05, 1);
+      Rig.emote(tl, epi, [[0, "neutral"], [2.3, "sad"], [2.82, "happy"], [3.6, "calm"], [9.6, "smug"]]);
+      Rig.look(tl, epi, 2.3, 0, 1); Rig.look(tl, epi, 2.8, 0.3, 0);
+      Rig.hop(tl, epi, 2.84, { height: 40 });
+      Rig.gesture(tl, epi, "point", 3.6, { side: "l", hold: 0.4 });
+      Rig.gesture(tl, epi, "present", 5.4, { side: "l", hold: 0.9 });
+      Rig.look(tl, epi, 6.7, 1, -0.6); Rig.look(tl, epi, 7.1, -0.6, 0.6);
+      Rig.look(tl, epi, 10.5, 1, -0.6); Rig.look(tl, epi, 11.2, 1, 0.3);
+      Rig.gesture(tl, epi, "shrug", 9.65, { hold: 0.6 });
+      Rig.emote(tl, alex, [[3.9, "neutral"], [6.7, "happy"], [10.55, "shocked"], [11.15, "sad"], [12.1, "shocked"]]);
+      Rig.look(tl, alex, 4.4, -1, 0);
+      Rig.look(tl, alex, 6.72, -0.6, -1); Rig.look(tl, alex, 7.0, -1, 0.4);
+      Rig.gesture(tl, alex, "lift", 7.72, { hold: 0.25 });
+      Rig.gesture(tl, alex, "present", 8.6, { hold: 0.25 });
+      Rig.look(tl, alex, 10.56, 0, -1); Rig.look(tl, alex, 11.15, 1, 0); Rig.look(tl, alex, 12.12, 1, -0.6);
+      Rig.tremble(tl, alex, 10.6, 10.95);
+
+      // ---- transition out: whip to the left ----
+      F("#s3-whip", { x: 0, opacity: 1, filter: "blur(0px)" }, { x: -620, opacity: 0.35, filter: "blur(22px)", duration: 0.3, ease: "power3.in" }, D - 0.3);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["s3_control"] = tl;
+    })();
+  </script>
+</template>
