@@ -11,14 +11,14 @@
     "src": "assets/sfx/pop.mp3",
     "start": 5.61,
     "duration": 0.72,
-    "volume": 0.24
+    "volume": 0.2
   },
   {
     "id": "pop-ungrateful",
     "src": "assets/sfx/pop.mp3",
     "start": 6.16,
     "duration": 0.72,
-    "volume": 0.22
+    "volume": 0.2
   },
   {
     "id": "pop-selfish",
@@ -32,7 +32,7 @@
     "src": "assets/sfx/whoosh.mp3",
     "start": 10.99,
     "duration": 0.575,
-    "volume": 0.22
+    "volume": 0.2
   },
   {
     "id": "sparkle-stoicism",
@@ -53,7 +53,7 @@
     "src": "assets/sfx/whoosh-short.mp3",
     "start": 20.91,
     "duration": 0.575,
-    "volume": 0.22
+    "volume": 0.2
   },
   {
     "id": "pop-basket-thoughts",
@@ -102,7 +102,7 @@
     "src": "assets/sfx/whoosh.mp3",
     "start": 33.68,
     "duration": 0.575,
-    "volume": 0.22
+    "volume": 0.2
   },
   {
     "id": "click-stamp-not-yours",
@@ -123,7 +123,7 @@
     "src": "assets/sfx/whoosh-short.mp3",
     "start": 46.47,
     "duration": 0.575,
-    "volume": 0.22
+    "volume": 0.2
   },
   {
     "id": "notification-on-read",
@@ -144,7 +144,7 @@
     "src": "assets/sfx/whoosh.mp3",
     "start": 58.98,
     "duration": 0.575,
-    "volume": 0.22
+    "volume": 0.2
   },
   {
     "id": "impact-boulder",
@@ -158,7 +158,7 @@
     "src": "assets/sfx/whoosh-short.mp3",
     "start": 69.52,
     "duration": 0.575,
-    "volume": 0.22
+    "volume": 0.2
   },
   {
     "id": "chime-richest",
@@ -172,14 +172,14 @@
     "src": "assets/sfx/whoosh.mp3",
     "start": 81.43,
     "duration": 0.575,
-    "volume": 0.22
+    "volume": 0.2
   },
   {
     "id": "riser-your-move",
     "src": "assets/sfx/riser.mp3",
     "start": 86.86,
     "duration": 10.032,
-    "volume": 0.22
+    "volume": 0.18
   },
   {
     "id": "impact-your-move",
