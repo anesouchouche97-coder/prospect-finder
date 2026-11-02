@@ -1,0 +1,1496 @@
+{
+ "total": 93.26,
+ "fps": 30,
+ "width": 1080,
+ "height": 1920,
+ "scenes": [
+  {
+   "id": "s1_hook",
+   "start": 0,
+   "text": "The most powerful man on Earth wrote himself a warning every morning. Today, I will meet rude, ungrateful, selfish people. And he was totally fine with it.",
+   "end": 11.14,
+   "duration": 11.14,
+   "words": [
+    {
+     "id": "w0",
+     "text": "The",
+     "start": 0.22,
+     "end": 0.3
+    },
+    {
+     "id": "w1",
+     "text": "most",
+     "start": 0.3,
+     "end": 0.52
+    },
+    {
+     "id": "w2",
+     "text": "powerful",
+     "start": 0.52,
+     "end": 1.12
+    },
+    {
+     "id": "w3",
+     "text": "man",
+     "start": 1.12,
+     "end": 1.34
+    },
+    {
+     "id": "w4",
+     "text": "on",
+     "start": 1.34,
+     "end": 1.49
+    },
+    {
+     "id": "w5",
+     "text": "Earth",
+     "start": 1.49,
+     "end": 1.86
+    },
+    {
+     "id": "w6",
+     "text": "wrote",
+     "start": 1.99,
+     "end": 2.13
+    },
+    {
+     "id": "w7",
+     "text": "himself",
+     "start": 2.13,
+     "end": 2.48
+    },
+    {
+     "id": "w8",
+     "text": "a",
+     "start": 2.48,
+     "end": 2.5
+    },
+    {
+     "id": "w9",
+     "text": "warning",
+     "start": 2.59,
+     "end": 3
+    },
+    {
+     "id": "w10",
+     "text": "every",
+     "start": 3,
+     "end": 3.46
+    },
+    {
+     "id": "w11",
+     "text": "morning.",
+     "start": 3.46,
+     "end": 4.19
+    },
+    {
+     "id": "w12",
+     "text": "Today,",
+     "start": 4.5,
+     "end": 4.84
+    },
+    {
+     "id": "w13",
+     "text": "I",
+     "start": 4.84,
+     "end": 4.94
+    },
+    {
+     "id": "w14",
+     "text": "will",
+     "start": 4.94,
+     "end": 5.31
+    },
+    {
+     "id": "w15",
+     "text": "meet",
+     "start": 5.31,
+     "end": 5.68
+    },
+    {
+     "id": "w16",
+     "text": "rude,",
+     "start": 5.68,
+     "end": 6.23
+    },
+    {
+     "id": "w17",
+     "text": "ungrateful,",
+     "start": 6.23,
+     "end": 7.29
+    },
+    {
+     "id": "w18",
+     "text": "selfish",
+     "start": 7.35,
+     "end": 7.89
+    },
+    {
+     "id": "w19",
+     "text": "people,",
+     "start": 7.99,
+     "end": 8.72
+    },
+    {
+     "id": "w20",
+     "text": "and",
+     "start": 8.76,
+     "end": 8.94
+    },
+    {
+     "id": "w21",
+     "text": "he",
+     "start": 8.94,
+     "end": 9.02
+    },
+    {
+     "id": "w22",
+     "text": "was",
+     "start": 9.02,
+     "end": 9.08
+    },
+    {
+     "id": "w23",
+     "text": "totally",
+     "start": 9.47,
+     "end": 9.66
+    },
+    {
+     "id": "w24",
+     "text": "fine",
+     "start": 9.66,
+     "end": 9.92
+    },
+    {
+     "id": "w25",
+     "text": "with",
+     "start": 9.92,
+     "end": 10.4
+    },
+    {
+     "id": "w26",
+     "text": "it.",
+     "start": 10.4,
+     "end": 11
+    }
+   ]
+  },
+  {
+   "id": "s2_what",
+   "start": 11.14,
+   "text": "That man was Marcus Aurelius, Roman emperor. His secret? Stoicism. A two-thousand-year-old operating system for your mind.",
+   "end": 21.06,
+   "duration": 9.92,
+   "words": [
+    {
+     "id": "w27",
+     "text": "That",
+     "start": 0.15,
+     "end": 0.22
+    },
+    {
+     "id": "w28",
+     "text": "man",
+     "start": 0.22,
+     "end": 0.38
+    },
+    {
+     "id": "w29",
+     "text": "was",
+     "start": 0.49,
+     "end": 0.76
+    },
+    {
+     "id": "w30",
+     "text": "Marcus",
+     "start": 0.76,
+     "end": 1.31
+    },
+    {
+     "id": "w31",
+     "text": "Aurelius,",
+     "start": 1.31,
+     "end": 2.21
+    },
+    {
+     "id": "w32",
+     "text": "Roman",
+     "start": 2.21,
+     "end": 2.66
+    },
+    {
+     "id": "w33",
+     "text": "emperor,",
+     "start": 2.66,
+     "end": 3.48
+    },
+    {
+     "id": "w34",
+     "text": "his",
+     "start": 3.48,
+     "end": 3.6
+    },
+    {
+     "id": "w35",
+     "text": "secret,",
+     "start": 4.27,
+     "end": 4.48
+    },
+    {
+     "id": "w36",
+     "text": "Stoicism,",
+     "start": 4.48,
+     "end": 5.46
+    },
+    {
+     "id": "w37",
+     "text": "a",
+     "start": 5.46,
+     "end": 5.52
+    },
+    {
+     "id": "w38",
+     "text": "two-thousand-year-old",
+     "start": 5.52,
+     "end": 6.93
+    },
+    {
+     "id": "w39",
+     "text": "operating",
+     "start": 7.36,
+     "end": 7.9
+    },
+    {
+     "id": "w40",
+     "text": "system",
+     "start": 7.9,
+     "end": 8.46
+    },
+    {
+     "id": "w41",
+     "text": "for",
+     "start": 8.46,
+     "end": 8.65
+    },
+    {
+     "id": "w42",
+     "text": "your",
+     "start": 8.73,
+     "end": 9.11
+    },
+    {
+     "id": "w43",
+     "text": "mind.",
+     "start": 9.11,
+     "end": 9.78
+    }
+   ]
+  },
+  {
+   "id": "s3_control",
+   "start": 21.06,
+   "text": "Rule one comes from Epictetus, a man born a slave. Split your life into two piles. What you control: your thoughts, your effort, your actions. And what you don't: the weather, other people, the past.",
+   "end": 33.83,
+   "duration": 12.77,
+   "words": [
+    {
+     "id": "w44",
+     "text": "Rule",
+     "start": 0.14,
+     "end": 0.18
+    },
+    {
+     "id": "w45",
+     "text": "one",
+     "start": 0.18,
+     "end": 0.38
+    },
+    {
+     "id": "w46",
+     "text": "comes",
+     "start": 0.49,
+     "end": 0.8
+    },
+    {
+     "id": "w47",
+     "text": "from",
+     "start": 0.92,
+     "end": 1.13
+    },
+    {
+     "id": "w48",
+     "text": "Epictetus,",
+     "start": 1.13,
+     "end": 1.98
+    },
+    {
+     "id": "w49",
+     "text": "a",
+     "start": 1.98,
+     "end": 2.06
+    },
+    {
+     "id": "w50",
+     "text": "man",
+     "start": 2.06,
+     "end": 2.3
+    },
+    {
+     "id": "w51",
+     "text": "born",
+     "start": 2.3,
+     "end": 2.62
+    },
+    {
+     "id": "w52",
+     "text": "a",
+     "start": 2.62,
+     "end": 2.7
+    },
+    {
+     "id": "w53",
+     "text": "slave.",
+     "start": 2.7,
+     "end": 3.38
+    },
+    {
+     "id": "w54",
+     "text": "Split",
+     "start": 3.67,
+     "end": 3.74
+    },
+    {
+     "id": "w55",
+     "text": "your",
+     "start": 3.74,
+     "end": 4.02
+    },
+    {
+     "id": "w56",
+     "text": "life",
+     "start": 4.02,
+     "end": 4.3
+    },
+    {
+     "id": "w57",
+     "text": "into",
+     "start": 4.3,
+     "end": 4.58
+    },
+    {
+     "id": "w58",
+     "text": "two",
+     "start": 4.58,
+     "end": 4.79
+    },
+    {
+     "id": "w59",
+     "text": "piles,",
+     "start": 4.79,
+     "end": 5.28
+    },
+    {
+     "id": "w60",
+     "text": "what",
+     "start": 5.37,
+     "end": 5.57
+    },
+    {
+     "id": "w61",
+     "text": "you",
+     "start": 5.57,
+     "end": 5.77
+    },
+    {
+     "id": "w62",
+     "text": "control,",
+     "start": 5.79,
+     "end": 6.42
+    },
+    {
+     "id": "w63",
+     "text": "your",
+     "start": 6.42,
+     "end": 6.7
+    },
+    {
+     "id": "w64",
+     "text": "thoughts,",
+     "start": 6.7,
+     "end": 7.41
+    },
+    {
+     "id": "w65",
+     "text": "your",
+     "start": 7.41,
+     "end": 7.79
+    },
+    {
+     "id": "w66",
+     "text": "effort,",
+     "start": 7.79,
+     "end": 8.2
+    },
+    {
+     "id": "w67",
+     "text": "your",
+     "start": 8.2,
+     "end": 8.26
+    },
+    {
+     "id": "w68",
+     "text": "actions,",
+     "start": 8.65,
+     "end": 9.3
+    },
+    {
+     "id": "w69",
+     "text": "and",
+     "start": 9.3,
+     "end": 9.6
+    },
+    {
+     "id": "w70",
+     "text": "what",
+     "start": 9.6,
+     "end": 9.74
+    },
+    {
+     "id": "w71",
+     "text": "you",
+     "start": 9.74,
+     "end": 9.82
+    },
+    {
+     "id": "w72",
+     "text": "don't,",
+     "start": 9.93,
+     "end": 10.24
+    },
+    {
+     "id": "w73",
+     "text": "the",
+     "start": 10.36,
+     "end": 10.55
+    },
+    {
+     "id": "w74",
+     "text": "weather,",
+     "start": 10.55,
+     "end": 11.11
+    },
+    {
+     "id": "w75",
+     "text": "other",
+     "start": 11.11,
+     "end": 11.42
+    },
+    {
+     "id": "w76",
+     "text": "people,",
+     "start": 11.42,
+     "end": 11.92
+    },
+    {
+     "id": "w77",
+     "text": "the",
+     "start": 11.92,
+     "end": 12.11
+    },
+    {
+     "id": "w78",
+     "text": "past.",
+     "start": 12.11,
+     "end": 12.62
+    }
+   ]
+  },
+  {
+   "id": "s4_traffic",
+   "start": 33.83,
+   "text": "Example. You're stuck in traffic, late for work. The traffic? Not yours. Yelling at it changes nothing. What is yours? A quick text, a good podcast. Same traffic. Totally different day.",
+   "end": 46.62,
+   "duration": 12.79,
+   "words": [
+    {
+     "id": "w79",
+     "text": "Example,",
+     "start": 0.14,
+     "end": 0.49
+    },
+    {
+     "id": "w80",
+     "text": "you're",
+     "start": 0.49,
+     "end": 0.79
+    },
+    {
+     "id": "w81",
+     "text": "stuck",
+     "start": 0.91,
+     "end": 1.27
+    },
+    {
+     "id": "w82",
+     "text": "in",
+     "start": 1.27,
+     "end": 1.41
+    },
+    {
+     "id": "w83",
+     "text": "traffic",
+     "start": 1.41,
+     "end": 1.91
+    },
+    {
+     "id": "w84",
+     "text": "late",
+     "start": 1.91,
+     "end": 2.19
+    },
+    {
+     "id": "w85",
+     "text": "for",
+     "start": 2.19,
+     "end": 2.35
+    },
+    {
+     "id": "w86",
+     "text": "work,",
+     "start": 2.44,
+     "end": 2.82
+    },
+    {
+     "id": "w87",
+     "text": "the",
+     "start": 2.82,
+     "end": 3.03
+    },
+    {
+     "id": "w88",
+     "text": "traffic,",
+     "start": 3.03,
+     "end": 3.59
+    },
+    {
+     "id": "w89",
+     "text": "not",
+     "start": 3.65,
+     "end": 3.72
+    },
+    {
+     "id": "w90",
+     "text": "yours,",
+     "start": 4.24,
+     "end": 4.38
+    },
+    {
+     "id": "w91",
+     "text": "yelling",
+     "start": 4.38,
+     "end": 4.69
+    },
+    {
+     "id": "w92",
+     "text": "at",
+     "start": 5.12,
+     "end": 5.13
+    },
+    {
+     "id": "w93",
+     "text": "it",
+     "start": 5.13,
+     "end": 5.25
+    },
+    {
+     "id": "w94",
+     "text": "changes",
+     "start": 5.54,
+     "end": 5.77
+    },
+    {
+     "id": "w95",
+     "text": "nothing.",
+     "start": 5.88,
+     "end": 6.69
+    },
+    {
+     "id": "w96",
+     "text": "What",
+     "start": 6.97,
+     "end": 7.01
+    },
+    {
+     "id": "w97",
+     "text": "is",
+     "start": 7.01,
+     "end": 7.17
+    },
+    {
+     "id": "w98",
+     "text": "yours,",
+     "start": 7.17,
+     "end": 7.63
+    },
+    {
+     "id": "w99",
+     "text": "a",
+     "start": 7.74,
+     "end": 7.81
+    },
+    {
+     "id": "w100",
+     "text": "quick",
+     "start": 7.81,
+     "end": 8.21
+    },
+    {
+     "id": "w101",
+     "text": "text,",
+     "start": 8.21,
+     "end": 8.68
+    },
+    {
+     "id": "w102",
+     "text": "a",
+     "start": 8.68,
+     "end": 8.77
+    },
+    {
+     "id": "w103",
+     "text": "good",
+     "start": 8.77,
+     "end": 9.08
+    },
+    {
+     "id": "w104",
+     "text": "podcast,",
+     "start": 9.1,
+     "end": 9.78
+    },
+    {
+     "id": "w105",
+     "text": "same",
+     "start": 9.84,
+     "end": 10.13
+    },
+    {
+     "id": "w106",
+     "text": "traffic,",
+     "start": 10.13,
+     "end": 10.85
+    },
+    {
+     "id": "w107",
+     "text": "totally",
+     "start": 11.1,
+     "end": 11.41
+    },
+    {
+     "id": "w108",
+     "text": "different",
+     "start": 11.41,
+     "end": 12.13
+    },
+    {
+     "id": "w109",
+     "text": "day.",
+     "start": 12.13,
+     "end": 12.65
+    }
+   ]
+  },
+  {
+   "id": "s5_story",
+   "start": 46.62,
+   "text": "Rule two. Events don't hurt you. Your story about them does. Your friend leaves you on read. The event: no reply. The story: they hate me. Drop the story, and most of the pain goes with it.",
+   "end": 59.13,
+   "duration": 12.51,
+   "words": [
+    {
+     "id": "w110",
+     "text": "Rule",
+     "start": 0.14,
+     "end": 0.15
+    },
+    {
+     "id": "w111",
+     "text": "two,",
+     "start": 0.16,
+     "end": 0.5
+    },
+    {
+     "id": "w112",
+     "text": "events",
+     "start": 0.5,
+     "end": 0.95
+    },
+    {
+     "id": "w113",
+     "text": "don't",
+     "start": 0.95,
+     "end": 1.31
+    },
+    {
+     "id": "w114",
+     "text": "hurt",
+     "start": 1.31,
+     "end": 1.6
+    },
+    {
+     "id": "w115",
+     "text": "you.",
+     "start": 1.6,
+     "end": 2.1
+    },
+    {
+     "id": "w116",
+     "text": "Your",
+     "start": 2.1,
+     "end": 2.4
+    },
+    {
+     "id": "w117",
+     "text": "story",
+     "start": 2.4,
+     "end": 2.62
+    },
+    {
+     "id": "w118",
+     "text": "about",
+     "start": 2.73,
+     "end": 3.04
+    },
+    {
+     "id": "w119",
+     "text": "them",
+     "start": 3.16,
+     "end": 3.36
+    },
+    {
+     "id": "w120",
+     "text": "does.",
+     "start": 3.36,
+     "end": 3.88
+    },
+    {
+     "id": "w121",
+     "text": "Your",
+     "start": 3.88,
+     "end": 4.18
+    },
+    {
+     "id": "w122",
+     "text": "friend",
+     "start": 4.18,
+     "end": 4.59
+    },
+    {
+     "id": "w123",
+     "text": "leaves",
+     "start": 4.59,
+     "end": 5.02
+    },
+    {
+     "id": "w124",
+     "text": "you",
+     "start": 5.02,
+     "end": 5.23
+    },
+    {
+     "id": "w125",
+     "text": "on",
+     "start": 5.23,
+     "end": 5.37
+    },
+    {
+     "id": "w126",
+     "text": "read.",
+     "start": 5.37,
+     "end": 5.9
+    },
+    {
+     "id": "w127",
+     "text": "The",
+     "start": 5.9,
+     "end": 6.2
+    },
+    {
+     "id": "w128",
+     "text": "event,",
+     "start": 6.2,
+     "end": 6.64
+    },
+    {
+     "id": "w129",
+     "text": "no",
+     "start": 6.64,
+     "end": 6.79
+    },
+    {
+     "id": "w130",
+     "text": "reply,",
+     "start": 6.79,
+     "end": 7.31
+    },
+    {
+     "id": "w131",
+     "text": "the",
+     "start": 7.31,
+     "end": 7.5
+    },
+    {
+     "id": "w132",
+     "text": "story,",
+     "start": 7.57,
+     "end": 8.05
+    },
+    {
+     "id": "w133",
+     "text": "they",
+     "start": 8.05,
+     "end": 8.35
+    },
+    {
+     "id": "w134",
+     "text": "hate",
+     "start": 8.35,
+     "end": 8.65
+    },
+    {
+     "id": "w135",
+     "text": "me,",
+     "start": 8.65,
+     "end": 8.95
+    },
+    {
+     "id": "w136",
+     "text": "drop",
+     "start": 8.95,
+     "end": 9.25
+    },
+    {
+     "id": "w137",
+     "text": "the",
+     "start": 9.25,
+     "end": 9.47
+    },
+    {
+     "id": "w138",
+     "text": "story",
+     "start": 9.47,
+     "end": 9.64
+    },
+    {
+     "id": "w139",
+     "text": "and",
+     "start": 9.85,
+     "end": 10.05
+    },
+    {
+     "id": "w140",
+     "text": "most",
+     "start": 10.31,
+     "end": 10.36
+    },
+    {
+     "id": "w141",
+     "text": "of",
+     "start": 10.36,
+     "end": 10.51
+    },
+    {
+     "id": "w142",
+     "text": "the",
+     "start": 10.51,
+     "end": 10.69
+    },
+    {
+     "id": "w143",
+     "text": "pain",
+     "start": 10.69,
+     "end": 10.78
+    },
+    {
+     "id": "w144",
+     "text": "goes",
+     "start": 11.17,
+     "end": 11.4
+    },
+    {
+     "id": "w145",
+     "text": "with",
+     "start": 11.7,
+     "end": 11.84
+    },
+    {
+     "id": "w146",
+     "text": "it.",
+     "start": 11.84,
+     "end": 12.34
+    }
+   ]
+  },
+  {
+   "id": "s6_obstacle",
+   "start": 59.13,
+   "text": "Rule three. Marcus wrote: what stands in the way becomes the way. Rejected? That's reps for resilience. Failed an exam? Now you know exactly what to study.",
+   "end": 69.67,
+   "duration": 10.54,
+   "words": [
+    {
+     "id": "w147",
+     "text": "Rule",
+     "start": 0.17,
+     "end": 0.2
+    },
+    {
+     "id": "w148",
+     "text": "three,",
+     "start": 0.2,
+     "end": 0.73
+    },
+    {
+     "id": "w149",
+     "text": "Marcus",
+     "start": 0.73,
+     "end": 1.19
+    },
+    {
+     "id": "w150",
+     "text": "wrote,",
+     "start": 1.19,
+     "end": 1.72
+    },
+    {
+     "id": "w151",
+     "text": "what",
+     "start": 1.72,
+     "end": 2.03
+    },
+    {
+     "id": "w152",
+     "text": "stands",
+     "start": 2.03,
+     "end": 2.49
+    },
+    {
+     "id": "w153",
+     "text": "in",
+     "start": 2.49,
+     "end": 2.64
+    },
+    {
+     "id": "w154",
+     "text": "the",
+     "start": 2.64,
+     "end": 2.87
+    },
+    {
+     "id": "w155",
+     "text": "way",
+     "start": 2.87,
+     "end": 3.1
+    },
+    {
+     "id": "w156",
+     "text": "becomes",
+     "start": 3.1,
+     "end": 3.58
+    },
+    {
+     "id": "w157",
+     "text": "the",
+     "start": 3.58,
+     "end": 3.72
+    },
+    {
+     "id": "w158",
+     "text": "way,",
+     "start": 3.86,
+     "end": 4.25
+    },
+    {
+     "id": "w159",
+     "text": "rejected,",
+     "start": 4.3,
+     "end": 5.01
+    },
+    {
+     "id": "w160",
+     "text": "that's",
+     "start": 5.16,
+     "end": 5.55
+    },
+    {
+     "id": "w161",
+     "text": "reps",
+     "start": 5.55,
+     "end": 5.67
+    },
+    {
+     "id": "w162",
+     "text": "for",
+     "start": 5.67,
+     "end": 5.99
+    },
+    {
+     "id": "w163",
+     "text": "resilience,",
+     "start": 5.99,
+     "end": 6.91
+    },
+    {
+     "id": "w164",
+     "text": "failed",
+     "start": 6.91,
+     "end": 7.4
+    },
+    {
+     "id": "w165",
+     "text": "an",
+     "start": 7.4,
+     "end": 7.55
+    },
+    {
+     "id": "w166",
+     "text": "exam,",
+     "start": 7.68,
+     "end": 8.05
+    },
+    {
+     "id": "w167",
+     "text": "now",
+     "start": 8.05,
+     "end": 8.29
+    },
+    {
+     "id": "w168",
+     "text": "you",
+     "start": 8.29,
+     "end": 8.53
+    },
+    {
+     "id": "w169",
+     "text": "know",
+     "start": 8.53,
+     "end": 8.85
+    },
+    {
+     "id": "w170",
+     "text": "exactly",
+     "start": 8.86,
+     "end": 9.38
+    },
+    {
+     "id": "w171",
+     "text": "what",
+     "start": 9.38,
+     "end": 9.52
+    },
+    {
+     "id": "w172",
+     "text": "to",
+     "start": 9.75,
+     "end": 9.93
+    },
+    {
+     "id": "w173",
+     "text": "study.",
+     "start": 10.1,
+     "end": 10.52
+    }
+   ]
+  },
+  {
+   "id": "s7_seneca",
+   "start": 69.67,
+   "text": "And Seneca, one of the richest men in Rome, would practice being poor. Plain food. Rough clothes. Then he'd ask: is this what I was so afraid of? Fear shrinks when you rehearse it.",
+   "end": 81.58,
+   "duration": 11.91,
+   "words": [
+    {
+     "id": "w174",
+     "text": "And",
+     "start": 0,
+     "end": 0.43
+    },
+    {
+     "id": "w175",
+     "text": "Seneca,",
+     "start": 0.43,
+     "end": 0.88
+    },
+    {
+     "id": "w176",
+     "text": "one",
+     "start": 0.88,
+     "end": 1.07
+    },
+    {
+     "id": "w177",
+     "text": "of",
+     "start": 1.19,
+     "end": 1.23
+    },
+    {
+     "id": "w178",
+     "text": "the",
+     "start": 1.23,
+     "end": 1.44
+    },
+    {
+     "id": "w179",
+     "text": "richest",
+     "start": 1.44,
+     "end": 1.93
+    },
+    {
+     "id": "w180",
+     "text": "men",
+     "start": 1.93,
+     "end": 2.14
+    },
+    {
+     "id": "w181",
+     "text": "in",
+     "start": 2.14,
+     "end": 2.28
+    },
+    {
+     "id": "w182",
+     "text": "Rome,",
+     "start": 2.28,
+     "end": 2.63
+    },
+    {
+     "id": "w183",
+     "text": "would",
+     "start": 2.72,
+     "end": 3.04
+    },
+    {
+     "id": "w184",
+     "text": "practice",
+     "start": 3.04,
+     "end": 3.6
+    },
+    {
+     "id": "w185",
+     "text": "being",
+     "start": 3.6,
+     "end": 3.82
+    },
+    {
+     "id": "w186",
+     "text": "poor,",
+     "start": 3.93,
+     "end": 4.36
+    },
+    {
+     "id": "w187",
+     "text": "plain",
+     "start": 4.54,
+     "end": 4.71
+    },
+    {
+     "id": "w188",
+     "text": "food,",
+     "start": 4.71,
+     "end": 5.01
+    },
+    {
+     "id": "w189",
+     "text": "rough",
+     "start": 5.4,
+     "end": 5.53
+    },
+    {
+     "id": "w190",
+     "text": "clothes.",
+     "start": 5.83,
+     "end": 6.47
+    },
+    {
+     "id": "w191",
+     "text": "Then",
+     "start": 6.81,
+     "end": 6.85
+    },
+    {
+     "id": "w192",
+     "text": "he'd",
+     "start": 6.85,
+     "end": 7.16
+    },
+    {
+     "id": "w193",
+     "text": "ask,",
+     "start": 7.16,
+     "end": 7.47
+    },
+    {
+     "id": "w194",
+     "text": "is",
+     "start": 7.59,
+     "end": 7.73
+    },
+    {
+     "id": "w195",
+     "text": "this",
+     "start": 7.73,
+     "end": 8.05
+    },
+    {
+     "id": "w196",
+     "text": "what",
+     "start": 8.05,
+     "end": 8.37
+    },
+    {
+     "id": "w197",
+     "text": "I",
+     "start": 8.37,
+     "end": 8.44
+    },
+    {
+     "id": "w198",
+     "text": "was",
+     "start": 8.52,
+     "end": 8.69
+    },
+    {
+     "id": "w199",
+     "text": "so",
+     "start": 8.7,
+     "end": 8.85
+    },
+    {
+     "id": "w200",
+     "text": "afraid",
+     "start": 8.85,
+     "end": 9.33
+    },
+    {
+     "id": "w201",
+     "text": "of?",
+     "start": 9.33,
+     "end": 9.77
+    },
+    {
+     "id": "w202",
+     "text": "Fear",
+     "start": 9.77,
+     "end": 10.07
+    },
+    {
+     "id": "w203",
+     "text": "shrinks",
+     "start": 10.07,
+     "end": 10.5
+    },
+    {
+     "id": "w204",
+     "text": "when",
+     "start": 10.5,
+     "end": 10.71
+    },
+    {
+     "id": "w205",
+     "text": "you",
+     "start": 10.83,
+     "end": 10.98
+    },
+    {
+     "id": "w206",
+     "text": "rehearse",
+     "start": 10.98,
+     "end": 11.52
+    },
+    {
+     "id": "w207",
+     "text": "it.",
+     "start": 11.52,
+     "end": 11.89
+    }
+   ]
+  },
+  {
+   "id": "s8_close",
+   "start": 81.58,
+   "text": "So tomorrow, when something goes wrong, ask one question. Is this in my control? If yes, act. If no, let it go. Three rules. Two thousand years. Your move.",
+   "end": 93.26,
+   "duration": 11.68,
+   "words": [
+    {
+     "id": "w208",
+     "text": "So",
+     "start": 0,
+     "end": 0.1
+    },
+    {
+     "id": "w209",
+     "text": "tomorrow,",
+     "start": 0.27,
+     "end": 0.73
+    },
+    {
+     "id": "w210",
+     "text": "when",
+     "start": 0.73,
+     "end": 0.92
+    },
+    {
+     "id": "w211",
+     "text": "something",
+     "start": 1.04,
+     "end": 1.55
+    },
+    {
+     "id": "w212",
+     "text": "goes",
+     "start": 1.55,
+     "end": 1.8
+    },
+    {
+     "id": "w213",
+     "text": "wrong,",
+     "start": 1.8,
+     "end": 2.24
+    },
+    {
+     "id": "w214",
+     "text": "ask",
+     "start": 2.24,
+     "end": 2.43
+    },
+    {
+     "id": "w215",
+     "text": "one",
+     "start": 2.43,
+     "end": 2.62
+    },
+    {
+     "id": "w216",
+     "text": "question.",
+     "start": 2.62,
+     "end": 3.38
+    },
+    {
+     "id": "w217",
+     "text": "Is",
+     "start": 3.38,
+     "end": 3.68
+    },
+    {
+     "id": "w218",
+     "text": "this",
+     "start": 3.68,
+     "end": 3.8
+    },
+    {
+     "id": "w219",
+     "text": "in",
+     "start": 3.8,
+     "end": 3.9
+    },
+    {
+     "id": "w220",
+     "text": "my",
+     "start": 4.01,
+     "end": 4.08
+    },
+    {
+     "id": "w221",
+     "text": "control?",
+     "start": 4.08,
+     "end": 4.82
+    },
+    {
+     "id": "w222",
+     "text": "If",
+     "start": 4.82,
+     "end": 5.12
+    },
+    {
+     "id": "w223",
+     "text": "yes,",
+     "start": 5.12,
+     "end": 5.52
+    },
+    {
+     "id": "w224",
+     "text": "act.",
+     "start": 5.52,
+     "end": 6.14
+    },
+    {
+     "id": "w225",
+     "text": "If",
+     "start": 6.14,
+     "end": 6.44
+    },
+    {
+     "id": "w226",
+     "text": "no,",
+     "start": 6.44,
+     "end": 6.66
+    },
+    {
+     "id": "w227",
+     "text": "let",
+     "start": 6.77,
+     "end": 6.94
+    },
+    {
+     "id": "w228",
+     "text": "it",
+     "start": 6.94,
+     "end": 7.08
+    },
+    {
+     "id": "w229",
+     "text": "go.",
+     "start": 7.2,
+     "end": 7.58
+    },
+    {
+     "id": "w230",
+     "text": "Three",
+     "start": 7.58,
+     "end": 7.88
+    },
+    {
+     "id": "w231",
+     "text": "rules,",
+     "start": 7.88,
+     "end": 8.25
+    },
+    {
+     "id": "w232",
+     "text": "2,000",
+     "start": 8.25,
+     "end": 9.04
+    },
+    {
+     "id": "w233",
+     "text": "years,",
+     "start": 9.04,
+     "end": 9.43
+    },
+    {
+     "id": "w234",
+     "text": "your",
+     "start": 9.43,
+     "end": 9.65
+    },
+    {
+     "id": "w235",
+     "text": "move.",
+     "start": 9.65,
+     "end": 10.08
+    }
+   ]
+  }
+ ]
+}
